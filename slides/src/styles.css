@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', 'Roboto', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+
+  --color-brand-50: #fff1f3;
+  --color-brand-100: #ffe1e6;
+  --color-brand-200: #ffc8d1;
+  --color-brand-300: #ff9aab;
+  --color-brand-400: #ff5d79;
+  --color-brand-500: #f0234a;
+  --color-brand-600: #d41b3f;
+  --color-brand-700: #b01134;
+  --color-brand-800: #931131;
+  --color-brand-900: #7d122f;
+  --color-brand-950: #460515;
+
+  --color-ink-50: #f7f7f8;
+  --color-ink-100: #ededf0;
+  --color-ink-200: #d9d9df;
+  --color-ink-300: #b6b6c0;
+  --color-ink-400: #8e8e9c;
+  --color-ink-500: #707080;
+  --color-ink-600: #5a5a68;
+  --color-ink-700: #4a4a55;
+  --color-ink-800: #2e2e36;
+  --color-ink-900: #1a1a1f;
+  --color-ink-950: #0d0d11;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #0d0d11;
+  color: #1a1a1f;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Slide stage — locked 16:9, scaled to viewport */
+.slide-stage {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  transform-origin: center center;
+}
+
+.slide-viewport {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d11;
+  overflow: hidden;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+  .slide-viewport {
+    background: #ffffff;
+    width: 1920px;
+    height: 1080px;
+    overflow: visible;
+  }
+  .slide-stage {
+    transform: none !important;
+    page-break-after: always;
+  }
+}
+
+/* Custom scrollbar for content areas (not slide content) */
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}

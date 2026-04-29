@@ -1,0 +1,198 @@
+                 CÔNG TY CỔ PHẦ N CÔNG NGHỆ THÔNG TIN IPMAC
+
+             KHÓA HỌC
+
+PHÂN TÍCH NGHIỆP VỤ CƠ BẢN
+           – READY FOR BA
+
+            THAM KHẢO LỊCH KHAI GIẢNG TẠI
+                          www.ipmac.vn
+CÔNG TY CỔ PHẦ N CÔNG NGHỆ THÔNG TIN IPMAC
+
+    KHÓA HỌC PHÂN TÍCH NGHIỆP VỤ CƠ BẢN –
+                          READY FOR BA
+
+Được ủy quyền đào tạo chính thức bởi hãng IIBA
+
+Chuyên viên phân tích nghiệp vụ (Business Analyst – BA) giữ một vị trí ngày càng
+quan trọng trong mỗi doanh nghiệp. Theo tổ chức IIBA (International Institute of
+Business Analysis – Hiệp hội quốc tế về nghề phân tích nghiệp vụ), vai trò của các
+BA ngày càng trở nên quan trọng trong bất cứ dự án công nghệ thông tin/ kinh
+doanh nào, dù lớn hay bé, đơn giản hay phức tạp. Cũng theo thống kê của tổ chức
+này, chỉ 16.2% các dự án được hoàn thành đúng hạn và đúng với ngân sách dự kiến,
+52.7% các dự án công nghệ hoàn thành với ngân sách vượt kế hoạch ban đầu và
+56% các mâu thuẫn thường gặp trong các dự án công nghệ thường xuất phát từ các
+lỗi trong khâu đặt đề bài.
+
+Tại Việt Nam trong thời gian gần đây, BA nổi lên là một ngành nghề mới với thu
+nhập cao và ổn định, tuy nhiên nhu cầu tuyển dụng của các doanh nghiệp đối với vị
+trí BA hiện chưa được đáp ứng. Lực lượng nhân sự được đào tạo bài bản về nghề BA
+hiện còn thiếu và mỏng cả về chất lượng lẫn số lượng.
+
+Khóa đào tạo “Phân tích nghiệp vụ (Business Analyst)” trang bị cho học viên các
+kiến thức cơ bản và kỹ năng cốt lõi về phân tích nghiệp vụ, hiểu được vai trò và trách
+nhiệm của một chuyên viên BA và có định hướng rõ ràng về việc phát triển sự
+nghiệp của mình trong nghề BA.
+
+Với uy tín và kinh nghiệm của mình, iPMAC hiện là đơn vị duy nhất được tổ chức
+IIBA cấp phép trở thành Đối tác đào tạo ủy quyền (Endorsed Education Provider)
+của hãng tại Việt Nam. Hoàn thành khóa học tại iPMAC, học viên sẽ nhận được
+chứng nhận hoàn thành khóa học do iPMAC và IIBA cấp và chứng nhận 36 PDU –
+đây là điều kiện để học viên có thể tham gia kỳ thi lấy chứng chỉ quốc tế về Phân tích
+nghiệp vụ của IIBA.
+
+Tầng 6, Toà nhà Kim Ánh,          024 3771 0668
+ngõ 78 Duy Tân, Cầu Giấy, Hà Nội  info@ipmac.vn
+CÔNG TY CỔ PHẦ N CÔNG NGHỆ THÔNG TIN IPMAC
+
+     MỤC TIÊU
+Khóa học Business Analyst tại iPMAC nhằm cung cấp cho học viên kiến thức toàn diện
+và kỹ năng thực hành để thành công trong vai trò Business Analyst. Mục tiêu của khóa
+học bao gồm:
+
+     Chuẩn bị kiến thức, kỹ năng về BA để chuẩn bị đi làm 
+     Có thể tự tin bắt đầu công việc BA 
+     Củng cố kiến thức, cách làm BA 
+     Biết mình phải làm gì và làm như thế nào trong ít nhất 1-3 năm đầu tiên của nghề
+     BA 
+     Biết mình phải tiếp tục phấn đấu như thế nào 
+
+     ĐỐ I TƯỢNG
+Khóa học Business Analyst tại iPMAC phù hợp với các đối tượng sau:
+
+     Các bạn sinh viên mới ra trường/ chuẩn bị ra trường muốn apply vào vị trí BA 
+     Các bạn muốn chuyển đổi công việc sang BA 
+     Các bạn BA mới đi làm dưới 1 năm 
+
+     ĐIỀ U KIỆN
+
+Để tham gia khóa học Business Analyst tại iPMAC, học viên cần:
+     Không yêu cầu kiến thức hay kinh nghiệm trước đây về Business Analyst, tuy
+     nhiên, hiểu biết về kinh doanh và công nghệ thông tin sẽ là một lợi thế.
+     Tinh thần học tập: Học viên cần có tinh thần ham học, sẵn sàng tiếp thu kiến thức
+     mới và áp dụng vào thực tế công việc. Sự kiên nhẫn và sự cầu tiến sẽ giúp bạn tiếp
+     thu và ứng dụng kiến thức một cách hiệu quả.
+
+     THỜI LƯỢNG
+
+30h (tương đương 12 buổi x 2.5h/buổi)
+
+Tầng 6, Toà nhà Kim Ánh,          024 3771 0668
+ngõ 78 Duy Tân, Cầu Giấy, Hà Nội  info@ipmac.vn
+CÔNG TY CỔ PHẦ N CÔNG NGHỆ THÔNG TIN IPMAC
+
+     NỘI DUNG ĐÀO TẠO
+
+Buổi 1: Giới thiệu chung
+     Giới thiệu về dự án phần mềm
+     Vai trò của BA
+     Lộ trình nghề nghiệp
+     Giới thiệu các mẫu sản phẩm đầu ra của BA
+
+Buổi 2: Kỹ năng, kiến thức cần thiết cho BA
+     Ma trận kỹ năng cần thiết cho BA
+     Kiến thức cần thiết cho BA
+     Thực hành
+
+Buổi 3: Quy trình phân tích thiết kế
+     Quy trình phân tích thiết kế
+     Thực hành
+
+Buổi 4: Khơi gợi yêu cầu (Elicitation)
+     Các bước khơi gợi yêu cầu
+     Kỹ thuật khơi gợi yêu cầu
+     Thực hành
+
+Buổi 5: Phân tích yêu cầu
+     Phân tích yêu cầu
+     Kỹ thuật phân tích yêu cầu
+     Thực hành
+
+Buổi 6: Thiết kế chức năng và giao diện
+     Thiết kế chức năng và giao diện
+     Thực hành
+
+Buổi 7: Viết tài liệu yêu cầu
+     Mô hình hoá và viết tài liệu yêu cầu
+     Thực hành
+
+Tầng 6, Toà nhà Kim Ánh,                        024 3771 0668
+ngõ 78 Duy Tân, Cầu Giấy, Hà Nội                info@ipmac.vn
+CÔNG TY CỔ PHẦ N CÔNG NGHỆ THÔNG TIN IPMAC
+
+     NỘI DUNG ĐÀO TẠO
+
+Buổi 8: Trao đổi thông tin và kiểm tra yêu cầu
+1. Trao đổi thông tin của BA
+
+     Luồng trao đổi thông tin của BA
+     Các hình thức trao đổi thông tin
+     Thực hành
+2. Kiểm tra yêu cầu
+     Kiểm tra yêu cầu
+     Thực hành
+
+Buổi 9: Quản lý yêu cầu
+     Quy trình quản lý yêu cầu
+     Phân tích và quản lý yêu cầu thay đổi
+     Thực hành
+
+Buổi 10: Sẵn sàng vào dự án
+     Những việc cần chuẩn bị để đi làm trong 1 dự án phần mềm với vai trò BA
+     Thực hành
+
+Buổi 11: Bài tập cuối khoá
+     Chuẩn bị kiến thức và phỏng vấn thử
+
+Buổi 12: Tổng kết
+     Thảo luận và tổng kết
+     Cơ hội nghiệp nghiệp dành cho BA tại Việt Nam
+     Các yêu cầu của nhà tuyển dụng với một BA Fresher
+     Thi chứng chỉ quốc tế: Thời điểm nào là phù hợp?
+
+Tầng 6, Toà nhà Kim Ánh,          024 3771 0668
+ngõ 78 Duy Tân, Cầu Giấy, Hà Nội  info@ipmac.vn
+CÔNG TY CỔ PHẦ N CÔNG NGHỆ THÔNG TIN IPMAC
+
+      6 LÝ DO BẠN NÊN LỰA CHỌN IPMAC
+                    ĐỂ HỌC VÀ THI BA
+
+         Giảng viên có chuyên môn cao đào tạo BA nhiều năm & đặc biệt giàu
+         kinh nghiệm áp dụng kiến thức BA vào các dự án thực tế.
+
+         Tài liệu khóa học đầy đủ được giảng dạy dựa trên giáo trình Guide to the
+         Business Analysis Body of Knowledge (BABOK® Guide 3.0 theo
+         version mới nhất) do IIBA cung cấp
+
+         Khóa học giúp tích lũy đủ PDUs (Professional Development hours) để
+         tham gia kỳ thi lấy chứng chỉ BA. Việc tích lũy contact hour chỉ có được
+         khi bạn học tại các đơn vị đào tạo ủy quyền chính thức của hãng.
+
+         Hệ thống LMS (Learning Management System) được tích hợp vào
+         chương trình để tăng tương tác tối đa giữa học viên – giảng viên, từ đó
+         giúp học viên nhanh chóng làm chủ kiến thức, chủ động luyện tập và áp
+         dụng kiến thức vào công việc và khi đi thi.
+
+         Sau khi học xong tại IPMAC sẽ được hỗ trợ từ quá trình chuẩn bị cho đến
+         đăng ký dự thi như thế nào và có thể đăng ký thi luôn tại IPMAC, điều này
+         sẽ hỗ trợ cho bạn rất nhiều để có được tâm lý thoải mái nhất khi tham dự
+         kỳ thi tương đối khó này.
+
+         Hệ thống phòng học và phòng thi tại IPMAC đều được thiết kế và trang bị
+         theo tiêu chuẩn quốc tế.
+
+Tầng 6, Toà nhà Kim Ánh,          024 3771 0668
+ngõ 78 Duy Tân, Cầu Giấy, Hà Nội  info@ipmac.vn
+CÔNG TY CỔ PHẦ N CÔNG NGHỆ THÔNG TIN IPMAC
+
+Hình thức học Online + Offline
+
+  HỌC PHÍ: 8.500.000 VNĐ
+
+            024 3771 0668
+            Học viện Công nghệ thông
+            tin IPMAC
+
+Tầng 6, Toà nhà Kim Ánh,                    024 3771 0668
+ngõ 78 Duy Tân, Cầu Giấy, Hà Nội            info@ipmac.vn
+
