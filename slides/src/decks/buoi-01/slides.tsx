@@ -59,7 +59,7 @@ export function Slide02Hook() {
         animate="show"
       >
         <motion.div variants={fadeUp}>
-          <div className="text-brand-600 text-base font-bold uppercase tracking-[0.3em] mb-7">
+          <div className="text-brand-600 text-xl font-bold uppercase tracking-[0.3em] mb-7">
             Vì sao có nghề BA?
           </div>
           <h2 className="font-display text-[64px] font-extrabold text-neutral-900 leading-[1.08] tracking-tight mb-9">
@@ -69,7 +69,7 @@ export function Slide02Hook() {
             <span className="font-semibold text-neutral-800">56% mâu thuẫn</span> trong các dự án công nghệ
             xuất phát từ <span className="text-brand-600 font-semibold">lỗi đặt đề bài</span> — đó chính là nơi BA xuất hiện.
           </p>
-          <div className="mt-9 text-base text-neutral-400">Nguồn: IIBA — International Institute of Business Analysis</div>
+          <div className="mt-9 text-xl text-neutral-400">Nguồn: IIBA — International Institute of Business Analysis</div>
         </motion.div>
 
         <motion.div variants={fadeUp} className="grid grid-cols-2 gap-5">
@@ -149,7 +149,7 @@ export function Slide05Project() {
             }`}
           >
             <div
-              className={`text-base font-bold mb-2 ${
+              className={`text-xl font-bold mb-2 ${
                 p.active ? 'text-white/80' : 'text-brand-600'
               }`}
             >
@@ -158,11 +158,11 @@ export function Slide05Project() {
             <div className={`font-bold text-xl mb-1.5 ${p.active ? 'text-white' : 'text-neutral-900'}`}>
               {p.title}
             </div>
-            <div className={`text-sm leading-relaxed ${p.active ? 'text-white/85' : 'text-neutral-500'}`}>
+            <div className={`text-xl leading-relaxed ${p.active ? 'text-white/85' : 'text-neutral-500'}`}>
               {p.desc}
             </div>
             {p.active && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-full bg-white text-brand-700 text-xs font-bold tracking-wider uppercase shadow">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-full bg-white text-brand-700 text-xl font-bold tracking-wider uppercase shadow">
                 BA bắt đầu
               </div>
             )}
@@ -171,7 +171,7 @@ export function Slide05Project() {
       </motion.div>
 
       <motion.div variants={fadeUp} initial="hidden" animate="show" className="mt-10">
-        <div className="text-base font-bold uppercase tracking-wider text-neutral-500 mb-4">
+        <div className="text-xl font-bold uppercase tracking-wider text-neutral-500 mb-4">
           Các vai trò trong 1 dự án phần mềm
         </div>
         <div className="flex flex-wrap gap-2.5">
@@ -238,7 +238,7 @@ export function Slide07BAIsBridge() {
             <Users size={44} strokeWidth={2.2} />
           </div>
           <div className="font-display font-extrabold text-brand-700 text-3xl tracking-tight">BA</div>
-          <div className="flex items-center gap-1.5 text-brand-600 text-sm font-bold uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 text-brand-600 text-xl font-bold uppercase tracking-wider">
             <ArrowRight size={16} />
             Translate
             <ArrowRight size={16} />
@@ -326,11 +326,11 @@ export function Slide09CaseStudies() {
           <div className="w-16 h-16 rounded-xl bg-brand-600 text-white flex items-center justify-center mb-5 shadow-lg shadow-brand-600/30">
             <Wrench size={30} strokeWidth={2.4} />
           </div>
-          <div className="text-sm font-bold uppercase tracking-wider text-brand-600 mb-2">Case 01 · B2C + B2B</div>
+          <div className="text-xl font-bold uppercase tracking-wider text-brand-600 mb-2">Case 01 · B2C + B2B</div>
           <div className="font-display text-3xl font-bold text-neutral-900 mb-3 leading-tight">
             Hệ thống đặt lịch sửa chữa điện tử – điện lạnh
           </div>
-          <div className="text-lg text-neutral-600 leading-relaxed mb-4">
+          <div className="text-xl text-neutral-600 leading-relaxed mb-4">
             App bảo hành đa nền tảng: khách đặt lịch, thợ nhận việc, backoffice điều phối kho & nhân sự.
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -347,11 +347,11 @@ export function Slide09CaseStudies() {
           <div className="w-16 h-16 rounded-xl bg-emerald-600 text-white flex items-center justify-center mb-5 shadow-lg shadow-emerald-600/30">
             <GraduationCap size={30} strokeWidth={2.4} />
           </div>
-          <div className="text-sm font-bold uppercase tracking-wider text-emerald-700 mb-2">Case 02 · EdTech</div>
+          <div className="text-xl font-bold uppercase tracking-wider text-emerald-700 mb-2">Case 02 · EdTech</div>
           <div className="font-display text-3xl font-bold text-neutral-900 mb-3 leading-tight">
             Hệ thống điểm danh lớp học
           </div>
-          <div className="text-lg text-neutral-600 leading-relaxed mb-4">
+          <div className="text-xl text-neutral-600 leading-relaxed mb-4">
             Web quản trị cho trường + app mobile cho học viên điểm danh QR/GPS, báo cáo theo lớp.
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -368,11 +368,11 @@ export function Slide09CaseStudies() {
           <div className="w-16 h-16 rounded-xl bg-sky-700 text-white flex items-center justify-center mb-5 shadow-lg shadow-sky-700/30">
             <Building2 size={30} strokeWidth={2.4} />
           </div>
-          <div className="text-sm font-bold uppercase tracking-wider text-sky-700 mb-2">Case 03 · ERP doanh nghiệp</div>
+          <div className="text-xl font-bold uppercase tracking-wider text-sky-700 mb-2">Case 03 · ERP doanh nghiệp</div>
           <div className="font-display text-3xl font-bold text-neutral-900 mb-3 leading-tight">
             ERP doanh nghiệp đa phân hệ
           </div>
-          <div className="text-lg text-neutral-600 leading-relaxed mb-4">
+          <div className="text-xl text-neutral-600 leading-relaxed mb-4">
             Hệ thống quản trị doanh nghiệp đa module: Kho, Tài chính, Sản xuất, Bảo trì, Hợp đồng… Prototype thực tế sẽ giới thiệu chi tiết ở các buổi sau.
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -446,17 +446,17 @@ export function Slide11CareerPath() {
             variants={fadeUp}
             className={`rounded-2xl border-2 bg-gradient-to-br ${s.colorClass} p-7 relative`}
           >
-            <div className={`inline-flex items-center justify-center w-11 h-11 rounded-lg ${s.badgeClass} font-bold text-base mb-4`}>
+            <div className={`inline-flex items-center justify-center w-11 h-11 rounded-lg ${s.badgeClass} font-bold text-xl mb-4`}>
               0{i + 1}
             </div>
             <div className="font-display font-bold text-2xl text-neutral-900 leading-tight mb-1.5">
               {s.level}
             </div>
-            <div className="text-base font-semibold text-neutral-500 mb-3">{s.years}</div>
+            <div className="text-xl font-semibold text-neutral-500 mb-3">{s.years}</div>
             <div className="text-3xl font-display font-extrabold text-neutral-900 mb-4 tabular-nums">
-              {s.salary}<span className="text-base font-medium text-neutral-500"> /tháng</span>
+              {s.salary}<span className="text-xl font-medium text-neutral-500"> /tháng</span>
             </div>
-            <div className="text-base text-neutral-700 leading-relaxed">{s.focus}</div>
+            <div className="text-xl text-neutral-700 leading-relaxed">{s.focus}</div>
           </motion.div>
         ))}
       </motion.div>
@@ -465,7 +465,7 @@ export function Slide11CareerPath() {
         variants={fadeUp}
         initial="hidden"
         animate="show"
-        className="mt-9 px-7 py-5 rounded-xl bg-amber-50 border border-amber-200 flex items-center gap-3 text-lg text-amber-900"
+        className="mt-9 px-7 py-5 rounded-xl bg-amber-50 border border-amber-200 flex items-center gap-3 text-xl text-amber-900"
       >
         <Sparkles size={22} className="text-amber-600 shrink-0" />
         <span>
@@ -507,10 +507,10 @@ export function Slide12Outputs() {
               <div className="font-display font-extrabold text-3xl text-brand-600 group-hover:text-brand-700 tracking-tight">
                 {o.name}
               </div>
-              <div className="text-xs font-bold text-neutral-400 tabular-nums">0{i + 1}</div>
+              <div className="text-xl font-bold text-neutral-400 tabular-nums">0{i + 1}</div>
             </div>
-            <div className="text-sm font-semibold text-neutral-700 mb-2 leading-snug">{o.full}</div>
-            <div className="text-sm text-neutral-500 leading-relaxed">{o.desc}</div>
+            <div className="text-xl font-semibold text-neutral-700 mb-2 leading-snug">{o.full}</div>
+            <div className="text-xl text-neutral-500 leading-relaxed">{o.desc}</div>
           </motion.div>
         ))}
       </motion.div>
@@ -559,7 +559,7 @@ export function Slide13AIStack() {
         }
         right={
           <motion.div variants={fadeUp} initial="hidden" animate="show" className="rounded-2xl bg-neutral-950 text-white p-8 h-full flex flex-col justify-center">
-            <div className="text-sm font-bold uppercase tracking-[0.25em] text-brand-400 mb-4">
+            <div className="text-xl font-bold uppercase tracking-[0.25em] text-brand-400 mb-4">
               Triết lý
             </div>
             <div className="font-display text-[40px] font-bold leading-[1.15] mb-6">
@@ -568,7 +568,7 @@ export function Slide13AIStack() {
             <div className="text-xl text-white/75 leading-relaxed mb-7">
               Mỗi buổi học, mình sẽ cho ví dụ cụ thể — <span className="text-white font-semibold">prompt nào, ở bước nào, output ra sao</span> — copy về dùng được ngay.
             </div>
-            <div className="flex items-center gap-2 text-base text-white/55">
+            <div className="flex items-center gap-2 text-xl text-white/55">
               <ArrowRight size={18} className="text-brand-400" />
               Demo live trong từng buổi
             </div>

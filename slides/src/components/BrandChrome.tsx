@@ -19,14 +19,14 @@ export function BrandHeader({ variant = 'light' }: { variant?: 'light' | 'dark' 
         }`}
       >
         <div
-          className={`text-[17px] font-bold tracking-wide ${
+          className={`text-[20px] font-bold tracking-wide ${
             variant === 'dark' ? 'text-white' : 'text-neutral-900'
           }`}
         >
           CÔNG TY CỔ PHẦN CÔNG NGHỆ THÔNG TIN IPMAC
         </div>
         <div
-          className={`text-[14px] mt-1 ${
+          className={`text-[20px] mt-1 ${
             variant === 'dark' ? 'text-white/60' : 'text-neutral-500'
           }`}
         >
@@ -36,7 +36,7 @@ export function BrandHeader({ variant = 'light' }: { variant?: 'light' | 'dark' 
       <div className="ml-auto flex items-center gap-4">
         <div className="text-right leading-tight">
           <div
-            className={`text-[12px] uppercase tracking-[0.2em] font-bold ${
+            className={`text-[20px] uppercase tracking-[0.2em] font-bold ${
               variant === 'dark' ? 'text-white/50' : 'text-neutral-400'
             }`}
           >
@@ -51,9 +51,9 @@ export function BrandHeader({ variant = 'light' }: { variant?: 'light' | 'dark' 
           </div>
         </div>
         <div className="border-l-2 border-brand-600 pl-3 text-left">
-          <div className="text-[12px] font-bold text-brand-700 leading-tight">ENDORSED</div>
-          <div className="text-[12px] font-bold text-brand-700 leading-tight">EDUCATION</div>
-          <div className="text-[12px] font-bold text-brand-700 leading-tight">PROVIDER</div>
+          <div className="text-[20px] font-bold text-brand-700 leading-tight">ENDORSED</div>
+          <div className="text-[20px] font-bold text-brand-700 leading-tight">EDUCATION</div>
+          <div className="text-[20px] font-bold text-brand-700 leading-tight">PROVIDER</div>
         </div>
       </div>
       <div className="absolute left-0 right-0 bottom-0 h-1.5 bg-gradient-to-r from-brand-700 via-brand-500 to-brand-700" />
@@ -80,7 +80,7 @@ export function BrandFooter({
       />
       <div className="absolute right-[7%] top-0 bottom-0 w-[8%] bg-white/5" />
 
-      <div className="relative h-full flex items-center px-16 gap-12 text-white text-[15px]">
+      <div className="relative h-full flex items-center px-16 gap-12 text-white text-[20px]">
         <div className="flex items-center gap-3">
           <MapPin size={20} className="text-white shrink-0" strokeWidth={2.2} />
           <div className="leading-snug">
@@ -98,7 +98,7 @@ export function BrandFooter({
         </div>
 
         {pageNumber !== undefined && (
-          <div className="ml-auto pr-6 text-white/90 text-[14px] font-semibold tabular-nums">
+          <div className="ml-auto pr-6 text-white/90 text-[20px] font-semibold tabular-nums">
             {pageNumber}
             {totalPages !== undefined ? ` / ${totalPages}` : ''}
           </div>

@@ -72,19 +72,19 @@ export function PromptBox({
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
           <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
         </div>
-        <div className="flex items-center gap-2 ml-3 text-neutral-400 text-xs font-mono">
+        <div className="flex items-center gap-2 ml-3 text-neutral-400 text-xl font-mono">
           <Sparkles size={12} className="text-brand-400" />
           <span className="font-semibold">{tool}</span>
         </div>
       </div>
-      <div className="p-5 font-mono text-sm text-neutral-300 leading-relaxed whitespace-pre-wrap">
-        <div className="text-brand-400 text-xs uppercase tracking-wider mb-2 font-sans font-bold">
+      <div className="p-5 font-mono text-xl text-neutral-300 leading-relaxed whitespace-pre-wrap">
+        <div className="text-brand-400 text-xl uppercase tracking-wider mb-2 font-sans font-bold">
           Prompt
         </div>
         {prompt}
         {output && (
           <>
-            <div className="mt-4 pt-4 border-t border-neutral-800 text-emerald-400 text-xs uppercase tracking-wider mb-2 font-sans font-bold flex items-center gap-2">
+            <div className="mt-4 pt-4 border-t border-neutral-800 text-emerald-400 text-xl uppercase tracking-wider mb-2 font-sans font-bold flex items-center gap-2">
               <Terminal size={12} />
               Output
             </div>
@@ -125,14 +125,14 @@ export function StatCard({
         {value}
       </div>
       <div
-        className={`mt-4 text-lg font-semibold ${
+        className={`mt-4 text-xl font-semibold ${
           accent ? 'text-white/95' : 'text-neutral-800'
         }`}
       >
         {label}
       </div>
       {caption && (
-        <div className={`mt-2 text-base ${accent ? 'text-white/65' : 'text-neutral-500'}`}>
+        <div className={`mt-2 text-xl ${accent ? 'text-white/65' : 'text-neutral-500'}`}>
           {caption}
         </div>
       )}
@@ -157,7 +157,7 @@ export function BulletList({
           <span
             className={`mt-1.5 ${
               accent ? 'text-white/70' : 'text-brand-600'
-            } text-sm shrink-0 leading-none`}
+            } text-xl shrink-0 leading-none`}
           >
             {icon}
           </span>
@@ -184,7 +184,7 @@ export function Pill({
   };
   return (
     <span
-      className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider border ${tones[tone]}`}
+      className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-xl font-bold uppercase tracking-wider border ${tones[tone]}`}
     >
       {children}
     </span>
@@ -219,7 +219,7 @@ export function TimelineRow({
           {title}
         </div>
         {description && (
-          <div className="text-base text-neutral-600 mt-1.5 leading-relaxed">{description}</div>
+          <div className="text-xl text-neutral-600 mt-1.5 leading-relaxed">{description}</div>
         )}
       </div>
     </motion.div>

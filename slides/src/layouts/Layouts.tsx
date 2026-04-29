@@ -55,17 +55,17 @@ export function CoverSlide({
       <div className="absolute top-12 left-16 flex items-center gap-5 z-10">
         <BrandMarkOnDark size="lg" />
         <div className="border-l border-white/30 pl-5 leading-tight">
-          <div className="text-[14px] font-bold tracking-[0.15em] text-white/90 uppercase">
+          <div className="text-[20px] font-bold tracking-[0.15em] text-white/90 uppercase">
             Công ty Cổ phần Công nghệ Thông tin iPMAC
           </div>
-          <div className="text-[12px] tracking-wide text-white/40 mt-1">NET YOUR WORK</div>
+          <div className="text-[20px] tracking-wide text-white/40 mt-1">NET YOUR WORK</div>
         </div>
       </div>
 
       {/* IIBA badge top-right */}
       <div className="absolute top-12 right-16 flex items-center gap-3 z-10">
         <div className="text-right leading-tight">
-          <div className="text-[12px] uppercase tracking-[0.2em] font-bold text-white/60">
+          <div className="text-[20px] uppercase tracking-[0.2em] font-bold text-white/60">
             Endorsed by
           </div>
           <div className="text-3xl font-black text-white">
@@ -73,9 +73,9 @@ export function CoverSlide({
           </div>
         </div>
         <div className="border-l-2 border-brand-500 pl-3">
-          <div className="text-[12px] font-bold text-white/90 leading-tight">ENDORSED</div>
-          <div className="text-[12px] font-bold text-white/90 leading-tight">EDUCATION</div>
-          <div className="text-[12px] font-bold text-white/90 leading-tight">PROVIDER</div>
+          <div className="text-[20px] font-bold text-white/90 leading-tight">ENDORSED</div>
+          <div className="text-[20px] font-bold text-white/90 leading-tight">EDUCATION</div>
+          <div className="text-[20px] font-bold text-white/90 leading-tight">PROVIDER</div>
         </div>
       </div>
 
@@ -91,7 +91,7 @@ export function CoverSlide({
           className="inline-flex items-center gap-3 mb-8"
         >
           <div className="w-14 h-1.5 bg-brand-500" />
-          <span className="text-brand-400 text-base font-semibold uppercase tracking-[0.25em]">
+          <span className="text-brand-400 text-xl font-semibold uppercase tracking-[0.25em]">
             {eyebrow}
           </span>
         </motion.div>
@@ -113,7 +113,7 @@ export function CoverSlide({
           <motion.div variants={fadeUp} className="mt-16 flex gap-14">
             {meta.map((m) => (
               <div key={m.label}>
-                <div className="text-sm uppercase tracking-widest text-white/55 mb-2 font-semibold">
+                <div className="text-xl uppercase tracking-widest text-white/55 mb-2 font-semibold">
                   {m.label}
                 </div>
                 <div className="text-3xl font-bold text-white">{m.value}</div>
@@ -125,11 +125,11 @@ export function CoverSlide({
 
       {/* Bottom tagline */}
       <div className="absolute bottom-12 left-24 z-10 flex items-center gap-3">
-        <div className="text-white/50 text-base font-semibold tracking-widest uppercase">
+        <div className="text-white/50 text-xl font-semibold tracking-widest uppercase">
           Ready for BA
         </div>
         <div className="w-1.5 h-1.5 rounded-full bg-brand-500" />
-        <div className="text-white/50 text-base">www.ipmac.vn</div>
+        <div className="text-white/50 text-xl">www.ipmac.vn</div>
       </div>
     </div>
   );
@@ -178,7 +178,7 @@ export function SectionSlide({
         <motion.div variants={fadeUp} className="relative z-10 ml-40">
           <div className="flex items-center gap-3 mb-7">
             <div className="w-14 h-1.5 bg-brand-500" />
-            <span className="text-brand-400 text-base font-semibold uppercase tracking-[0.25em]">
+            <span className="text-brand-400 text-xl font-semibold uppercase tracking-[0.25em]">
               Phần {number}
             </span>
           </div>
@@ -215,7 +215,7 @@ export function ContentSlide({
         {eyebrow && (
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-[3px] bg-brand-600" />
-            <span className="text-brand-700 text-[15px] font-bold uppercase tracking-[0.2em]">
+            <span className="text-brand-700 text-[20px] font-bold uppercase tracking-[0.2em]">
               {eyebrow}
             </span>
           </div>
@@ -260,7 +260,7 @@ export function StatementSlide({
       >
         {eyebrow && (
           <motion.div variants={fadeUp} className="mb-8">
-            <span className="text-brand-600 text-base font-bold uppercase tracking-[0.3em]">
+            <span className="text-brand-600 text-xl font-bold uppercase tracking-[0.3em]">
               {eyebrow}
             </span>
           </motion.div>
