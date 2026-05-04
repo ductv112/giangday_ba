@@ -498,6 +498,7 @@ export function Slide11Section4() {
 
 /* ----- Slide 12: 6 BABOK Knowledge Areas ----- */
 export function Slide12KnowledgeAreas() {
+  // Sắp theo thứ tự buổi tăng dần để học viên dễ scan — không theo thứ tự BABOK gốc
   const areas = [
     {
       code: '01',
@@ -515,31 +516,31 @@ export function Slide12KnowledgeAreas() {
     },
     {
       code: '03',
-      title: 'Quản lý vòng đời yêu cầu',
-      en: 'Requirements Lifecycle',
-      desc: 'Theo dõi yêu cầu từ lúc nảy sinh, qua duyệt, đến lúc đóng và bảo trì.',
-      buoi: 'B9',
-    },
-    {
-      code: '04',
       title: 'Phân tích chiến lược',
       en: 'Strategy Analysis',
       desc: 'Hiểu vấn đề kinh doanh + đề xuất hướng giải quyết khả thi nhất.',
       buoi: 'B5',
     },
     {
-      code: '05',
+      code: '04',
       title: 'Phân tích yêu cầu & thiết kế',
       en: 'Requirements Analysis & Design',
       desc: 'Vẽ sơ đồ nghiệp vụ + thiết kế giải pháp chi tiết — phần "tay làm" nhiều nhất.',
       buoi: 'B5–7',
     },
     {
-      code: '06',
+      code: '05',
       title: 'Đánh giá giải pháp',
       en: 'Solution Evaluation',
       desc: 'Sau khi triển khai, kiểm tra giải pháp có đạt mục tiêu kinh doanh không.',
       buoi: 'B8',
+    },
+    {
+      code: '06',
+      title: 'Quản lý vòng đời yêu cầu',
+      en: 'Requirements Lifecycle',
+      desc: 'Theo dõi yêu cầu từ lúc nảy sinh, qua duyệt, đến lúc đóng và bảo trì.',
+      buoi: 'B9',
     },
   ];
 
