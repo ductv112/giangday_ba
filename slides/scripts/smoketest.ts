@@ -219,6 +219,57 @@ async function main() {
   await new Promise((r) => setTimeout(r, 1500));
   await shot(page, '37-buoi04-s15-roleplay');
 
+  // ===== BUỔI 5 =====
+  console.log('→ Buổi 5 — slide 1 (cover)');
+  await page.goto(`${HOST}/buoi-05`, { waitUntil: 'networkidle0', timeout: 15000 });
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '38-buoi05-s01-cover');
+
+  console.log('→ slide 5 (3 cấp yêu cầu)');
+  for (let i = 0; i < 4; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '39-buoi05-s05-three-layers');
+
+  console.log('→ slide 6 (functional vs nf)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '40-buoi05-s06-functional');
+
+  console.log('→ slide 8 (AS-IS vs TO-BE)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '41-buoi05-s08-asis-tobe');
+
+  console.log('→ slide 9 (BPMN)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '42-buoi05-s09-bpmn');
+
+  console.log('→ slide 11 (ERD)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '43-buoi05-s11-erd');
+
+  console.log('→ slide 12 (Use Case)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '44-buoi05-s12-use-case');
+
+  console.log('→ slide 13 (Story Map)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '45-buoi05-s13-story-map');
+
+  console.log('→ slide 15 (AI prompts)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '46-buoi05-s15-ai');
+
+  console.log('→ slide 16 (Demo Kho IT)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '47-buoi05-s16-demo');
+
   await browser.close();
 
   console.log('\n=== ERRORS ===');
