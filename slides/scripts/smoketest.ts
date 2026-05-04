@@ -81,6 +81,52 @@ async function main() {
   await new Promise((r) => setTimeout(r, 1500));
   await shot(page, '10-buoi01-s13-ai');
 
+  // ===== BUỔI 2 =====
+  console.log('→ Buổi 2 — slide 1 (cover)');
+  await page.goto(`${HOST}/buoi-02`, { waitUntil: 'networkidle0', timeout: 15000 });
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '11-buoi02-s01-cover');
+
+  console.log('→ slide 2 (hook stats)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '12-buoi02-s02-hook');
+
+  console.log('→ slide 5 (skill matrix)');
+  for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '13-buoi02-s05-matrix');
+
+  console.log('→ slide 7 (hard skills)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '14-buoi02-s07-hard');
+
+  console.log('→ slide 8 (tools)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '15-buoi02-s08-tools');
+
+  console.log('→ slide 10 (soft skills)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '16-buoi02-s10-soft');
+
+  console.log('→ slide 12 (knowledge areas)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '17-buoi02-s12-babok');
+
+  console.log('→ slide 13 (AI prompts)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '18-buoi02-s13-ai-prompts');
+
+  console.log('→ slide 14 (roadmap)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '19-buoi02-s14-roadmap');
+
   await browser.close();
 
   console.log('\n=== ERRORS ===');
