@@ -194,6 +194,9 @@ Dự án PKKQ gốc ở `D:\ProjectAI\PKKQ\` là cho khách hàng quốc phòng 
 Học viên là sinh viên năm cuối / mới ra trường / chuyển nghề / BA <1 năm. Phần lớn chưa từng làm BA, kiến thức tiếng Anh ngành hạn chế. Khoá là **"Ready for BA" cấp độ Foundation** — không phải khoá đào sâu BABOK.
 
 - **KHÔNG bắt buộc** học viên mua / đọc BABOK Guide v3.0. Khung BABOK chỉ dùng làm **bản đồ tham khảo** để học viên biết các nhóm kiến thức tồn tại và sẽ học ở buổi nào.
+- **Khi nhắc đến BABOK trên slide hoặc giáo trình, framing PHẢI tích cực** — coi BABOK là tài liệu chính thống quốc tế cho ai muốn đào sâu sau khoá (đặc biệt để thi ECBA/CCBA), KHÔNG nói kiểu "không cần đọc 600 trang" / "không cần đọc sách dày" — câu này tuy ý tốt nhưng vô tình đặt BABOK ở vị trí gánh nặng và làm mất uy tín tài liệu.
+  - ❌ Sai: "Bạn KHÔNG cần đọc sách BABOK 600 trang"
+  - ✅ Đúng: "Mỗi nhóm sẽ học gọn trong các buổi 3-9. Muốn đào sâu sau khoá để thi ECBA/CCBA, tham khảo BABOK Guide — sách chính thức của IIBA."
 - **Mỗi từ ngữ chuyên ngành lần đầu xuất hiện phải có giải thích tiếng Việt ngắn ngay tại chỗ** (trong card subtitle, ngoặc đơn, hoặc dòng phụ).
   - Ví dụ: `INVEST (công thức viết yêu cầu chuẩn)`, `BPMN (sơ đồ quy trình)`, `ERD (sơ đồ dữ liệu)`, `5 Whys (hỏi "vì sao" 5 lần để tìm gốc rễ)`, `UAT (kiểm thử bởi người dùng)`, `scope creep (yêu cầu phình ra)`, `ECBA (chứng chỉ BA fresher của IIBA)`
 - KHÔNG dùng tiêu chuẩn nặng kiểu `IEEE 830` mà không giải thích — hoặc tránh hẳn.

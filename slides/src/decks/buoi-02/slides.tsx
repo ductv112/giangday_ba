@@ -491,7 +491,7 @@ export function Slide11Section4() {
     <SectionSlide
       number="04"
       title="6 nhóm kiến thức BA cần biết"
-      caption="Bản đồ tổng thể — bạn sẽ học chi tiết từng nhóm qua các buổi sau, không cần đọc sách dày."
+      caption="Bản đồ tổng thể tham chiếu từ chuẩn quốc tế của IIBA — bạn sẽ học chi tiết từng nhóm qua các buổi 3-9."
     />
   );
 }
@@ -579,7 +579,7 @@ export function Slide12KnowledgeAreas() {
       >
         <BookOpen size={28} strokeWidth={2.2} className="text-brand-600 shrink-0" />
         <div className="text-xl text-neutral-700">
-          <span className="font-bold text-neutral-900">Bạn KHÔNG cần đọc sách BABOK 600 trang</span> — bản đồ này chỉ để bạn biết các nhóm kiến thức tồn tại. Mỗi nhóm sẽ học gọn trong buổi tương ứng.
+          <span className="font-bold text-neutral-900">Mỗi nhóm sẽ học gọn trong các buổi 3-9.</span> Muốn đào sâu sau khoá để thi chứng chỉ ECBA/CCBA, tham khảo <span className="font-semibold text-brand-700">BABOK® Guide</span> — sách chính thức của IIBA.
         </div>
       </motion.div>
     </ContentSlide>

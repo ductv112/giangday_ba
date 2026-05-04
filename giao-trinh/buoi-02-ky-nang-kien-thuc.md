@@ -218,16 +218,16 @@ Output Mermaid flowchart (TD direction), kèm phần giải thích các nhánh e
 
 ## 7. Tài liệu tham khảo
 
-> **Lưu ý cho học viên:** KHÔNG bắt buộc đọc sách BABOK 600 trang. Các tài liệu dưới đây chỉ tham khảo nâng cao — quan trọng nhất là thực hành theo các buổi học.
+> Quan trọng nhất là thực hành theo các buổi học. Các tài liệu dưới đây để tham khảo thêm — đọc nếu hứng thú.
 
-**Tiếng Việt — bắt đầu từ đây (free):**
+**Khởi động — tiếng Việt, miễn phí:**
 - Blog **BAC.vn** / **BAVietnam** — bài viết BA fresher tiếng Việt
 - Kênh YouTube tiếng Việt về BA — list video sẽ gửi qua LMS
 - Bài viết "BA fresher cần biết gì?" trên Spiderum / Medium VN
 
-**Nâng cao — chỉ đọc nếu hứng thú (KHÔNG bắt buộc):**
-- *BABOK® Guide v3.0* — IIBA — chỉ tham khảo Chapter 1 + 2 (~50 trang)
-- *Software Requirements* — Karl Wiegers (sách kinh điển về viết yêu cầu)
+**Đào sâu — sách chuyên ngành (sau khoá, để thi chứng chỉ ECBA/CCBA):**
+- *BABOK® Guide v3.0* — IIBA — bộ chuẩn kiến thức BA chính thức quốc tế
+- *Software Requirements* — Karl Wiegers — sách kinh điển về viết yêu cầu
 - *Crucial Conversations* — đàm phán & thuyết phục
 
 ---
