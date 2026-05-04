@@ -74,9 +74,11 @@ Khoá dùng 3 dự án thực tế làm tham chiếu:
    - Web admin cho trường
    - App mobile cho học viên (QR/GPS)
 
-3. **ERP doanh nghiệp đa phân hệ** (placeholder — sẽ cập nhật prototype dân sự sau)
-   - Hệ thống quản trị doanh nghiệp đa module: Kho, Tài chính, Sản xuất, Bảo trì, Hợp đồng, Mua hàng, Portal…
-   - Dùng làm reference cho ERP doanh nghiệp ở các buổi 5+
+3. **Doanh nghiệp A — ERP đa phân hệ** (B2B, ERP cho công ty công nghệ)
+   - Reference prototype: `D:\GiangDay\Demo\` — 19 module thực, đã rebrand sạch (xem [`case-studies/03-erp-doanh-nghiep.md`](./case-studies/03-erp-doanh-nghiep.md))
+   - Module: Portal (hub), SSO, Kho IT, Tài chính kế toán, Sản xuất phần mềm, Bảo trì, Sửa chữa, Đại tu, Vòng đời sản phẩm, Mua hàng, Hợp đồng nhiệm vụ, Đo lường KPI, An toàn IT, DMS, Chatbot AI…
+   - Stack: Vite + React + AntD (16 module) · Next.js (3 module: portal, dms, chatbot)
+   - Dùng làm reference cho ERP doanh nghiệp ở các buổi 5+ (case phân tích yêu cầu, viết tài liệu, quản lý yêu cầu)
 
 ## 6. Yêu cầu đầu vào
 

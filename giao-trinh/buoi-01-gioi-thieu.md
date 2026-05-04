@@ -56,7 +56,7 @@ Sau buổi học, học viên có thể:
 | 40–45 | Section divider | Slide 6 | Chuyển section |
 | 45–60 | BA = cầu nối Business ↔ Tech, ví dụ cụ thể | Slide 7 | Giảng + ví dụ thật |
 | 60–80 | 6 nhóm công việc cốt lõi (Elicit, Analyze, Document, Design, Communicate, Manage) | Slide 8 | Mỗi nhóm cho 1 ví dụ ngắn từ case study |
-| 80–95 | Giới thiệu 3 case study xuyên khoá (Sửa chữa, Điểm danh, ERP doanh nghiệp) | Slide 9 | Cho học viên xem qua mockup/screenshot 3 hệ thống |
+| 80–95 | Giới thiệu 3 case study xuyên khoá (Sửa chữa, Điểm danh, ERP "Doanh nghiệp A") | Slide 9 | Cho học viên xem qua mockup/screenshot 3 hệ thống — case 3 demo nhanh portal `D:\GiangDay\Demo\demo-portal` |
 
 **Điểm nhấn cần dạy:**
 - BA **không** là người chỉ ngồi viết tài liệu — đó là góc nhìn cổ
@@ -210,7 +210,7 @@ theo format INVEST:
 ## 8. Ghi chú giảng viên — Checklist trước buổi
 
 - [ ] Mở sẵn VS Code + Claude Code đã đăng nhập (test prompt mẫu trước 1 lần)
-- [ ] Mở sẵn 3 trình duyệt tab: case study mockup (Sửa chữa, Điểm danh, ERP doanh nghiệp đa phân hệ)
+- [ ] Mở sẵn 3 trình duyệt tab: case study mockup (Sửa chữa, Điểm danh, ERP "Doanh nghiệp A" tại `D:\GiangDay\Demo\demo-portal` — chạy `npm run dev` ở port 3000)
 - [ ] Chuẩn bị 1-2 câu chuyện thật về dự án thành/bại do BA
 - [ ] Test slide trên trình chiếu (kích thước 16:9, font đọc rõ từ cuối phòng)
 - [ ] In template TPL-001 đủ số lượng học viên

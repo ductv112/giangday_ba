@@ -370,15 +370,15 @@ export function Slide09CaseStudies() {
           </div>
           <div className="text-xl font-bold uppercase tracking-wider text-sky-700 mb-2">Case 03 · ERP doanh nghiệp</div>
           <div className="font-display text-3xl font-bold text-neutral-900 mb-3 leading-tight">
-            ERP doanh nghiệp đa phân hệ
+            Doanh nghiệp A — ERP đa phân hệ
           </div>
           <div className="text-xl text-neutral-600 leading-relaxed mb-4">
-            Hệ thống quản trị doanh nghiệp đa module: Kho, Tài chính, Sản xuất, Bảo trì, Hợp đồng… Prototype thực tế sẽ giới thiệu chi tiết ở các buổi sau.
+            ERP thực cho công ty công nghệ: Portal, SSO, Kho IT, Tài chính, SDLC, Bảo trì, Sửa chữa, Hợp đồng, Mua hàng, DMS, Chatbot AI… <span className="font-semibold text-neutral-800">16+ module</span> để demo BA thực chiến từ buổi 5.
           </div>
           <div className="flex flex-wrap gap-1.5">
-            <Pill tone="ink">Multi-module</Pill>
-            <Pill tone="ink">SSO</Pill>
-            <Pill tone="ink">Reporting</Pill>
+            <Pill tone="ink">16+ module</Pill>
+            <Pill tone="ink">B2B</Pill>
+            <Pill tone="ink">Multi-stack</Pill>
           </div>
         </motion.div>
       </motion.div>
