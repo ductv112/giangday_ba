@@ -40,7 +40,7 @@ export function Slide01Cover() {
     <CoverSlide
       eyebrow="Buổi 02 · Khoá Ready for BA"
       title={'Ma trận năng lực\nBusiness Analyst'}
-      subtitle="Hard skills, Soft skills, Domain knowledge và Tech literacy — bạn đang ở đâu, cần học gì để 'thực chiến' được trong 1-3 năm đầu nghề BA."
+      subtitle="Kỹ năng cứng, kỹ năng mềm, kiến thức ngành và hiểu công nghệ — bạn đang ở đâu, cần học gì để 'thực chiến' được trong 1-3 năm đầu nghề BA."
       meta={[
         { label: 'Thời lượng', value: '2.5 giờ' },
         { label: 'Trọng tâm', value: 'Tự đánh giá + lộ trình' },
@@ -81,7 +81,7 @@ export function Slide02Hook() {
         <motion.div variants={fadeUp} className="grid grid-cols-2 gap-5">
           <StatCard value="62%" label="Yếu kỹ năng phỏng vấn nghiệp vụ" accent />
           <StatCard value="48%" label="Không vẽ nổi flow đơn giản" />
-          <StatCard value="71%" label="Thiếu domain knowledge" />
+          <StatCard value="71%" label="Thiếu kiến thức ngành" />
           <StatCard value="100%" label="Đều giải quyết được nếu biết AI" accent />
         </motion.div>
       </motion.div>
@@ -99,17 +99,17 @@ export function Slide03Agenda() {
       totalPages={15}
     >
       <motion.div variants={stagger} initial="hidden" animate="show" className="grid grid-cols-2 gap-6 mt-2">
-        <Card icon={<Brain size={26} strokeWidth={2.4} />} title="1. Hard Skills">
-          6 kỹ năng cứng + bộ tool BA dùng hàng ngày (Excel, SQL, Figma, Mermaid, AI…).
+        <Card icon={<Brain size={26} strokeWidth={2.4} />} title="1. Kỹ năng cứng (Hard Skills)">
+          6 kỹ năng "tay làm" + bộ công cụ BA dùng hàng ngày (Excel, SQL, Figma, Mermaid, AI…).
         </Card>
-        <Card icon={<MessagesSquare size={26} strokeWidth={2.4} />} title="2. Soft Skills">
-          Giao tiếp, lắng nghe, đặt câu hỏi, đàm phán — thứ phỏng vấn test thật.
+        <Card icon={<MessagesSquare size={26} strokeWidth={2.4} />} title="2. Kỹ năng mềm (Soft Skills)">
+          Giao tiếp, lắng nghe, đặt câu hỏi, đàm phán — cái mà phỏng vấn hay kiểm tra nhất.
         </Card>
-        <Card icon={<BookOpen size={26} strokeWidth={2.4} />} title="3. Domain Knowledge">
-          Kiến thức ngành + 6 Knowledge Areas BABOK 3.0 (neo cho 7 buổi sau).
+        <Card icon={<BookOpen size={26} strokeWidth={2.4} />} title="3. Kiến thức ngành">
+          Hiểu nghiệp vụ ngành mình làm + bản đồ 6 nhóm kiến thức BA (neo cho 7 buổi sau).
         </Card>
-        <Card icon={<Code2 size={26} strokeWidth={2.4} />} title="4. Tech Literacy">
-          Biết đủ tech để nói chuyện với dev — không cần code, nhưng phải hiểu.
+        <Card icon={<Code2 size={26} strokeWidth={2.4} />} title="4. Hiểu công nghệ">
+          Biết đủ công nghệ để nói chuyện với dev — không cần code, nhưng phải hiểu khái niệm.
         </Card>
       </motion.div>
       <motion.div
@@ -170,7 +170,7 @@ export function Slide05SkillMatrix() {
       icon: <Code2 size={32} strokeWidth={2.2} />,
       title: 'TECH LITERACY',
       label: 'Hiểu công nghệ',
-      desc: 'Web/Mobile · API · Database · Cloud · Agile/Scrum',
+      desc: 'Web/Mobile · API (giao tiếp giữa hệ thống) · Database (cơ sở dữ liệu) · Cloud · Agile/Scrum (cách team làm việc)',
       bg: 'from-sky-50 to-sky-100/50 border-sky-200',
       text: 'text-sky-900',
       accent: false,
@@ -227,7 +227,7 @@ export function Slide06Section2() {
   return (
     <SectionSlide
       number="02"
-      title="Hard Skills — kỹ năng làm được việc"
+      title="Kỹ năng cứng — kỹ năng tay làm được việc"
       caption="6 kỹ năng cứng + bộ công cụ thực chiến BA dùng hàng ngày."
     />
   );
@@ -402,8 +402,8 @@ export function Slide09Section3() {
   return (
     <SectionSlide
       number="03"
-      title="Soft Skills — thứ phỏng vấn test thật"
-      caption="Bạn không bị loại vì thiếu BABOK, bạn bị loại vì không biết hỏi đúng câu hỏi đúng người."
+      title="Kỹ năng mềm — cái mà phỏng vấn hay kiểm tra nhất"
+      caption="Bạn không bị loại vì thiếu lý thuyết, bạn bị loại vì không biết đặt đúng câu hỏi cho đúng người."
     />
   );
 }
@@ -545,7 +545,7 @@ export function Slide12KnowledgeAreas() {
 
   return (
     <ContentSlide
-      eyebrow="Bản đồ kiến thức BA — chuẩn quốc tế của IIBA (BABOK)"
+      eyebrow="Bản đồ kiến thức BA — tham khảo từ chuẩn quốc tế IIBA"
       title="6 nhóm — mỗi nhóm sẽ học chi tiết qua các buổi 3-9"
       pageNumber={12}
       totalPages={15}

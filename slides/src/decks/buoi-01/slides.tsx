@@ -127,7 +127,7 @@ export function Slide05Project() {
     { step: '02', title: 'Phân tích', desc: 'Yêu cầu, đề bài', active: true },
     { step: '03', title: 'Thiết kế', desc: 'Giao diện, kiến trúc' },
     { step: '04', title: 'Phát triển', desc: 'Code, build' },
-    { step: '05', title: 'Kiểm thử', desc: 'QA, UAT' },
+    { step: '05', title: 'Kiểm thử', desc: 'QA, UAT (người dùng test)' },
     { step: '06', title: 'Triển khai', desc: 'Deploy, vận hành' },
   ];
   return (
@@ -176,7 +176,7 @@ export function Slide05Project() {
         </div>
         <div className="flex flex-wrap gap-2.5">
           {[
-            'Khách hàng / Stakeholder',
+            'Khách hàng / Bên liên quan',
             'Project Manager (PM)',
             'Business Analyst (BA)',
             'UX / UI Designer',
@@ -283,7 +283,7 @@ export function Slide08BADoes() {
     >
       <motion.div variants={stagger} initial="hidden" animate="show" className="grid grid-cols-3 gap-5 mt-2">
         <Card icon={<Lightbulb size={26} strokeWidth={2.4} />} title="Khơi gợi yêu cầu">
-          Phỏng vấn stakeholder, workshop, quan sát, phân tích tài liệu — moi ra điều khách hàng thực sự cần.
+          Phỏng vấn các bên liên quan, hội thảo (workshop), quan sát thực tế, đọc tài liệu — moi ra điều khách hàng thực sự cần.
         </Card>
         <Card icon={<Workflow size={26} strokeWidth={2.4} />} title="Phân tích & mô hình hoá">
           Vẽ flow nghiệp vụ, BPMN, use case, ERD — biến hỗn loạn thành cấu trúc.
@@ -428,7 +428,7 @@ export function Slide11CareerPath() {
             level: 'Senior BA',
             years: '3 – 5 năm',
             salary: '30 – 50 tr',
-            focus: 'Lead module lớn, kiến trúc nghiệp vụ, mentor junior, định hướng giải pháp.',
+            focus: 'Phụ trách phân hệ lớn, thiết kế nghiệp vụ, kèm cặp người mới, định hướng giải pháp.',
             colorClass: 'from-brand-50 to-brand-100/40 border-brand-200',
             badgeClass: 'bg-brand-600 text-white',
           },
