@@ -173,6 +173,52 @@ async function main() {
   await new Promise((r) => setTimeout(r, 1500));
   await shot(page, '28-buoi03-s15-timeline');
 
+  // ===== BUỔI 4 =====
+  console.log('→ Buổi 4 — slide 1 (cover)');
+  await page.goto(`${HOST}/buoi-04`, { waitUntil: 'networkidle0', timeout: 15000 });
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '29-buoi04-s01-cover');
+
+  console.log('→ slide 5 (5 bước)');
+  for (let i = 0; i < 4; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '30-buoi04-s05-five-steps');
+
+  console.log('→ slide 7 (8 kỹ thuật)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '31-buoi04-s07-techniques');
+
+  console.log('→ slide 8 (interview)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '32-buoi04-s08-interview');
+
+  console.log('→ slide 9 (workshop)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '33-buoi04-s09-workshop');
+
+  console.log('→ slide 10 (other techniques)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '34-buoi04-s10-other');
+
+  console.log('→ slide 12 (question art)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '35-buoi04-s12-questions');
+
+  console.log('→ slide 14 (AI prompts)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '36-buoi04-s14-ai');
+
+  console.log('→ slide 15 (role-play demo)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '37-buoi04-s15-roleplay');
+
   await browser.close();
 
   console.log('\n=== ERRORS ===');
