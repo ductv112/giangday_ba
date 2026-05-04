@@ -127,6 +127,52 @@ async function main() {
   await new Promise((r) => setTimeout(r, 1500));
   await shot(page, '19-buoi02-s14-roadmap');
 
+  // ===== BUỔI 3 =====
+  console.log('→ Buổi 3 — slide 1 (cover)');
+  await page.goto(`${HOST}/buoi-03`, { waitUntil: 'networkidle0', timeout: 15000 });
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '20-buoi03-s01-cover');
+
+  console.log('→ slide 5 (6 bước BA)');
+  for (let i = 0; i < 4; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '21-buoi03-s05-process');
+
+  console.log('→ slide 6 (vòng đời yêu cầu)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '22-buoi03-s06-lifecycle');
+
+  console.log('→ slide 8 (waterfall vs agile)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '23-buoi03-s08-waterfall-agile');
+
+  console.log('→ slide 9 (sprint cycle)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '24-buoi03-s09-sprint');
+
+  console.log('→ slide 11 (planning)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '25-buoi03-s11-planning');
+
+  console.log('→ slide 12 (stakeholder map)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '26-buoi03-s12-stakeholder');
+
+  console.log('→ slide 14 (AI prompts)');
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '27-buoi03-s14-ai-prompts');
+
+  console.log('→ slide 15 (demo timeline)');
+  await page.keyboard.press('ArrowRight');
+  await new Promise((r) => setTimeout(r, 1500));
+  await shot(page, '28-buoi03-s15-timeline');
+
   await browser.close();
 
   console.log('\n=== ERRORS ===');
