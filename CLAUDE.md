@@ -189,6 +189,20 @@ Dự án PKKQ gốc ở `D:\ProjectAI\PKKQ\` là cho khách hàng quốc phòng 
 - Nếu nội dung tràn → tách slide, đừng để cuộn dọc
 - PDF export: cũng landscape 16:9, mỗi buổi 1 file PDF riêng (`pdf/buoi-XX.pdf`)
 
+### 5.6. Đối tượng fresher — giảm jargon, KHÔNG bắt mua/đọc BABOK
+
+Học viên là sinh viên năm cuối / mới ra trường / chuyển nghề / BA <1 năm. Phần lớn chưa từng làm BA, kiến thức tiếng Anh ngành hạn chế. Khoá là **"Ready for BA" cấp độ Foundation** — không phải khoá đào sâu BABOK.
+
+- **KHÔNG bắt buộc** học viên mua / đọc BABOK Guide v3.0. Khung BABOK chỉ dùng làm **bản đồ tham khảo** để học viên biết các nhóm kiến thức tồn tại và sẽ học ở buổi nào.
+- **Mỗi từ ngữ chuyên ngành lần đầu xuất hiện phải có giải thích tiếng Việt ngắn ngay tại chỗ** (trong card subtitle, ngoặc đơn, hoặc dòng phụ).
+  - Ví dụ: `INVEST (công thức viết yêu cầu chuẩn)`, `BPMN (sơ đồ quy trình)`, `ERD (sơ đồ dữ liệu)`, `5 Whys (hỏi "vì sao" 5 lần để tìm gốc rễ)`, `UAT (kiểm thử bởi người dùng)`, `scope creep (yêu cầu phình ra)`, `ECBA (chứng chỉ BA fresher của IIBA)`
+- KHÔNG dùng tiêu chuẩn nặng kiểu `IEEE 830` mà không giải thích — hoặc tránh hẳn.
+- Tài liệu tham khảo: ưu tiên **tài liệu tiếng Việt + free** (blog BA Việt Nam, video YouTube). BABOK chỉ liệt kê "tham khảo nâng cao, không bắt buộc".
+- Ngôn ngữ slide: ưu tiên **tiếng Việt làm chính**, English label đặt phía sau làm subtitle nhỏ.
+- Bài tập về nhà KHÔNG đặt yêu cầu kiểu "đọc 30 trang BABOK" — học viên fresher sẽ bỏ luôn.
+
+**Cách verify:** Sau mỗi buổi, đọc lại slide với góc nhìn của 1 sinh viên năm 4 chưa biết gì về BA — có chỗ nào khó hiểu, viết tắt không giải thích, hoặc tiếng Anh nặng → fix lại.
+
 ---
 
 ## 6. Case studies xuyên khoá (3 case kết hợp)
@@ -294,3 +308,4 @@ Smoketest + tsc -b chỉ cần chạy nếu thay đổi lớn (cấu trúc, impo
 | PKKQ → "ERP doanh nghiệp" generic | 2026-04-29 | PKKQ là khách hàng BQP — tế nhị, không công khai |
 | 3 case study (sửa chữa, điểm danh, ERP) | 2026-04-29 | Đa dạng B2C/B2B/EdTech/ERP, học viên thấy nhiều domain |
 | Case 3 dùng `D:\GiangDay\Demo` (19 module) | 2026-05-04 | User clone bản dân sự từ PKKQ, đã rebrand sạch military terms — đủ chi tiết để dạy |
+| Giảm tải BABOK + giải thích jargon | 2026-05-04 | Đối tượng fresher/sinh viên — bắt đọc BABOK 600 trang là quá nặng, jargon không giải thích thì bỏ luôn |

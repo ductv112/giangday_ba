@@ -82,7 +82,7 @@ Sau buổi học, học viên có thể:
 | Phút | Nội dung | Slide | Hoạt động |
 |------|----------|-------|-----------|
 | 105–110 | Section divider | Slide 11 | Chuyển section |
-| 110–120 | 6 Knowledge Areas BABOK 3.0 — neo cho buổi 3-9 | Slide 12 | Giảng overview + mua sách / download tóm tắt |
+| 110–120 | 6 nhóm kiến thức BA (bản đồ tham khảo từ BABOK) — neo cho buổi 3-9 | Slide 12 | Giảng overview, nhấn mạnh KHÔNG bắt buộc đọc sách |
 | 120–130 | 4 prompt mẫu copy về dùng ngay | Slide 13 | **Demo live: chạy prompt 5 Whys với Claude Code** |
 
 **Demo live (5 phút) — luyện 5 Whys với AI:**
@@ -98,8 +98,8 @@ Sau buổi học, học viên có thể:
 | 148–150 | Closing statement + giao bài về nhà | Slide 15 | Q&A đóng buổi |
 
 **Bài về nhà cho Buổi 3:**
-- Hoàn thành Skill Matrix (TPL-002) — 4 trụ cột × 3 mức độ → upload lên LMS
-- Đọc 30 trang đầu BABOK 3.0 — Chapter 1 + Chapter 2
+- Hoàn thành bảng năng lực Skill Matrix (TPL-002) — 4 trụ cột × 3 mức độ → upload lên LMS
+- Xem 2-3 video YouTube tiếng Việt về "Business Analyst là ai" / "Quy trình BA" (15 phút mỗi video) — sẽ recommend list trong LMS
 - Cài Mermaid plugin trong VS Code (`bierner.markdown-mermaid`) — chuẩn bị cho Buổi 3
 
 ---
@@ -197,10 +197,10 @@ Output Mermaid flowchart (TD direction), kèm phần giải thích các nhánh e
 
 **Đáp án Q6:** Đọc xong BABOK summary, làm Skill Matrix lần đầu, làm 5 user story + 1 BPMN cho 1 case study, master 3 tool (Claude Code, Figma, Mermaid).
 
-**Q7.** AI tool nào phù hợp nhất để review SRS draft theo checklist IEEE 830?
+**Q7.** AI tool nào phù hợp nhất để review tài liệu yêu cầu (SRS) đã đủ rõ chưa?
 - [ ] ChatGPT
 - [ ] v0.dev
-- [x] NotebookLM (upload SRS + checklist)
+- [x] NotebookLM (upload tài liệu + danh sách tiêu chí kiểm tra)
 - [ ] Mermaid
 
 ---
@@ -211,29 +211,37 @@ Output Mermaid flowchart (TD direction), kèm phần giải thích các nhánh e
 
 1. "Trong 4 trụ cột năng lực BA, bạn tự đánh giá mình mạnh nhất ở đâu, yếu nhất ở đâu? Vì sao?"
 2. "Khi khách hàng đòi 1 tính năng mà dev nói không thể làm trong sprint, bạn xử lý thế nào?"
-3. "Bạn đang yếu domain knowledge ngành X — kế hoạch học của bạn là gì?"
+3. "Bạn đang yếu kiến thức ngành (domain knowledge) ngành X — kế hoạch học của bạn là gì?"
 4. "Hãy đặt cho tôi 5 câu hỏi mà bạn sẽ hỏi 1 quản lý kho khi bắt đầu phân tích phân hệ Kho IT."
 
 ---
 
 ## 7. Tài liệu tham khảo
 
-- **BABOK® Guide v3.0** — Chapter 1: Introduction; Chapter 2: Key Concepts; Phần Underlying Competencies (Appendix A.7)
-- **IIBA Underlying Competencies Model** — chi tiết 6 nhóm năng lực
-- **The Software Requirements Memory Jogger** (Ellen Gottesdiener) — soft skills cho elicitation
-- **Crucial Conversations** — đàm phán & thuyết phục cho BA
+> **Lưu ý cho học viên:** KHÔNG bắt buộc đọc sách BABOK 600 trang. Các tài liệu dưới đây chỉ tham khảo nâng cao — quan trọng nhất là thực hành theo các buổi học.
+
+**Tiếng Việt — bắt đầu từ đây (free):**
+- Blog **BAC.vn** / **BAVietnam** — bài viết BA fresher tiếng Việt
+- Kênh YouTube tiếng Việt về BA — list video sẽ gửi qua LMS
+- Bài viết "BA fresher cần biết gì?" trên Spiderum / Medium VN
+
+**Nâng cao — chỉ đọc nếu hứng thú (KHÔNG bắt buộc):**
+- *BABOK® Guide v3.0* — IIBA — chỉ tham khảo Chapter 1 + 2 (~50 trang)
+- *Software Requirements* — Karl Wiegers (sách kinh điển về viết yêu cầu)
+- *Crucial Conversations* — đàm phán & thuyết phục
 
 ---
 
 ## 8. Ghi chú giảng viên — Checklist trước buổi
 
 - [ ] Mở sẵn VS Code + Claude Code (test prompt 5 Whys 1 lần để đảm bảo flow mượt)
-- [ ] Mở sẵn `mermaid.live` để demo live BPMN
-- [ ] Mở sẵn portal `D:\GiangDay\Demo\demo-portal` (port 3000) để minh hoạ trụ cột Domain ở case 3
+- [ ] Mở sẵn `mermaid.live` để demo live sơ đồ quy trình
+- [ ] Mở sẵn portal `D:\GiangDay\Demo\demo-portal` (port 3000) để minh hoạ trụ cột "Hiểu nghiệp vụ" ở case 3
 - [ ] In template TPL-002 Skill Matrix đủ số lượng học viên + bút màu (3 màu cho 3 mức độ)
-- [ ] Chuẩn bị 2 case story phỏng vấn fresher fail/pass — kể đầu buổi để hook
-- [ ] Chuẩn bị link LMS upload Skill Matrix
+- [ ] Chuẩn bị 2 case story phỏng vấn fresher đậu/rớt — kể đầu buổi để hook
+- [ ] Chuẩn bị link LMS upload Skill Matrix + danh sách video YouTube tiếng Việt về BA
 - [ ] Test slide trên trình chiếu (16:9, font đọc rõ từ cuối phòng — đã verify ≥ 20px)
+- [ ] **Nhắc bản thân khi giảng:** mọi từ chuyên ngành lần đầu xuất hiện phải giải thích — không "thả" thuật ngữ rồi đi tiếp
 
 ---
 

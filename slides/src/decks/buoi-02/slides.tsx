@@ -239,37 +239,37 @@ export function Slide07HardSkills() {
     {
       icon: <Search size={26} strokeWidth={2.4} />,
       title: 'Khơi gợi yêu cầu',
-      desc: 'Phỏng vấn, workshop, observation, doc analysis — moi ra cái khách hàng thực sự cần.',
+      desc: 'Phỏng vấn khách hàng, hội thảo (workshop), quan sát thực tế, đọc tài liệu — moi ra cái khách hàng thực sự cần.',
       level: 'Buổi 4',
     },
     {
       icon: <Workflow size={26} strokeWidth={2.4} />,
-      title: 'Phân tích & mô hình hoá',
-      desc: 'Vẽ BPMN, use case, ERD, sequence — biến chaos thành sơ đồ dev hiểu được.',
+      title: 'Phân tích & vẽ sơ đồ',
+      desc: 'Vẽ sơ đồ quy trình, sơ đồ ca sử dụng, sơ đồ dữ liệu — biến mớ rối thành hình dev nhìn là hiểu.',
       level: 'Buổi 5',
     },
     {
       icon: <Layout size={26} strokeWidth={2.4} />,
-      title: 'Thiết kế giải pháp',
-      desc: 'Wireframe, mockup, UX flow — phối hợp với UI designer, hoặc dùng v0/Figma Make.',
+      title: 'Thiết kế giao diện',
+      desc: 'Wireframe (bản vẽ thô màn hình), mockup, luồng người dùng — phối hợp UI designer hoặc dùng v0.dev / Figma Make.',
       level: 'Buổi 6',
     },
     {
       icon: <FileText size={26} strokeWidth={2.4} />,
       title: 'Viết tài liệu yêu cầu',
-      desc: 'BRD, SRS, FRD, User Story chuẩn INVEST — đề bài rõ ràng cho dev.',
+      desc: 'BRD, SRS, User Story — đề bài rõ ràng cho dev. Học chi tiết format và ví dụ ở buổi 7.',
       level: 'Buổi 7',
     },
     {
       icon: <CheckCircle2 size={26} strokeWidth={2.4} />,
-      title: 'Validate & kiểm tra',
-      desc: 'Demo, review, UAT, test case — đảm bảo dev code đúng cái khách cần.',
+      title: 'Kiểm tra yêu cầu',
+      desc: 'Demo cho khách, review tài liệu, UAT (kiểm thử bởi người dùng) — đảm bảo dev làm đúng cái khách cần.',
       level: 'Buổi 8',
     },
     {
       icon: <Target size={26} strokeWidth={2.4} />,
       title: 'Quản lý yêu cầu',
-      desc: 'Tracking, prioritisation, change management — kiểm soát scope creep.',
+      desc: 'Theo dõi, sắp xếp ưu tiên, xử lý thay đổi — kiểm soát "yêu cầu phình ra" giữa dự án.',
       level: 'Buổi 9',
     },
   ];
@@ -414,37 +414,37 @@ export function Slide10SoftSkills() {
     {
       icon: <MessagesSquare size={28} strokeWidth={2.4} />,
       title: 'Giao tiếp đa kênh',
-      desc: 'Email · chat · meeting · stand-up — chọn kênh phù hợp với từng tình huống.',
+      desc: 'Email · chat · họp trực tiếp · họp ngắn đầu ngày — chọn kênh phù hợp với từng tình huống.',
       tone: 'brand',
     },
     {
       icon: <Ear size={28} strokeWidth={2.4} />,
       title: 'Lắng nghe chủ động',
-      desc: 'Nghe để hiểu, không phải nghe để trả lời. Note xuống, paraphrase lại để confirm.',
+      desc: 'Nghe để hiểu, không phải nghe để trả lời. Ghi chép, nhắc lại bằng từ của mình để xác nhận đúng ý.',
       tone: 'amber',
     },
     {
       icon: <HelpCircle size={28} strokeWidth={2.4} />,
       title: 'Đặt câu hỏi sắc',
-      desc: '5 Whys, open-ended, neutral — moi được pain point thật, không phải bề mặt.',
+      desc: 'Hỏi "vì sao?" 5 lần (5 Whys), hỏi mở thay vì hỏi có/không — moi được vấn đề thật, không phải bề mặt.',
       tone: 'emerald',
     },
     {
       icon: <Handshake size={28} strokeWidth={2.4} />,
       title: 'Đàm phán & thuyết phục',
-      desc: 'Khi stakeholder mâu thuẫn, BA là người trung lập tìm trade-off cả 2 chấp nhận được.',
+      desc: 'Khi 2 bên liên quan (khách / sếp / dev) mâu thuẫn, BA đứng giữa tìm phương án cả 2 chấp nhận được.',
       tone: 'sky',
     },
     {
       icon: <Presentation size={28} strokeWidth={2.4} />,
       title: 'Trình bày & demo',
-      desc: 'Diễn đạt giải pháp cho non-tech audience — story-telling > slide đầy chữ.',
+      desc: 'Diễn đạt giải pháp cho người không rành kỹ thuật — kể chuyện hơn là đọc slide đầy chữ.',
       tone: 'purple',
     },
     {
       icon: <Heart size={28} strokeWidth={2.4} />,
-      title: 'Empathy & teamwork',
-      desc: 'Đặt mình vào vị trí khách / dev / QA — hiểu vì sao họ nói câu đó, làm hành động đó.',
+      title: 'Đặt mình vào vị trí người khác',
+      desc: 'Hiểu góc nhìn của khách / dev / tester — vì sao họ nói câu đó, làm hành động đó.',
       tone: 'rose',
     },
   ];
@@ -490,8 +490,8 @@ export function Slide11Section4() {
   return (
     <SectionSlide
       number="04"
-      title="Knowledge Areas — bộ khung BABOK 3.0"
-      caption="6 nhóm kiến thức của BA do IIBA định nghĩa — chính là roadmap 7 buổi tới."
+      title="6 nhóm kiến thức BA cần biết"
+      caption="Bản đồ tổng thể — bạn sẽ học chi tiết từng nhóm qua các buổi sau, không cần đọc sách dày."
     />
   );
 }
@@ -500,47 +500,53 @@ export function Slide11Section4() {
 export function Slide12KnowledgeAreas() {
   const areas = [
     {
-      code: 'KA1',
-      title: 'Planning & Monitoring',
-      desc: 'Lập kế hoạch BA approach + theo dõi tiến độ.',
+      code: '01',
+      title: 'Lập kế hoạch & theo dõi',
+      en: 'Planning & Monitoring',
+      desc: 'Trước khi làm gì, lên kế hoạch sẽ làm như thế nào — và theo dõi tiến độ.',
       buoi: 'B3',
     },
     {
-      code: 'KA2',
-      title: 'Elicitation & Collaboration',
-      desc: 'Khơi gợi yêu cầu + làm việc với stakeholder.',
+      code: '02',
+      title: 'Khơi gợi & cộng tác',
+      en: 'Elicitation & Collaboration',
+      desc: 'Moi yêu cầu từ khách hàng và làm việc với các bên liên quan trong dự án.',
       buoi: 'B4',
     },
     {
-      code: 'KA3',
-      title: 'Requirements Lifecycle',
-      desc: 'Quản lý yêu cầu từ lúc nảy sinh đến lúc đóng.',
+      code: '03',
+      title: 'Quản lý vòng đời yêu cầu',
+      en: 'Requirements Lifecycle',
+      desc: 'Theo dõi yêu cầu từ lúc nảy sinh, qua duyệt, đến lúc đóng và bảo trì.',
       buoi: 'B9',
     },
     {
-      code: 'KA4',
-      title: 'Strategy Analysis',
-      desc: 'Phân tích chiến lược + business case + rủi ro.',
+      code: '04',
+      title: 'Phân tích chiến lược',
+      en: 'Strategy Analysis',
+      desc: 'Hiểu vấn đề kinh doanh + đề xuất hướng giải quyết khả thi nhất.',
       buoi: 'B5',
     },
     {
-      code: 'KA5',
-      title: 'Requirements Analysis & Design',
-      desc: 'Mô hình hoá nghiệp vụ + thiết kế giải pháp.',
+      code: '05',
+      title: 'Phân tích yêu cầu & thiết kế',
+      en: 'Requirements Analysis & Design',
+      desc: 'Vẽ sơ đồ nghiệp vụ + thiết kế giải pháp chi tiết — phần "tay làm" nhiều nhất.',
       buoi: 'B5–7',
     },
     {
-      code: 'KA6',
-      title: 'Solution Evaluation',
-      desc: 'Đánh giá giải pháp đã triển khai có đạt mục tiêu không.',
+      code: '06',
+      title: 'Đánh giá giải pháp',
+      en: 'Solution Evaluation',
+      desc: 'Sau khi triển khai, kiểm tra giải pháp có đạt mục tiêu kinh doanh không.',
       buoi: 'B8',
     },
   ];
 
   return (
     <ContentSlide
-      eyebrow="BABOK Guide v3.0 — IIBA"
-      title="6 Knowledge Areas = 6 chương BABOK = 7 buổi học tới"
+      eyebrow="Bản đồ kiến thức BA — chuẩn quốc tế của IIBA (BABOK)"
+      title="6 nhóm — mỗi nhóm sẽ học chi tiết qua các buổi 3-9"
       pageNumber={12}
       totalPages={15}
     >
@@ -557,9 +563,10 @@ export function Slide12KnowledgeAreas() {
               </div>
               <div className="text-xl font-bold text-neutral-400 tabular-nums">{a.buoi}</div>
             </div>
-            <div className="font-display text-2xl font-bold text-neutral-900 leading-tight mb-3">
+            <div className="font-display text-2xl font-bold text-neutral-900 leading-tight mb-1">
               {a.title}
             </div>
+            <div className="text-xl text-neutral-400 italic mb-3">{a.en}</div>
             <div className="text-xl text-neutral-600 leading-relaxed">{a.desc}</div>
           </motion.div>
         ))}
@@ -568,11 +575,11 @@ export function Slide12KnowledgeAreas() {
         variants={fadeUp}
         initial="hidden"
         animate="show"
-        className="mt-9 px-7 py-5 rounded-xl bg-neutral-900 text-white flex items-center gap-4"
+        className="mt-9 px-7 py-5 rounded-xl bg-neutral-50 border border-neutral-200 flex items-center gap-4"
       >
-        <BookOpen size={28} strokeWidth={2.2} className="text-brand-400 shrink-0" />
-        <div className="text-xl">
-          <span className="font-bold">Mua BABOK Guide v3.0 hoặc download bản tóm tắt 30 trang</span> — đọc trước Buổi 3-9 sẽ học sâu hơn nhiều.
+        <BookOpen size={28} strokeWidth={2.2} className="text-brand-600 shrink-0" />
+        <div className="text-xl text-neutral-700">
+          <span className="font-bold text-neutral-900">Bạn KHÔNG cần đọc sách BABOK 600 trang</span> — bản đồ này chỉ để bạn biết các nhóm kiến thức tồn tại. Mỗi nhóm sẽ học gọn trong buổi tương ứng.
         </div>
       </motion.div>
     </ContentSlide>
@@ -583,24 +590,28 @@ export function Slide12KnowledgeAreas() {
 export function Slide13AIPrompts() {
   const prompts = [
     {
-      skill: 'Đặt câu hỏi 5 Whys',
+      skill: 'Luyện đặt câu hỏi sắc',
+      hint: '5 Whys = hỏi "vì sao?" 5 lần để tìm gốc rễ vấn đề',
       tool: 'Claude Code / ChatGPT',
-      prompt: '"Đóng vai khách hàng đặt lịch sửa chữa điện lạnh. Tôi sẽ hỏi 5 câu, bạn trả lời ngắn gọn nhưng giấu thông tin quan trọng — để tôi luyện kỹ năng đào sâu."',
+      prompt: '"Đóng vai khách hàng đặt lịch sửa chữa điện lạnh. Tôi sẽ hỏi 5 câu, bạn trả lời ngắn nhưng giấu thông tin quan trọng — để tôi luyện kỹ năng đào sâu."',
     },
     {
-      skill: 'Vẽ BPMN nhanh',
+      skill: 'Vẽ sơ đồ quy trình nhanh',
+      hint: 'Mermaid = ngôn ngữ vẽ sơ đồ chỉ bằng text',
       tool: 'Claude + Mermaid',
-      prompt: '"Mô tả quy trình đặt lịch sửa chữa: KH đặt → admin xác nhận → thợ nhận → thực hiện → KH nghiệm thu. Output Mermaid BPMN flowchart."',
+      prompt: '"Mô tả quy trình đặt lịch sửa chữa: KH đặt → admin xác nhận → thợ nhận → thực hiện → KH nghiệm thu. Output ra sơ đồ flowchart bằng Mermaid."',
     },
     {
-      skill: 'Sinh User Story INVEST',
+      skill: 'Sinh User Story chuẩn',
+      hint: 'User Story = câu chuyện ngắn mô tả nhu cầu người dùng (As/I want/So that)',
       tool: 'Claude Code',
-      prompt: '"Cho module Kho IT của Doanh nghiệp A, sinh 5 User Story role nhân viên kho theo format As/I want/So that, kèm 3 acceptance Given-When-Then mỗi story."',
+      prompt: '"Cho phân hệ Kho IT của Doanh nghiệp A, sinh 5 User Story vai trò nhân viên kho theo format As/I want/So that, kèm 3 tiêu chí kiểm thử Given-When-Then mỗi story."',
     },
     {
-      skill: 'Review SRS chuẩn',
+      skill: 'Review tài liệu yêu cầu',
+      hint: 'Tự kiểm tra SRS (đặc tả phần mềm) đã đủ rõ chưa, có gì thiếu',
       tool: 'NotebookLM',
-      prompt: 'Upload SRS draft + checklist 12 tiêu chí IEEE 830 → NotebookLM tự highlight điểm thiếu, gợi ý bổ sung.',
+      prompt: 'Upload bản nháp SRS + danh sách 10 tiêu chí kiểm tra → NotebookLM chỉ ra điểm thiếu và gợi ý bổ sung.',
     },
   ];
 
@@ -618,7 +629,7 @@ export function Slide13AIPrompts() {
             variants={fadeUp}
             className="rounded-2xl border border-neutral-200 bg-white p-6"
           >
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-start gap-3 mb-3">
               <div className="w-12 h-12 rounded-lg bg-brand-600 text-white flex items-center justify-center shrink-0">
                 <Sparkles size={22} strokeWidth={2.4} />
               </div>
@@ -628,6 +639,9 @@ export function Slide13AIPrompts() {
                 </div>
                 <div className="text-xl text-brand-600 font-semibold">{p.tool}</div>
               </div>
+            </div>
+            <div className="text-xl text-neutral-500 italic leading-snug mb-3">
+              {p.hint}
             </div>
             <div className="rounded-xl bg-neutral-950 text-neutral-200 p-5 text-xl leading-relaxed font-mono">
               {p.prompt}
@@ -648,9 +662,9 @@ export function Slide14Roadmap() {
       tone: 'from-neutral-100 to-neutral-50 border-neutral-300',
       badge: 'bg-neutral-700 text-white',
       goals: [
-        'Đọc xong BABOK summary 30 trang',
-        'Tự chấm Skill Matrix lần 1',
-        'Làm 5 user story + 1 BPMN cho 1 case (sửa chữa)',
+        'Đọc 1 cuốn sách BA tiếng Việt + xem 5-10 video YouTube BA cơ bản',
+        'Tự chấm bảng năng lực (Skill Matrix) lần 1 — biết mình ở đâu',
+        'Làm 5 User Story + 1 sơ đồ quy trình cho case "Sửa chữa điện lạnh"',
         'Master 3 tool: Claude Code · Figma · Mermaid',
       ],
     },
@@ -660,22 +674,22 @@ export function Slide14Roadmap() {
       tone: 'from-amber-100 to-amber-50 border-amber-300',
       badge: 'bg-amber-600 text-white',
       goals: [
-        'Tham gia 1 dự án thật (intern / fresher role)',
-        'Viết SRS hoàn chỉnh ≥ 1 phân hệ',
-        'Demo solution cho stakeholder ≥ 3 lần',
-        'Học SQL cơ bản + 1 domain nghiệp vụ',
+        'Tham gia 1 dự án thật (vị trí intern / fresher BA)',
+        'Viết tài liệu yêu cầu (SRS) hoàn chỉnh cho ≥ 1 phân hệ',
+        'Demo giải pháp cho người liên quan ≥ 3 lần',
+        'Học SQL cơ bản (truy vấn dữ liệu) + 1 ngành nghiệp vụ',
       ],
     },
     {
       months: '6 → 12 tháng',
-      level: 'Mid-Junior · sẵn sàng thi ECBA',
+      level: 'Mid-Junior · sẵn sàng thi chứng chỉ',
       tone: 'from-brand-100 to-brand-50 border-brand-300',
       badge: 'bg-brand-600 text-white',
       goals: [
-        'Lead 1 module nhỏ from elicit → validate',
-        'Đăng ký thi ECBA (entry-level cert IIBA)',
-        'Build portfolio 2-3 case study trên GitHub/LinkedIn',
-        'Apply Mid BA — target lương 18-25 tr',
+        'Phụ trách 1 phân hệ nhỏ từ khơi gợi → kiểm tra yêu cầu',
+        'Đăng ký thi ECBA — chứng chỉ BA fresher quốc tế của IIBA',
+        'Làm portfolio 2-3 case study đăng GitHub / LinkedIn',
+        'Apply vị trí Mid BA — mục tiêu lương 18-25 tr/tháng',
       ],
     },
   ];
