@@ -129,47 +129,47 @@ export function SlideDeck({ deck }: { deck: DeckMeta }) {
       </SlideStage>
 
       {/* Controls — overlay, hidden in print */}
-      <div className="fixed bottom-5 left-1/2 -translate-x-1/2 print:hidden z-40">
-        <div className="flex items-center gap-1 px-3 py-2 rounded-full bg-neutral-900/80 backdrop-blur border border-white/10 shadow-2xl">
+      <div className="fixed bottom-3 right-32 print:hidden z-40">
+        <div className="flex items-center gap-0.5 px-2 py-1 rounded-full bg-neutral-900/85 backdrop-blur border border-white/10 shadow-2xl">
           <button
             onClick={() => navigate('/')}
-            className="px-3 py-1.5 text-xs text-white/60 hover:text-white rounded-full hover:bg-white/10 transition"
+            className="px-2 py-1 text-[11px] text-white/60 hover:text-white rounded-full hover:bg-white/10 transition"
             title="Về trang chính"
           >
             ← Khoá học
           </button>
-          <div className="w-px h-4 bg-white/15 mx-1" />
+          <div className="w-px h-3 bg-white/15 mx-0.5" />
           <button
             onClick={() => setIndex((i) => Math.max(0, i - 1))}
             disabled={index === 0}
-            className="p-2 text-white/80 hover:text-white rounded-full hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent transition"
+            className="p-1.5 text-white/80 hover:text-white rounded-full hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent transition"
           >
-            <ChevronLeft size={18} />
+            <ChevronLeft size={14} />
           </button>
-          <span className="text-white/90 text-sm font-medium tabular-nums px-2 min-w-[60px] text-center">
+          <span className="text-white/90 text-[11px] font-medium tabular-nums px-1.5 min-w-[50px] text-center">
             {index + 1} / {total}
           </span>
           <button
             onClick={() => setIndex((i) => Math.min(total - 1, i + 1))}
             disabled={index === total - 1}
-            className="p-2 text-white/80 hover:text-white rounded-full hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent transition"
+            className="p-1.5 text-white/80 hover:text-white rounded-full hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent transition"
           >
-            <ChevronRight size={18} />
+            <ChevronRight size={14} />
           </button>
-          <div className="w-px h-4 bg-white/15 mx-1" />
+          <div className="w-px h-3 bg-white/15 mx-0.5" />
           <button
             onClick={() => setOverview(true)}
-            className="p-2 text-white/80 hover:text-white rounded-full hover:bg-white/10 transition"
+            className="p-1.5 text-white/80 hover:text-white rounded-full hover:bg-white/10 transition"
             title="Overview (O)"
           >
-            <Grid3x3 size={16} />
+            <Grid3x3 size={13} />
           </button>
           <button
             onClick={toggleFullscreen}
-            className="p-2 text-white/80 hover:text-white rounded-full hover:bg-white/10 transition"
+            className="p-1.5 text-white/80 hover:text-white rounded-full hover:bg-white/10 transition"
             title="Fullscreen (F)"
           >
-            {fullscreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+            {fullscreen ? <Minimize2 size={13} /> : <Maximize2 size={13} />}
           </button>
         </div>
       </div>
