@@ -246,11 +246,11 @@ export function Slide08Farewell() {
           </div>
           <div className="font-display text-4xl font-extrabold text-neutral-900 mb-5 leading-tight">7 ngày sau khoá — bạn làm gì?</div>
           <ul className="space-y-3 text-xl text-neutral-800">
-            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-base mt-0.5">1</div><span>Cập nhật CV + LinkedIn — thêm khoá Ready for BA</span></li>
-            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-base mt-0.5">2</div><span>Post 1 case study lên LinkedIn — show kỹ năng</span></li>
-            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-base mt-0.5">3</div><span>Apply 5-10 vị trí BA Junior trên TopDev/ITviec</span></li>
-            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-base mt-0.5">4</div><span>Tham gia 2 cộng đồng BA — bắt đầu network</span></li>
-            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-base mt-0.5">5</div><span>Luyện phỏng vấn với Claude Code 1 lần/tuần</span></li>
+            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xl mt-0.5">1</div><span>Cập nhật CV + LinkedIn — thêm khoá Ready for BA</span></li>
+            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xl mt-0.5">2</div><span>Post 1 case study lên LinkedIn — show kỹ năng</span></li>
+            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xl mt-0.5">3</div><span>Apply 5-10 vị trí BA Junior trên TopDev/ITviec</span></li>
+            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xl mt-0.5">4</div><span>Tham gia 2 cộng đồng BA — bắt đầu network</span></li>
+            <li className="flex items-start gap-3"><div className="shrink-0 w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xl mt-0.5">5</div><span>Luyện phỏng vấn với Claude Code 1 lần/tuần</span></li>
           </ul>
         </motion.div>
       </motion.div>

@@ -91,8 +91,8 @@ cd D:\GiangDay\Demo\demo-taichinhketoan && npm run dev   # http://localhost:5175
 
 ## 5. Lưu ý khi dạy
 
-- **Tên doanh nghiệp:** Luôn dùng "Doanh nghiệp A" — KHÔNG dùng tên thật, KHÔNG nhắc PKKQ / Bộ Quốc phòng (mặc dù prototype gốc xuất phát từ đó, đã được rebrand sạch dữ liệu công khai).
-- **Mockdata:** Năm 2026, nhân sự "Nguyễn Văn A — Giám đốc kỹ thuật" v.v. — không có cấp bậc quân sự nào.
+- **Tên doanh nghiệp:** Luôn dùng "Doanh nghiệp A" — đây là tên giả định, không phải doanh nghiệp thật cụ thể nào.
+- **Mockdata:** Năm 2026, nhân sự "Nguyễn Văn A — Giám đốc kỹ thuật" v.v. — chức danh doanh nghiệp generic, đã trung lập hoá.
 - **Module skeleton (chatluong/suco/thunghiem):** đây là cơ hội để học viên thực hành **làm BA from scratch** — có nghiệp vụ chung chung, học viên tự define rõ.
 - **Port mapping:** xem [`D:\GiangDay\Demo\CLAUDE.md` § Port mapping](../../../Demo/CLAUDE.md) cho list đầy đủ — đã in sẵn ở mục 2 trên.
 

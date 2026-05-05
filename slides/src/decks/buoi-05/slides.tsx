@@ -480,19 +480,19 @@ export function Slide09BPMN() {
           Ví dụ: KH đặt lịch sửa chữa
         </div>
         <div className="flex items-center gap-3 text-xl text-white/90 flex-wrap">
-          <div className="w-12 h-12 rounded-full border-2 border-white/60 flex items-center justify-center text-base">START</div>
+          <div className="w-16 h-16 rounded-full border-2 border-white/60 flex items-center justify-center text-xl">START</div>
           <ArrowRight size={20} />
           <div className="px-4 py-3 rounded-lg bg-brand-700 border-2 border-brand-500">KH chọn dịch vụ</div>
           <ArrowRight size={20} />
           <div className="px-4 py-3 rounded-lg bg-brand-700 border-2 border-brand-500">KH chọn ngày giờ</div>
           <ArrowRight size={20} />
-          <div className="px-4 py-3 rotate-45 bg-amber-600 border-2 border-amber-400 flex items-center justify-center w-20 h-20">
-            <span className="-rotate-45 text-base font-bold">Còn thợ?</span>
+          <div className="px-4 py-3 rotate-45 bg-amber-600 border-2 border-amber-400 flex items-center justify-center w-24 h-24">
+            <span className="-rotate-45 text-xl font-bold">Còn thợ?</span>
           </div>
           <ArrowRight size={20} />
           <div className="px-4 py-3 rounded-lg bg-brand-700 border-2 border-brand-500">Match thợ + xác nhận</div>
           <ArrowRight size={20} />
-          <div className="w-14 h-14 rounded-full border-4 border-white flex items-center justify-center text-base">END</div>
+          <div className="w-16 h-16 rounded-full border-4 border-white flex items-center justify-center text-xl">END</div>
         </div>
       </motion.div>
 
