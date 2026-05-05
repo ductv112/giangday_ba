@@ -7,6 +7,7 @@ import sys
 import io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
+from docx.shared import Pt
 from lib_docx import (
     new_doc, add_brand_header, add_title, add_h1, add_h2, add_h3,
     add_para, add_placeholder, add_bullet, add_checkbox,
