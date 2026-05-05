@@ -61,11 +61,10 @@ d:/GiangDay/BA/
 ├── CLAUDE.md                       # File này — single source of truth
 ├── giao-trinh/                     # Tài liệu 1 (Markdown → PDF portrait A4)
 │   ├── 00-tong-quan-khoa-hoc.md
-│   ├── buoi-01-gioi-thieu.md
-│   ├── buoi-02-...md               # sẽ thêm dần khi làm các buổi
-│   ├── bieu-mau/                   # BRD, SRS, UC, US templates
-│   ├── prompt-thu-vien/            # bộ prompt theo buổi
-│   └── case-studies/               # mockup, screenshot 3 case study
+│   ├── buoi-01-gioi-thieu.md       # ... đến buoi-12 (12 file)
+│   ├── bieu-mau/                   # 32 templates (TPL-001 → TPL-034) + README
+│   ├── prompt-thu-vien/            # 31 AI prompts xuyên 9 buổi + README
+│   └── case-studies/               # 03-erp-doanh-nghiep.md (Doanh nghiệp A)
 ├── slides/                         # Tài liệu 2 (Vite app, 1 app cho cả 12 buổi)
 │   ├── src/
 │   │   ├── App.tsx                 # router
@@ -85,9 +84,11 @@ d:/GiangDay/BA/
 │   │           ├── index.ts        # metadata: title, duration, slides[]
 │   │           └── slides.tsx      # mỗi slide là 1 component TSX độc lập
 │   ├── scripts/
-│   │   ├── export-pdf.ts           # Puppeteer landscape PDF export
-│   │   └── smoketest.ts            # headless render verify
-│   └── public/brand/               # logo.png, header.png, footer.png
+│   │   ├── export-pdf.ts           # Puppeteer landscape PDF export (pdf-lib merge)
+│   │   ├── audit-all.ts            # navigate 12 buổi headless, verify 0 console error
+│   │   └── smoketest.ts            # headless render screenshot verify
+│   ├── public/brand/               # logo.png, header.png, footer.png
+│   └── pdf/                        # Output PDF (gitignored — 12 file landscape 16:9)
 └── references/                     # PDF gốc iPMAC + brand assets + render pages
 ```
 
