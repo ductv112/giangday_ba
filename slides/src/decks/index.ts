@@ -6,6 +6,7 @@ import { buoi04 } from './buoi-04';
 import { buoi05 } from './buoi-05';
 import { buoi06 } from './buoi-06';
 import { buoi07 } from './buoi-07';
+import { buoi08 } from './buoi-08';
 
 export const decks: DeckMeta[] = [
   buoi01,
@@ -15,6 +16,7 @@ export const decks: DeckMeta[] = [
   buoi05,
   buoi06,
   buoi07,
+  buoi08,
 ];
 
 export const decksBySlug: Record<string, DeckMeta> = Object.fromEntries(
