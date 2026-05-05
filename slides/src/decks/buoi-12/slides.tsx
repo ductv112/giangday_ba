@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import {
   CoverSlide,
   ContentSlide,
-  StatementSlide,
   fadeUp,
   stagger,
 } from '@/layouts/Layouts';
@@ -14,6 +13,10 @@ import {
   Sparkles,
   CheckCircle2,
   Calendar,
+  Phone,
+  Mail,
+  Heart,
+  GraduationCap,
 } from 'lucide-react';
 
 /* ============================================================
@@ -260,11 +263,126 @@ export function Slide08Farewell() {
 
 export function Slide09FinalStatement() {
   return (
-    <StatementSlide
-      eyebrow="Lời cuối cùng"
-      statement="Bạn không hoàn thành khoá học — bạn vừa BẮT ĐẦU. Khoá này là vé vào cửa, hành trình mới chính thức khởi động từ hôm nay."
-      attribution="Chúc bạn thành công trên con đường Business Analyst! 🎓"
-    />
+    <div className="w-full h-full relative overflow-hidden bg-neutral-950 text-white">
+      {/* Hero gradient + ribbon */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse at 30% 30%, rgba(212,27,63,0.35) 0%, transparent 55%), linear-gradient(135deg, #0a0a0e 0%, #1a0510 50%, #2a0512 100%)',
+        }}
+      />
+      <div
+        className="absolute -top-32 -right-32 w-[700px] h-[700px] bg-brand-600/30 blur-3xl rounded-full"
+        aria-hidden
+      />
+      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-brand-700 via-brand-500 to-brand-700" />
+      <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-brand-700 via-brand-500 to-brand-700" />
+
+      <motion.div
+        className="relative h-full flex items-center justify-center px-32 z-10"
+        variants={stagger}
+        initial="hidden"
+        animate="show"
+      >
+        <div className="grid grid-cols-[1.3fr_1fr] gap-16 items-center w-full max-w-[1500px]">
+          {/* Left — Lời cảm ơn + statement */}
+          <motion.div variants={fadeUp}>
+            <div className="inline-flex items-center gap-3 mb-7">
+              <Heart size={28} className="text-brand-400" strokeWidth={2.4} fill="currentColor" />
+              <span className="text-brand-400 text-xl font-bold uppercase tracking-[0.25em]">
+                Lời chia tay từ giảng viên
+              </span>
+            </div>
+
+            <h2 className="font-display text-[56px] font-extrabold leading-[1.08] tracking-tight mb-7">
+              Cảm ơn các bạn đã đồng hành <span className="text-brand-400">30 giờ</span> qua 12 buổi học.
+            </h2>
+
+            <p className="text-2xl text-white/85 leading-relaxed mb-6">
+              Các bạn đã không ngại đặt câu hỏi, không ngại làm sai để học — đó chính là tinh thần của một <span className="font-semibold text-white">BA thực chiến</span>.
+            </p>
+
+            <p className="text-2xl text-white/85 leading-relaxed mb-7">
+              Khoá học kết thúc, nhưng <span className="font-semibold text-white">hành trình của các bạn mới bắt đầu</span>. Chúc các bạn nhanh chóng tìm được dự án phù hợp, có team tốt, có mentor tâm huyết — và đừng quên: <span className="text-brand-400 font-semibold">BA giỏi không học một mình</span>.
+            </p>
+
+            <p className="text-2xl text-white/85 leading-relaxed">
+              Khi gặp khó khăn — cứ nhắn tôi. Khi đạt thành tựu — cũng nhắn tôi. <span className="font-semibold text-white">Chúng ta là cộng đồng</span>.
+            </p>
+          </motion.div>
+
+          {/* Right — Instructor card */}
+          <motion.div variants={fadeUp} className="relative">
+            <div className="rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 p-10 shadow-2xl shadow-brand-600/40 border border-brand-500/30">
+              {/* Avatar circle */}
+              <div className="flex items-center gap-5 mb-7">
+                <div className="w-20 h-20 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center shrink-0">
+                  <GraduationCap size={40} strokeWidth={2.2} className="text-white" />
+                </div>
+                <div>
+                  <div className="text-xl font-bold uppercase tracking-wider text-white/75 mb-1">
+                    Giảng viên
+                  </div>
+                  <div className="font-display text-4xl font-extrabold leading-tight">
+                    Trần Đức
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact */}
+              <div className="space-y-4 pt-5 border-t border-white/20">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                    <Phone size={22} strokeWidth={2.4} />
+                  </div>
+                  <div>
+                    <div className="text-base text-white/65 uppercase tracking-wider font-semibold">
+                      Số điện thoại
+                    </div>
+                    <div className="text-2xl font-bold tabular-nums">03 969 11286</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                    <Mail size={22} strokeWidth={2.4} />
+                  </div>
+                  <div>
+                    <div className="text-base text-white/65 uppercase tracking-wider font-semibold">
+                      Email cá nhân
+                    </div>
+                    <div className="text-2xl font-bold">ductv112@gmail.com</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer note */}
+              <div className="mt-7 pt-5 border-t border-white/20 text-center">
+                <div className="text-xl text-white/85 leading-relaxed italic">
+                  "Liên hệ bất cứ lúc nào để hỏi, chia sẻ, networking — tôi sẽ luôn ở đây."
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative graduation cap */}
+            <div className="absolute -top-4 -right-4 text-[80px]" aria-hidden>
+              🎓
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Bottom signature */}
+      <div className="absolute bottom-12 left-32 z-10 flex items-center gap-3 text-white/50">
+        <div className="w-12 h-px bg-white/30" />
+        <span className="text-xl font-semibold tracking-widest uppercase">
+          Ready for BA · iPMAC · 2026
+        </span>
+        <div className="w-1.5 h-1.5 rounded-full bg-brand-500" />
+        <span className="text-xl">Chúc các bạn thành công 🚀</span>
+      </div>
+    </div>
   );
 }
 
