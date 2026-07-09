@@ -34,3 +34,6 @@ pnpm-debug.log*
 .env
 .env.local
 .env.*.local
+
+# Office (Word/Excel) temporary lock files
+~$*
