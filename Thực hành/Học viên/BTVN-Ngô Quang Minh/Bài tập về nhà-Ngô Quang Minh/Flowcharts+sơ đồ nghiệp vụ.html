@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Luồng chức năng chính &amp; Sơ đồ nghiệp vụ tổng thể | AV HVAC &amp; Electronics Service Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<style>
+  :root{
+    --navy:#0F1B3C; --navy-2:#16234a; --bg:#F4F6FB; --card:#FFFFFF; --ink:#16204A; --sub:#5B6584; --line:#E4E8F3;
+    --customer:#0FBCF9; --coordinator:#12A594; --technician:#FF9F43; --warehouse:#8E6CEF; --systemauto:#576574; --terminator:#0F1B3C; --decision:#F5A623;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55;}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
+
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(15,188,249,.3), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(255,159,67,.25), transparent 40%),
+      radial-gradient(circle at 60% 90%, rgba(18,165,148,.3), transparent 45%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    color:#fff; padding:60px 8vw 44px;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    letter-spacing:.12em; text-transform:uppercase; color:#9db2ff; background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18); padding:6px 14px; border-radius:99px; margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(26px,3.6vw,40px); font-weight:700; max-width:920px; line-height:1.2;}
+  .hero p.lead{margin-top:14px; max-width:720px; color:#c7cff0; font-size:15.5px;}
+
+  .toc{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px;}
+  .toc a{
+    font-size:12.5px; font-family:'JetBrains Mono'; color:#dfe4ff; text-decoration:none;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); padding:7px 13px; border-radius:99px;
+  }
+  .toc a:hover{background:rgba(255,255,255,.16);}
+
+  section{padding:52px 8vw; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .flow-head{display:flex; align-items:flex-start; gap:16px; margin-bottom:8px;}
+  .flow-num{
+    font-family:'Space Grotesk'; font-weight:700; font-size:15px; color:#fff; background:var(--navy);
+    width:38px; height:38px; border-radius:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .flow-head h2{font-size:clamp(20px,2.4vw,26px); font-weight:700;}
+  .flow-head .plat{font-size:12px; font-family:'JetBrains Mono'; color:var(--sub); margin-top:4px;}
+  section p.desc{color:var(--sub); font-size:14.5px; max-width:800px; margin:10px 0 20px 54px;}
+
+  .legend-row{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 20px 54px;}
+  .legend-chip{
+    display:flex; align-items:center; gap:7px; font-size:12px; font-weight:600; color:var(--ink);
+    background:#fff; border:1px solid var(--line); padding:6px 11px; border-radius:99px;
+  }
+  .legend-dot{width:10px; height:10px; border-radius:3px;}
+
+  .diagram-card{
+    background:var(--card); border:1px solid var(--line); border-radius:20px; padding:26px;
+    box-shadow:0 10px 30px -20px rgba(15,27,60,.25); overflow-x:auto;
+  }
+  .mermaid{display:flex; justify-content:center;}
+
+  .bonus-badge{
+    display:inline-block; font-family:'JetBrains Mono'; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
+    background:linear-gradient(90deg,#FF9F43,#FF6B6B); color:#fff; padding:5px 12px; border-radius:99px; margin-bottom:14px;
+  }
+
+  footer{padding:36px 8vw 50px; text-align:center; color:var(--sub); font-size:12.5px;}
+  ::-webkit-scrollbar{height:8px;} ::-webkit-scrollbar-thumb{background:#cfd6ea; border-radius:8px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="eyebrow">● 5 LUỒNG CHỨC NĂNG CHÍNH + SƠ ĐỒ NGHIỆP VỤ TỔNG THỂ</span>
+  <h1>Flowchart nghiệp vụ — App Khách hàng &amp; Web Quản trị Trung tâm</h1>
+  <p class="lead">Trực quan hoá 5 luồng chức năng xuyên suốt giữa App Khách hàng và Web Quản trị của Trung tâm Bảo hành – Bảo dưỡng AV HVAC &amp; Electronics, cùng sơ đồ nghiệp vụ tổng thể toàn hệ thống.</p>
+  <div class="toc">
+    <a href="#flow1">01 · Đặt lịch &amp; Tiếp nhận đơn</a>
+    <a href="#flow2">02 · Điều phối thợ &amp; Xử lý hiện trường</a>
+    <a href="#flow3">03 · Theo dõi tiến độ xử lý</a>
+    <a href="#flow4">04 · Quản lý kho &amp; Cấp phát linh kiện</a>
+    <a href="#flow5">05 · Thanh toán &amp; Đánh giá dịch vụ</a>
+    <a href="#bonus">★ Bonus · Sơ đồ nghiệp vụ tổng thể</a>
+  </div>
+</div>
+
+<!-- FLOW 1 -->
+<section id="flow1">
+  <div class="flow-head">
+    <div class="flow-num">01</div>
+    <div>
+      <h2>Đặt lịch bảo hành/bảo dưỡng &amp; Tiếp nhận đơn</h2>
+      <div class="plat">App Khách hàng → Web Quản trị (Điều phối viên)</div>
+    </div>
+  </div>
+  <p class="desc">Khách hàng đặt lịch trên App, hệ thống kiểm tra hiệu lực bảo hành và sinh mã đơn, sau đó Điều phối viên trên Web tiếp nhận, thẩm định và xác nhận đơn.</p>
+  <div class="legend-row">
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--customer)"></span>Khách hàng (App)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--coordinator)"></span>Điều phối viên (Web)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--systemauto)"></span>Hệ thống tự động</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--decision)"></span>Điểm quyết định</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--terminator)"></span>Bắt đầu / Kết thúc</span>
+  </div>
+  <div class="diagram-card"><div class="mermaid">
+flowchart TD
+  A(["Bắt đầu: KH mở App đặt lịch"]):::terminator
+  A --> B["Chọn thiết bị và loại dịch vụ"]:::customer
+  B --> C["Chọn thời gian và địa điểm hẹn"]:::customer
+  C --> D["Mô tả sự cố + đính kèm ảnh/video"]:::customer
+  D --> E["Nhập / quét mã bảo hành"]:::customer
+  E --> F{"Hệ thống kiểm tra<br/>hiệu lực bảo hành"}:::decision
+  F -- "Còn hạn" --> G["Xác nhận và gửi yêu cầu đặt lịch"]:::customer
+  F -- "Hết hạn" --> G2["Chuyển sang dịch vụ<br/>sửa chữa ngoài bảo hành"]:::systemauto
+  G2 --> G
+  G --> H[["Hệ thống sinh<br/>mã đơn tự động"]]:::systemauto
+  H --> I["Đơn mới hiển thị trong<br/>danh sách tiếp nhận (Web)"]:::coordinator
+  I --> J["Điều phối viên xem<br/>chi tiết đơn"]:::coordinator
+  J --> K{"Đơn hợp lệ?"}:::decision
+  K -- "Không" --> L["Từ chối đơn +<br/>nhập lý do"]:::coordinator
+  L --> M(["App: Thông báo từ chối<br/>kèm lý do cho KH"]):::terminator
+  K -- "Có" --> N["Phân loại mức độ<br/>ưu tiên xử lý"]:::coordinator
+  N --> O["Cập nhật trạng thái:<br/>Đã tiếp nhận"]:::coordinator
+  O --> P(["App: Thông báo đơn<br/>đã được tiếp nhận"]):::terminator
+  P --> Q(["Chuyển sang Luồng 02 –<br/>Điều phối thợ"]):::terminator
+
+  classDef customer fill:#0FBCF9,stroke:#0b96c4,color:#04293A,stroke-width:1.4px;
+  classDef coordinator fill:#12A594,stroke:#0c8064,color:#ffffff,stroke-width:1.4px;
+  classDef systemauto fill:#576574,stroke:#3d444f,color:#ffffff,stroke-width:1.4px;
+  classDef decision fill:#F5A623,stroke:#c9820a,color:#1a1a1a,stroke-width:1.4px;
+  classDef terminator fill:#0F1B3C,stroke:#0F1B3C,color:#ffffff,stroke-width:1.4px;
+  </div></div>
+</section>
+
+<!-- FLOW 2 -->
+<section id="flow2">
+  <div class="flow-head">
+    <div class="flow-num">02</div>
+    <div>
+      <h2>Điều phối thợ &amp; Xử lý tại hiện trường</h2>
+      <div class="plat">Web Quản trị (Điều phối viên) → Thợ kỹ thuật → App Khách hàng</div>
+    </div>
+  </div>
+  <p class="desc">Điều phối viên phân công thợ phù hợp theo khu vực/kỹ năng; thợ tiếp nhận, di chuyển, chẩn đoán và xử lý, đồng thời khách hàng theo dõi trạng thái qua App.</p>
+  <div class="legend-row">
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--coordinator)"></span>Điều phối viên (Web)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--technician)"></span>Thợ kỹ thuật</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--systemauto)"></span>Hệ thống tự động</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--decision)"></span>Điểm quyết định</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--terminator)"></span>Bắt đầu / Kết thúc / App</span>
+  </div>
+  <div class="diagram-card"><div class="mermaid">
+flowchart TD
+  A(["Bắt đầu: Đơn đã<br/>được tiếp nhận"]):::terminator
+  A --> B["Xem danh sách thợ theo<br/>khu vực và kỹ năng"]:::coordinator
+  B --> C["Chọn / gợi ý thợ phù hợp"]:::coordinator
+  C --> D["Phân công đơn cho thợ"]:::coordinator
+  D --> E[["Hệ thống gửi<br/>thông báo cho thợ"]]:::systemauto
+  E --> F{"Thợ chấp nhận<br/>phân công?"}:::decision
+  F -- "Từ chối" --> B
+  F -- "Chấp nhận" --> G["Cập nhật trạng thái:<br/>Đang điều phối"]:::technician
+  G --> H(["App: KH nhận thông báo<br/>thợ đã nhận đơn"]):::terminator
+  H --> I["Thợ di chuyển đến<br/>địa điểm hẹn"]:::technician
+  I --> J["Cập nhật trạng thái:<br/>Đang xử lý"]:::technician
+  J --> K(["App: KH theo dõi<br/>vị trí và trạng thái"]):::terminator
+  K --> L["Thợ kiểm tra và<br/>chẩn đoán thiết bị"]:::technician
+  L --> M{"Cần thay<br/>linh kiện?"}:::decision
+  M -- "Có" --> N(["Sang Luồng 04 –<br/>Cấp phát linh kiện"]):::terminator
+  N --> O["Thợ tiếp tục sửa chữa<br/>với linh kiện mới"]:::technician
+  M -- "Không" --> O
+  O --> P["Hoàn tất sửa chữa"]:::technician
+  P --> Q["Cập nhật trạng thái:<br/>Hoàn thành"]:::technician
+  Q --> R(["App: Thông báo hoàn tất<br/>+ yêu cầu xác nhận"]):::terminator
+  R --> S(["Sang Luồng 05 –<br/>Thanh toán và Đánh giá"]):::terminator
+
+  classDef coordinator fill:#12A594,stroke:#0c8064,color:#ffffff,stroke-width:1.4px;
+  classDef technician fill:#FF9F43,stroke:#d67e1f,color:#3a2100,stroke-width:1.4px;
+  classDef systemauto fill:#576574,stroke:#3d444f,color:#ffffff,stroke-width:1.4px;
+  classDef decision fill:#F5A623,stroke:#c9820a,color:#1a1a1a,stroke-width:1.4px;
+  classDef terminator fill:#0F1B3C,stroke:#0F1B3C,color:#ffffff,stroke-width:1.4px;
+  </div></div>
+</section>
+
+<!-- FLOW 3 -->
+<section id="flow3">
+  <div class="flow-head">
+    <div class="flow-num">03</div>
+    <div>
+      <h2>Theo dõi tiến độ xử lý</h2>
+      <div class="plat">App Khách hàng (dữ liệu đồng bộ real-time từ Web/Hệ thống)</div>
+    </div>
+  </div>
+  <p class="desc">Khách hàng theo dõi trạng thái đơn theo thời gian thực, xem thông tin thợ, vị trí, nhận thông báo mỗi khi có cập nhật cho tới khi đơn hoàn thành.</p>
+  <div class="legend-row">
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--customer)"></span>Khách hàng (App)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--systemauto)"></span>Hệ thống tự động</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--decision)"></span>Điểm quyết định</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--terminator)"></span>Bắt đầu / Kết thúc</span>
+  </div>
+  <div class="diagram-card"><div class="mermaid">
+flowchart TD
+  A(["Bắt đầu: KH mở mục<br/>Theo dõi đơn hàng"]):::terminator
+  A --> B["Chọn đơn cần theo dõi"]:::customer
+  B --> C[["Hệ thống truy vấn<br/>trạng thái mới nhất"]]:::systemauto
+  C --> D["Hiển thị timeline: Tiếp nhận →<br/>Điều phối → Đang xử lý → Hoàn thành"]:::customer
+  D --> E["Hiển thị thông tin<br/>thợ phụ trách"]:::customer
+  E --> F{"Thợ đang<br/>di chuyển?"}:::decision
+  F -- "Có" --> G["Hiển thị vị trí thợ<br/>trên bản đồ real-time"]:::customer
+  F -- "Không" --> H["Chỉ hiển thị<br/>trạng thái văn bản"]:::customer
+  G --> I{"Đơn đã<br/>hoàn thành?"}:::decision
+  H --> I
+  I -- "Chưa, có cập nhật mới" --> J[["Hệ thống gửi<br/>push notification"]]:::systemauto
+  J --> K["KH xem cập nhật mới nhất"]:::customer
+  K --> I
+  I -- "Chưa, cần hỗ trợ" --> L["KH liên hệ thợ /<br/>tổng đài nếu cần"]:::customer
+  L --> I
+  I -- "Hoàn thành" --> M(["Chuyển sang xác nhận<br/>và thanh toán (Luồng 05)"]):::terminator
+
+  classDef customer fill:#0FBCF9,stroke:#0b96c4,color:#04293A,stroke-width:1.4px;
+  classDef systemauto fill:#576574,stroke:#3d444f,color:#ffffff,stroke-width:1.4px;
+  classDef decision fill:#F5A623,stroke:#c9820a,color:#1a1a1a,stroke-width:1.4px;
+  classDef terminator fill:#0F1B3C,stroke:#0F1B3C,color:#ffffff,stroke-width:1.4px;
+  </div></div>
+</section>
+
+<!-- FLOW 4 -->
+<section id="flow4">
+  <div class="flow-head">
+    <div class="flow-num">04</div>
+    <div>
+      <h2>Quản lý kho &amp; Cấp phát linh kiện cho thợ</h2>
+      <div class="plat">Thợ kỹ thuật → Web Quản trị (Thủ kho)</div>
+    </div>
+  </div>
+  <p class="desc">Thợ tạo phiếu yêu cầu linh kiện gắn với mã đơn; hệ thống kiểm tra tồn kho, thủ kho duyệt và xuất kho, cập nhật tồn kho tự động, đồng thời xử lý thu hồi linh kiện lỗi/cũ.</p>
+  <div class="legend-row">
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--technician)"></span>Thợ kỹ thuật</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--warehouse)"></span>Thủ kho (Web)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--systemauto)"></span>Hệ thống tự động</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--decision)"></span>Điểm quyết định</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--terminator)"></span>Bắt đầu / Kết thúc</span>
+  </div>
+  <div class="diagram-card"><div class="mermaid">
+flowchart TD
+  A(["Bắt đầu: Thợ cần<br/>linh kiện thay thế"]):::terminator
+  A --> B["Thợ tạo phiếu yêu cầu<br/>linh kiện, gắn mã đơn"]:::technician
+  B --> C[["Hệ thống kiểm tra tồn<br/>kho theo chi nhánh"]]:::systemauto
+  C --> D{"Đủ số lượng<br/>tồn kho?"}:::decision
+  D -- "Không đủ" --> E["Cảnh báo thủ kho:<br/>tồn kho thấp / hết hàng"]:::warehouse
+  E --> F{"Kho khác<br/>còn hàng?"}:::decision
+  F -- "Có" --> G["Điều chuyển linh kiện<br/>giữa các kho"]:::warehouse
+  F -- "Không" --> H["Tạo yêu cầu nhập kho<br/>từ nhà cung cấp"]:::warehouse
+  G --> I["Thủ kho duyệt<br/>phiếu xuất kho"]:::warehouse
+  H --> I
+  D -- "Đủ hàng" --> I
+  I --> J[["Xuất kho và tự động<br/>trừ tồn kho"]]:::systemauto
+  J --> K["Bàn giao linh kiện<br/>cho thợ"]:::warehouse
+  K --> L["Thợ nhận linh kiện,<br/>tiếp tục sửa chữa"]:::technician
+  L --> M{"Có linh kiện<br/>lỗi/cũ thu hồi?"}:::decision
+  M -- "Có" --> N["Thu hồi và nhập lại kho"]:::warehouse
+  M -- "Không" --> O[["Cập nhật báo cáo<br/>xuất – nhập – tồn"]]:::systemauto
+  N --> O
+  O --> P(["Kết thúc: Linh kiện đã<br/>cấp phát đầy đủ"]):::terminator
+
+  classDef technician fill:#FF9F43,stroke:#d67e1f,color:#3a2100,stroke-width:1.4px;
+  classDef warehouse fill:#8E6CEF,stroke:#6a4fd1,color:#ffffff,stroke-width:1.4px;
+  classDef systemauto fill:#576574,stroke:#3d444f,color:#ffffff,stroke-width:1.4px;
+  classDef decision fill:#F5A623,stroke:#c9820a,color:#1a1a1a,stroke-width:1.4px;
+  classDef terminator fill:#0F1B3C,stroke:#0F1B3C,color:#ffffff,stroke-width:1.4px;
+  </div></div>
+</section>
+
+<!-- FLOW 5 -->
+<section id="flow5">
+  <div class="flow-head">
+    <div class="flow-num">05</div>
+    <div>
+      <h2>Thanh toán &amp; Đánh giá dịch vụ</h2>
+      <div class="plat">Web Quản trị (Điều phối viên) → App Khách hàng</div>
+    </div>
+  </div>
+  <p class="desc">Sau khi sửa chữa hoàn tất, hệ thống tạo báo giá, khách hàng xác nhận và thanh toán (online hoặc tiền mặt), nhận hoá đơn điện tử và đánh giá chất lượng dịch vụ.</p>
+  <div class="legend-row">
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--customer)"></span>Khách hàng (App)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--coordinator)"></span>Điều phối viên (Web)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--systemauto)"></span>Hệ thống tự động</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--decision)"></span>Điểm quyết định</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--terminator)"></span>Bắt đầu / Kết thúc</span>
+  </div>
+  <div class="diagram-card"><div class="mermaid">
+flowchart TD
+  A(["Bắt đầu: Thợ đã<br/>hoàn tất sửa chữa"]):::terminator
+  A --> B["Tạo báo giá dịch vụ<br/>+ linh kiện đã dùng"]:::coordinator
+  B --> C(["App: KH nhận báo giá"]):::terminator
+  C --> D{"KH đồng ý<br/>báo giá?"}:::decision
+  D -- "Không" --> E["KH liên hệ điều chỉnh /<br/>gửi khiếu nại"]:::customer
+  E --> B
+  D -- "Đồng ý" --> F{"Chọn hình thức<br/>thanh toán"}:::decision
+  F -- "Online" --> G["Thanh toán qua<br/>Momo / VNPay / Thẻ"]:::customer
+  G --> H[["Hệ thống xác nhận<br/>giao dịch thành công"]]:::systemauto
+  F -- "Tiền mặt" --> I["Thanh toán trực tiếp<br/>cho thợ"]:::customer
+  I --> J["Thợ / Điều phối viên<br/>xác nhận đã thu tiền"]:::coordinator
+  H --> K[["Xuất hoá đơn điện tử"]]:::systemauto
+  J --> K
+  K --> L(["App: KH xem<br/>hoá đơn"]):::terminator
+  L --> M[["Hệ thống yêu cầu<br/>đánh giá dịch vụ"]]:::systemauto
+  M --> N["KH đánh giá sao<br/>+ nhận xét"]:::customer
+  N --> O["Trung tâm xem báo cáo<br/>đánh giá khách hàng"]:::coordinator
+  O --> P(["Kết thúc quy trình<br/>xử lý đơn"]):::terminator
+
+  classDef customer fill:#0FBCF9,stroke:#0b96c4,color:#04293A,stroke-width:1.4px;
+  classDef coordinator fill:#12A594,stroke:#0c8064,color:#ffffff,stroke-width:1.4px;
+  classDef systemauto fill:#576574,stroke:#3d444f,color:#ffffff,stroke-width:1.4px;
+  classDef decision fill:#F5A623,stroke:#c9820a,color:#1a1a1a,stroke-width:1.4px;
+  classDef terminator fill:#0F1B3C,stroke:#0F1B3C,color:#ffffff,stroke-width:1.4px;
+  </div></div>
+</section>
+
+<!-- BONUS -->
+<section id="bonus">
+  <span class="bonus-badge">★ Bonus</span>
+  <div class="flow-head">
+    <div class="flow-num" style="background:linear-gradient(135deg,#FF9F43,#FF6B6B);">★</div>
+    <div>
+      <h2>Sơ đồ nghiệp vụ tổng thể toàn hệ thống</h2>
+      <div class="plat">Business Process Chart — Khách hàng · Hệ thống · Điều phối viên · Thợ kỹ thuật · Thủ kho</div>
+    </div>
+  </div>
+  <p class="desc">Toàn cảnh hành trình một đơn dịch vụ từ lúc khách hàng đặt lịch trên App cho đến khi hoàn tất, thanh toán và đánh giá — thể hiện sự phối hợp giữa 5 vai trò chính trong hệ thống.</p>
+  <div class="legend-row">
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--customer)"></span>Khách hàng (App)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--systemauto)"></span>Hệ thống</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--coordinator)"></span>Điều phối viên (Web)</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--technician)"></span>Thợ kỹ thuật</span>
+    <span class="legend-chip"><span class="legend-dot" style="background:var(--warehouse)"></span>Thủ kho (Web)</span>
+  </div>
+  <div class="diagram-card"><div class="mermaid">
+flowchart TD
+  subgraph CUS["👤 KHÁCH HÀNG — App"]
+    direction TB
+    c1["Đặt lịch bảo hành /<br/>bảo dưỡng"]:::customer
+    c2["Theo dõi tiến độ<br/>xử lý real-time"]:::customer
+    c3["Xác nhận báo giá và<br/>thanh toán"]:::customer
+    c4["Đánh giá dịch vụ"]:::customer
+  end
+
+  subgraph SYS["⚙️ HỆ THỐNG"]
+    direction TB
+    s1[["Kiểm tra bảo hành và<br/>sinh mã đơn"]]:::systemauto
+    s2[["Gửi thông báo<br/>real-time"]]:::systemauto
+    s3[["Kiểm tra tồn kho và<br/>trừ kho tự động"]]:::systemauto
+    s4[["Xác nhận thanh toán và<br/>xuất hoá đơn"]]:::systemauto
+  end
+
+  subgraph COOR["🗂️ ĐIỀU PHỐI VIÊN — Web"]
+    direction TB
+    o1["Tiếp nhận và<br/>duyệt đơn"]:::coordinator
+    o2["Điều phối thợ<br/>phù hợp"]:::coordinator
+    o3["Tạo báo giá<br/>dịch vụ"]:::coordinator
+    o4["Theo dõi báo cáo hiệu<br/>suất và đánh giá KH"]:::coordinator
+  end
+
+  subgraph TECH["🔧 THỢ KỸ THUẬT"]
+    direction TB
+    t1["Nhận đơn và di chuyển<br/>đến hiện trường"]:::technician
+    t2["Chẩn đoán và yêu cầu<br/>linh kiện nếu cần"]:::technician
+    t3["Sửa chữa và<br/>hoàn tất đơn"]:::technician
+  end
+
+  subgraph WH["📦 THỦ KHO — Web"]
+    direction TB
+    w1["Duyệt phiếu<br/>xuất kho"]:::warehouse
+    w2["Cấp phát linh kiện<br/>cho thợ"]:::warehouse
+    w3["Thu hồi linh kiện lỗi và<br/>kiểm kê định kỳ"]:::warehouse
+  end
+
+  c1 --> s1 --> o1 --> o2 --> t1 --> t2
+  t2 -- "cần linh kiện" --> s3 --> w1 --> w2 --> t3
+  t2 -- "không cần" --> t3
+  t3 --> w3
+  t3 --> o3 --> s4 --> c3 --> c4 --> o4
+  o1 -.notify.-> s2
+  o2 -.notify.-> s2
+  t1 -.notify.-> s2
+  t3 -.notify.-> s2
+  s2 -.-> c2
+
+  classDef customer fill:#0FBCF9,stroke:#0b96c4,color:#04293A,stroke-width:1.4px;
+  classDef coordinator fill:#12A594,stroke:#0c8064,color:#ffffff,stroke-width:1.4px;
+  classDef technician fill:#FF9F43,stroke:#d67e1f,color:#3a2100,stroke-width:1.4px;
+  classDef warehouse fill:#8E6CEF,stroke:#6a4fd1,color:#ffffff,stroke-width:1.4px;
+  classDef systemauto fill:#576574,stroke:#3d444f,color:#ffffff,stroke-width:1.4px;
+
+  style CUS fill:#eaf9ff,stroke:#0FBCF9,stroke-width:1.6px,color:#04293A
+  style SYS fill:#eef0f2,stroke:#576574,stroke-width:1.6px,color:#16204A
+  style COOR fill:#e7f7f4,stroke:#12A594,stroke-width:1.6px,color:#16204A
+  style TECH fill:#fff3e6,stroke:#FF9F43,stroke-width:1.6px,color:#16204A
+  style WH fill:#f1ecff,stroke:#8E6CEF,stroke-width:1.6px,color:#16204A
+  </div></div>
+</section>
+
+<footer>
+  AV HVAC &amp; Electronics Service Center — 5 Luồng chức năng chính &amp; Sơ đồ nghiệp vụ tổng thể · App Khách hàng &amp; Web Quản trị Trung tâm
+</footer>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      fontFamily: 'Inter, sans-serif',
+      primaryColor: '#ffffff',
+      primaryTextColor: '#16204A',
+      lineColor: '#8b93b8',
+      fontSize: '14px'
+    },
+    flowchart: { curve: 'basis', useMaxWidth: true, htmlLabels: true, padding: 12 },
+    securityLevel: 'loose'
+  });
+</script>
+</body>
+</html>

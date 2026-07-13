@@ -37,3 +37,8 @@ pnpm-debug.log*
 
 # Office (Word/Excel) temporary lock files
 ~$*
+
+# macOS archive junk
+__MACOSX/
+._*
+.DS_Store

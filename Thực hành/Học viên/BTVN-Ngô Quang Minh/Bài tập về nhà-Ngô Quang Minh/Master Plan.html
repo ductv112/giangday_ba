@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Plan | Số hoá Trung tâm Bảo hành – Bảo dưỡng AV HVAC & Electronics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1B3C;
+    --navy-2:#16234a;
+    --bg:#F4F6FB;
+    --card:#FFFFFF;
+    --ink:#16204A;
+    --sub:#5B6584;
+    --line:#E4E8F3;
+
+    --c1:#2E86DE; /* Khảo sát */
+    --c2:#12A594; /* Phân tích & Thiết kế */
+    --c3:#8E6CEF; /* Tài liệu */
+    --c4:#F5A623; /* Xác nhận tài liệu */
+    --c5:#FF6B6B; /* Kick-off */
+    --c6:#FF9F43; /* Chuyển giao */
+    --c7:#3F51E0; /* Phát triển */
+    --c8:#EE5A6F; /* Kiểm thử */
+    --c9:#0FBCF9; /* UAT */
+    --c10:#E6659A; /* Đào tạo */
+    --c11:#10AC84; /* Bàn giao/Go-live */
+    --c12:#EA5455; /* Nghiệm thu */
+    --c13:#576574; /* Bảo hành */
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace; letter-spacing:.02em;}
+
+  /* HERO */
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(46,134,222,.35), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(255,107,107,.25), transparent 40%),
+      radial-gradient(circle at 60% 90%, rgba(18,165,148,.3), transparent 45%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    color:#fff;
+    padding:64px 8vw 48px;
+    position:relative;
+    overflow:hidden;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:.12em;
+    text-transform:uppercase; color:#9db2ff;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+    padding:6px 14px; border-radius:99px; margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(28px,4vw,44px); font-weight:700; max-width:900px; line-height:1.15;}
+  .hero p.lead{margin-top:16px; max-width:720px; color:#c7cff0; font-size:16px;}
+  .hero-stats{
+    margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.14);
+    border-radius:16px; overflow:hidden; max-width:920px;
+  }
+  .stat{background:rgba(255,255,255,.04); padding:20px 22px;}
+  .stat .num{font-family:'Space Grotesk'; font-size:28px; font-weight:700;}
+  .stat .lbl{font-size:12.5px; color:#aab4dd; margin-top:2px;}
+
+  section{padding:56px 8vw;}
+  .section-head{margin-bottom:32px; max-width:760px;}
+  .section-head .tag{
+    font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--sub); display:block; margin-bottom:8px;
+  }
+  .section-head h2{font-size:clamp(22px,2.6vw,30px); font-weight:700;}
+  .section-head p{color:var(--sub); margin-top:10px; font-size:15px;}
+
+  /* GANTT OVERVIEW */
+  .gantt-wrap{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:28px 28px 20px; box-shadow:0 10px 30px -20px rgba(15,27,60,.25);
+    overflow-x:auto;
+  }
+  .gantt-scale{
+    display:flex; font-family:'JetBrains Mono'; font-size:11px; color:var(--sub);
+    padding-left:190px; min-width:900px; margin-bottom:6px;
+  }
+  .gantt-scale span{flex:1; border-left:1px dashed var(--line); padding-left:4px;}
+  .gantt-row{
+    display:flex; align-items:center; min-width:900px; margin-bottom:8px;
+    position:relative; border-radius:10px; padding:5px 10px; margin-left:-10px; margin-right:-10px;
+    transition:background .18s ease, box-shadow .18s ease, transform .18s ease;
+    cursor:default;
+  }
+  .gantt-row:hover{
+    background:#F4F7FF;
+    box-shadow:0 14px 30px -16px rgba(15,27,60,.35);
+    transform:translateY(-2px);
+    z-index:40;
+  }
+  .gantt-label{
+    width:190px; flex-shrink:0; font-size:13px; font-weight:600; padding-right:14px;
+    display:flex; align-items:center; gap:8px; transition:color .18s ease;
+  }
+  .gantt-row:hover .gantt-label{color:var(--navy);}
+  .dot{width:9px; height:9px; border-radius:50%; flex-shrink:0; transition:transform .18s ease;}
+  .gantt-row:hover .dot{transform:scale(1.35);}
+  .gantt-track{flex:1; position:relative; height:26px; background:#F1F3FA; border-radius:8px; transition:background .18s ease;}
+  .gantt-row:hover .gantt-track{background:#E9EDF9;}
+  .gantt-bar{
+    position:absolute; top:0; bottom:0; border-radius:8px;
+    display:flex; align-items:center; padding:0 10px; color:#fff; font-size:11px; font-weight:600;
+    white-space:nowrap; overflow:hidden; transition:box-shadow .18s ease, filter .18s ease;
+  }
+  .gantt-row:hover .gantt-bar{
+    box-shadow:0 8px 18px -6px rgba(15,27,60,.45);
+    filter:brightness(1.06);
+  }
+  .gantt-milestone{
+    position:absolute; top:50%; width:14px; height:14px; transform:translate(-50%,-50%) rotate(45deg);
+    border-radius:3px; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.06);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .gantt-row:hover .gantt-milestone{
+    transform:translate(-50%,-50%) rotate(45deg) scale(1.5);
+    box-shadow:0 8px 16px -4px rgba(15,27,60,.5), 0 0 0 1px rgba(0,0,0,.06);
+  }
+  /* Tooltip: hiện đầy đủ nội dung khi hover từng dòng, kể cả các mốc milestone không có chữ trên thanh */
+  .gantt-row::after{
+    content: attr(data-tooltip);
+    position:absolute; left:200px; bottom:calc(100% + 6px);
+    background:var(--navy); color:#fff; font-family:'Inter',sans-serif; font-size:12px; font-weight:600;
+    padding:8px 13px; border-radius:10px; white-space:nowrap;
+    box-shadow:0 14px 28px -10px rgba(15,27,60,.5);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transform:translateY(4px);
+    transition:opacity .16s ease, transform .16s ease;
+    z-index:60;
+  }
+  .gantt-row::before{
+    content:''; position:absolute; left:210px; bottom:calc(100% + 1px);
+    border:6px solid transparent; border-top-color:var(--navy);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .16s ease; z-index:60;
+  }
+  .gantt-row:hover::after, .gantt-row:hover::before{opacity:1; visibility:visible; transform:translateY(0);}
+  .gantt-row:first-child::after, .gantt-row:first-child::before{
+    bottom:auto; top:calc(100% + 6px);
+  }
+  .gantt-row:first-child::before{
+    border-top-color:transparent; border-bottom-color:var(--navy); top:calc(100% + 1px);
+  }
+  .legend{display:flex; flex-wrap:wrap; gap:16px 22px; margin-top:22px; padding-top:18px; border-top:1px dashed var(--line);}
+  .legend-item{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--sub);}
+
+  /* PHASE CARDS */
+  .phase-list{display:flex; flex-direction:column; gap:14px;}
+  .phase-card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    border-left:6px solid var(--c1); overflow:hidden; transition:box-shadow .2s;
+  }
+  .phase-card:hover{box-shadow:0 12px 28px -18px rgba(15,27,60,.3);}
+  .phase-head{
+    display:flex; align-items:center; gap:18px; padding:18px 22px; cursor:pointer;
+    user-select:none;
+  }
+  .phase-num{
+    font-family:'Space Grotesk'; font-weight:700; font-size:20px; color:#fff;
+    width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .phase-title{flex:1;}
+  .phase-title h3{font-size:16.5px; font-weight:700;}
+  .phase-title .sub{font-size:12.5px; color:var(--sub); margin-top:2px;}
+  .phase-meta{
+    display:flex; align-items:center; gap:10px; flex-shrink:0;
+  }
+  .badge{
+    font-family:'JetBrains Mono'; font-size:11px; padding:5px 10px; border-radius:99px;
+    background:#F1F3FA; color:var(--sub); white-space:nowrap;
+  }
+  .chevron{transition:transform .25s; color:var(--sub);}
+  .phase-card.open .chevron{transform:rotate(180deg);}
+  .phase-body{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .phase-body-inner{padding:0 22px 24px 22px; display:grid; grid-template-columns:1.3fr 1fr; gap:22px;}
+  .phase-body-inner h4{font-size:12.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--sub); margin-bottom:10px;}
+  .phase-body-inner ul{padding-left:18px; font-size:14px; color:#333c60;}
+  .phase-body-inner ul li{margin-bottom:6px;}
+  .deliverable-box{
+    background:#F7F9FF; border:1px dashed var(--line); border-radius:12px; padding:14px 16px; font-size:13.5px; color:var(--ink);
+  }
+  .deliverable-box b{display:block; margin-bottom:6px; font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--sub);}
+
+  @media(max-width:760px){
+    .phase-body-inner{grid-template-columns:1fr;}
+    .phase-meta{display:none;}
+  }
+
+  /* SPRINT GRID */
+  .sprint-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px;}
+  .sprint-card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px;
+    position:relative; overflow:hidden;
+  }
+  .sprint-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:5px; background:var(--bar);
+  }
+  .sprint-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;}
+  .sprint-tag{font-family:'JetBrains Mono'; font-size:11px; color:var(--sub);}
+  .sprint-week{font-family:'JetBrains Mono'; font-size:11px; background:#F1F3FA; padding:4px 8px; border-radius:8px; color:var(--sub);}
+  .sprint-card h4{font-size:15.5px; margin-bottom:8px; line-height:1.35;}
+  .sprint-card p{font-size:13px; color:var(--sub); margin-bottom:12px;}
+  .platform-tags{display:flex; gap:6px; flex-wrap:wrap;}
+  .ptag{font-size:11px; font-weight:600; padding:4px 9px; border-radius:99px;}
+  .ptag.app{background:#E7F0FF; color:#2E5FC1;}
+  .ptag.web{background:#E6F9F6; color:#0E8C7C;}
+  .ptag.both{background:#FFF1E4; color:#C1722E;}
+  .ceremony{
+    margin-top:24px; background:linear-gradient(135deg,#EEF1FF,#F6F0FF); border:1px solid var(--line);
+    border-radius:16px; padding:20px 24px; display:flex; gap:26px; flex-wrap:wrap;
+  }
+  .ceremony div{font-size:13px; color:var(--ink); display:flex; align-items:center; gap:8px;}
+  .ceremony .k{font-weight:700; font-family:'Space Grotesk';}
+
+  footer{
+    padding:36px 8vw 50px; text-align:center; color:var(--sub); font-size:12.5px;
+    border-top:1px solid var(--line); margin-top:20px;
+  }
+
+  ::-webkit-scrollbar{height:8px;}
+  ::-webkit-scrollbar-thumb{background:#cfd6ea; border-radius:8px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="eyebrow">● MASTER PLAN — DỰ ÁN SỐ HOÁ VẬN HÀNH</span>
+  <h1>Trung tâm Bảo hành – Bảo dưỡng<br>AV HVAC &amp; Electronics Service Center</h1>
+  <p class="lead">Lộ trình triển khai App di động cho Khách hàng (đặt lịch, theo dõi tiến độ) và Web hệ thống cho Trung tâm (tiếp nhận đơn, điều phối thợ, quản lý kho &amp; cấp phát linh kiện) — từ khảo sát đến nghiệm thu.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="num">14</div><div class="lbl">Giai đoạn dự án</div></div>
+    <div class="stat"><div class="num">9</div><div class="lbl">Sprint phát triển (Agile)</div></div>
+    <div class="stat"><div class="num">~30</div><div class="lbl">Tuần triển khai cốt lõi</div></div>
+    <div class="stat"><div class="num">2</div><div class="lbl">Sản phẩm: App + Web</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <span class="tag">01 — Tổng quan lộ trình</span>
+    <h2>Toàn cảnh timeline dự án (theo tuần)</h2>
+    <p>Biểu đồ dưới thể hiện toàn bộ vòng đời dự án — từ khảo sát, thiết kế, tài liệu, kick-off, phát triển Agile, kiểm thử, đến bàn giao &amp; nghiệm thu. Ô hình thoi (◆) là các mốc quan trọng (milestone).</p>
+  </div>
+
+  <div class="gantt-wrap">
+    <div class="gantt-scale" id="ganttScale"></div>
+    <div id="ganttRows"></div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="dot" style="background:var(--c1)"></span>P1 Khảo sát</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c2)"></span>P2 Phân tích &amp; Thiết kế</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c3)"></span>P3 Lập tài liệu</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c4)"></span>P4 Xác nhận tài liệu</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c5)"></span>P5 Kick-off ◆</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c6)"></span>P6 Chuyển giao</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c7)"></span>P7 Phát triển (9 Sprint)</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c8)"></span>P8 Kiểm thử hệ thống</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c9)"></span>P9 UAT</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c10)"></span>P10 Đào tạo</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c11)"></span>P11 Bàn giao / Go-live ◆</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c12)"></span>P12 Nghiệm thu ◆</div>
+      <div class="legend-item"><span class="dot" style="background:var(--c13)"></span>P13 Bảo hành &amp; Hỗ trợ</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag">02 — Chi tiết từng giai đoạn</span>
+    <h2>Từ khảo sát đến nghiệm thu</h2>
+    <p>Bấm vào từng giai đoạn để xem hoạt động chính và sản phẩm đầu ra (deliverable). Giai đoạn 07 (Phát triển) được breakdown chi tiết theo Sprint ở mục 03.</p>
+  </div>
+
+  <div class="phase-list" id="phaseList"></div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag">03 — Giai đoạn phát triển (Agile Scrum)</span>
+    <h2>Breakdown 9 Sprint (2 tuần / sprint)</h2>
+    <p>Giai đoạn Phát triển được tổ chức theo mô hình Agile Scrum, chia thành 9 sprint, mỗi sprint 2 tuần, ưu tiên các module theo giá trị nghiệp vụ và mức phụ thuộc kỹ thuật.</p>
+  </div>
+
+  <div class="sprint-grid" id="sprintGrid"></div>
+
+  <div class="ceremony">
+    <div><span class="k">Sprint Planning</span> — đầu sprint, chọn backlog</div>
+    <div><span class="k">Daily Scrum</span> — 15 phút / ngày</div>
+    <div><span class="k">Sprint Review</span> — demo cuối sprint</div>
+    <div><span class="k">Retrospective</span> — cải tiến quy trình</div>
+    <div><span class="k">Backlog Refinement</span> — giữa sprint</div>
+  </div>
+</section>
+
+<footer>
+  AV HVAC &amp; Electronics Service Center — Master Plan Dự án Số hoá · App Khách hàng &amp; Web Quản trị Trung tâm
+</footer>
+
+<script>
+const WEEKS_TOTAL = 31;
+
+const phases = [
+  {id:'P1', num:1, name:'Khảo sát', en:'Requirement Survey', color:'var(--c1)', start:1, dur:2, week:'Tuần 1–2',
+   activities:[
+     'Khảo sát hiện trạng vận hành trung tâm bảo hành (tiếp nhận đơn, điều phối, kho linh kiện)',
+     'Phỏng vấn các bên liên quan: khách hàng, điều phối viên, thủ kho, thợ kỹ thuật, kế toán',
+     'Thu thập yêu cầu nghiệp vụ (Business Requirements)',
+     'Phân tích quy trình hiện tại và điểm nghẽn (pain points)'
+   ],
+   deliverable:'Biên bản khảo sát, Business Requirement Document (BRD) bản nháp'},
+  {id:'P2', num:2, name:'Phân tích & Thiết kế', en:'Analysis & Design', color:'var(--c2)', start:3, dur:3, week:'Tuần 3–5',
+   activities:[
+     'Thiết kế quy trình nghiệp vụ mới (to-be process) cho App & Web',
+     'Thiết kế kiến trúc hệ thống (System Architecture)',
+     'Thiết kế cơ sở dữ liệu (Database Design – ERD)',
+     'Thiết kế UI/UX: wireframe, mockup, prototype cho App khách hàng & Web quản trị',
+     'Thiết kế ma trận phân quyền người dùng'
+   ],
+   deliverable:'System Architecture, ERD, UI/UX Prototype (Figma)'},
+  {id:'P3', num:3, name:'Lập tài liệu', en:'Documentation', color:'var(--c3)', start:6, dur:2, week:'Tuần 6–7',
+   activities:[
+     'Soạn thảo SRS (Software Requirement Specification)',
+     'Soạn thảo tài liệu đặc tả chức năng (Function List / Function Spec)',
+     'Soạn thảo tài liệu thiết kế kỹ thuật (Technical Design Document)',
+     'Soạn thảo kế hoạch kiểm thử sơ bộ (Test Plan)'
+   ],
+   deliverable:'SRS, Function List (2 level), Technical Design Document, Test Plan'},
+  {id:'P4', num:4, name:'Xác nhận tài liệu', en:'Document Confirmation', color:'var(--c4)', start:8, dur:1, week:'Tuần 8',
+   activities:[
+     'Trình bày tài liệu SRS/BRD/Design cho khách hàng & ban dự án',
+     'Thu thập góp ý, chỉnh sửa theo phản hồi',
+     'Ký xác nhận (sign-off) tài liệu trước khi triển khai'
+   ],
+   deliverable:'Biên bản xác nhận tài liệu (Sign-off Document)'},
+  {id:'P5', num:5, name:'Kick-off dự án', en:'Project Kickoff', color:'var(--c5)', start:9, dur:0.5, week:'Tuần 9', milestone:true,
+   activities:[
+     'Họp khởi động dự án với đầy đủ các bên liên quan',
+     'Thống nhất mục tiêu, phạm vi, timeline, nhân sự phụ trách',
+     'Thiết lập kênh liên lạc & công cụ quản lý dự án (Jira/Trello, Slack...)'
+   ],
+   deliverable:'Biên bản Kick-off, Kế hoạch dự án chốt (Project Charter)'},
+  {id:'P6', num:6, name:'Chuyển giao', en:'Transfer to Dev Team', color:'var(--c6)', start:9.5, dur:0.5, week:'Tuần 9',
+   activities:[
+     'Bàn giao toàn bộ tài liệu từ BA sang đội phát triển (Dev/QA)',
+     'Đào tạo nội bộ đội dev về nghiệp vụ trung tâm bảo hành',
+     'Setup môi trường phát triển, source control, CI/CD, công cụ quản lý task'
+   ],
+   deliverable:'Môi trường Dev/Staging sẵn sàng, Backlog khởi tạo trên công cụ quản lý'},
+  {id:'P7', num:7, name:'Phát triển (Agile Scrum)', en:'Development', color:'var(--c7)', start:10, dur:18, week:'Tuần 10–27',
+   activities:[
+     '9 sprint (2 tuần/sprint) — xem chi tiết breakdown ở mục 03',
+     'Song song: code review, unit test, tích hợp CI/CD liên tục',
+     'Demo cuối mỗi sprint cho khách hàng / Product Owner'
+   ],
+   deliverable:'Tăng trưởng sản phẩm (Increment) sau mỗi sprint, Release Notes'},
+  {id:'P8', num:8, name:'Kiểm thử hệ thống', en:'System Testing / QA', color:'var(--c8)', start:24, dur:3, week:'Tuần 24–26 (song song cuối Dev)',
+   activities:[
+     'Kiểm thử chức năng (Functional Testing) toàn bộ luồng App & Web',
+     'Kiểm thử tích hợp (Integration Testing) giữa App – Web – Kho – Thanh toán',
+     'Kiểm thử hiệu năng & bảo mật (Performance/Security Testing)',
+     'Kiểm thử đa thiết bị, đa nền tảng cho App (iOS/Android)'
+   ],
+   deliverable:'Test Report, Bug Log, Danh sách lỗi đã fix/còn tồn đọng'},
+  {id:'P9', num:9, name:'UAT', en:'User Acceptance Test', color:'var(--c9)', start:27, dur:2, week:'Tuần 27–28',
+   activities:[
+     'Trung tâm/khách hàng trải nghiệm thực tế toàn bộ hệ thống',
+     'Ghi nhận lỗi & yêu cầu chỉnh sửa (UAT Issue Log)',
+     'Fix bug theo phản hồi UAT và retest'
+   ],
+   deliverable:'UAT Sign-off, Danh sách issue đã đóng'},
+  {id:'P10', num:10, name:'Đào tạo & chuẩn bị Go-live', en:'Training & Go-live Prep', color:'var(--c10)', start:29, dur:1, week:'Tuần 29',
+   activities:[
+     'Đào tạo sử dụng cho nhân viên trung tâm (điều phối viên, thủ kho, thợ)',
+     'Chuẩn bị tài liệu/video hướng dẫn sử dụng App cho khách hàng',
+     'Chuẩn bị dữ liệu khởi tạo: danh mục thiết bị, linh kiện, khu vực, chi nhánh'
+   ],
+   deliverable:'Tài liệu đào tạo, Video hướng dẫn, Dữ liệu khởi tạo (master data)'},
+  {id:'P11', num:11, name:'Bàn giao & Triển khai', en:'Handover & Go-live', color:'var(--c11)', start:30, dur:1, week:'Tuần 30', milestone:true,
+   activities:[
+     'Triển khai hệ thống lên môi trường Production',
+     'Bàn giao source code, tài liệu vận hành, tài khoản quản trị',
+     'Giám sát vận hành thực tế giai đoạn đầu (Hypercare)'
+   ],
+   deliverable:'Hệ thống live, Biên bản bàn giao (Handover Document)'},
+  {id:'P12', num:12, name:'Nghiệm thu dự án', en:'Final Acceptance', color:'var(--c12)', start:31, dur:1, week:'Tuần 31', milestone:true,
+   activities:[
+     'Đánh giá tổng thể theo tiêu chí nghiệm thu đã thống nhất',
+     'Ký biên bản nghiệm thu (Acceptance Sign-off)',
+     'Kết thúc hợp đồng triển khai, chuyển sang giai đoạn bảo hành'
+   ],
+   deliverable:'Biên bản nghiệm thu dự án (Final Acceptance Document)'},
+  {id:'P13', num:13, name:'Bảo hành & Hỗ trợ', en:'Warranty & Support', color:'var(--c13)', start:31, dur:0.6, week:'3–12 tháng sau Go-live',
+   activities:[
+     'Hỗ trợ kỹ thuật, sửa lỗi phát sinh sau go-live (warranty period)',
+     'Bảo trì định kỳ, theo dõi hiệu năng hệ thống',
+     'Thu thập phản hồi để lên kế hoạch Phase 2 (nếu có)'
+   ],
+   deliverable:'SLA hỗ trợ, Báo cáo bảo trì định kỳ'},
+];
+
+// Build gantt scale (week ruler)
+const scaleEl = document.getElementById('ganttScale');
+for(let w=1; w<=WEEKS_TOTAL; w+=5){
+  const span = document.createElement('span');
+  span.textContent = 'W'+w;
+  scaleEl.appendChild(span);
+}
+
+// Build gantt rows
+const rowsEl = document.getElementById('ganttRows');
+phases.forEach(p=>{
+  const row = document.createElement('div');
+  row.className='gantt-row';
+  const leftPct = ((p.start-1)/WEEKS_TOTAL)*100;
+  const widthPct = Math.max((p.dur/WEEKS_TOTAL)*100, 1.2);
+  const tooltipText = `P${p.num} · ${p.name} (${p.en}) — ${p.week}${p.milestone ? '  ✦ Mốc quan trọng' : ''}`;
+  row.setAttribute('data-tooltip', tooltipText);
+  row.innerHTML = `
+    <div class="gantt-label"><span class="dot" style="background:${p.color}"></span>P${p.num} · ${p.name}</div>
+    <div class="gantt-track">
+      ${p.milestone
+        ? `<div class="gantt-milestone" style="left:${leftPct}%; background:${p.color}"></div>`
+        : `<div class="gantt-bar" style="left:${leftPct}%; width:${widthPct}%; background:${p.color}">${p.week}</div>`}
+    </div>`;
+  rowsEl.appendChild(row);
+});
+
+// Build phase detail cards
+const listEl = document.getElementById('phaseList');
+phases.forEach(p=>{
+  const card = document.createElement('div');
+  card.className='phase-card';
+  card.style.borderLeftColor = p.color;
+  card.innerHTML = `
+    <div class="phase-head">
+      <div class="phase-num" style="background:${p.color}">${String(p.num).padStart(2,'0')}</div>
+      <div class="phase-title">
+        <h3>${p.name}</h3>
+        <div class="sub">${p.en}</div>
+      </div>
+      <div class="phase-meta">
+        <span class="badge">${p.week}</span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-body-inner">
+        <div>
+          <h4>Hoạt động chính</h4>
+          <ul>${p.activities.map(a=>`<li>${a}</li>`).join('')}</ul>
+        </div>
+        <div class="deliverable-box">
+          <b>Sản phẩm đầu ra</b>${p.deliverable}
+        </div>
+      </div>
+    </div>`;
+  const head = card.querySelector('.phase-head');
+  const body = card.querySelector('.phase-body');
+  head.addEventListener('click', ()=>{
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.phase-card').forEach(c=>{
+      c.classList.remove('open');
+      c.querySelector('.phase-body').style.maxHeight = null;
+    });
+    if(!isOpen){
+      card.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  });
+  listEl.appendChild(card);
+});
+// open first phase by default
+listEl.firstElementChild.querySelector('.phase-head').click();
+
+// Sprint data
+const sprints = [
+  {n:0, week:'Tuần 10–11', title:'Khởi tạo & Nền tảng hệ thống (Setup)', desc:'Dựng khung kiến trúc App & Web, thiết lập database, CI/CD, cấu trúc source, chuẩn coding convention.', tags:['both'], color:'linear-gradient(90deg,#3F51E0,#5B6DF0)'},
+  {n:1, week:'Tuần 12–13', title:'Đăng ký / Đăng nhập & Phân quyền', desc:'Xây dựng module tài khoản, OTP, phân quyền vai trò (khách hàng, điều phối viên, thủ kho, thợ, admin).', tags:['app','web'], color:'linear-gradient(90deg,#2E86DE,#5AA8F2)'},
+  {n:2, week:'Tuần 14–15', title:'Đặt lịch bảo hành/bảo dưỡng & Tiếp nhận đơn', desc:'App: đặt lịch, chọn thiết bị/dịch vụ, đính kèm hình ảnh. Web: tiếp nhận, xác nhận, phân loại đơn.', tags:['app','web'], color:'linear-gradient(90deg,#12A594,#3FD1BB)'},
+  {n:3, week:'Tuần 16–17', title:'Điều phối thợ & Theo dõi tiến độ', desc:'Web: phân công thợ theo khu vực/kỹ năng. App: theo dõi trạng thái đơn, thông báo real-time.', tags:['app','web'], color:'linear-gradient(90deg,#8E6CEF,#B79BFF)'},
+  {n:4, week:'Tuần 18–19', title:'Quản lý kho linh kiện', desc:'Danh mục linh kiện, nhập kho, tồn kho theo chi nhánh, cảnh báo tồn kho thấp, kiểm kê.', tags:['web'], color:'linear-gradient(90deg,#F5A623,#FFC968)'},
+  {n:5, week:'Tuần 20–21', title:'Cấp phát linh kiện cho thợ', desc:'Tạo phiếu yêu cầu, duyệt xuất kho, cập nhật tồn kho tự động, đồng bộ trạng thái sang App.', tags:['web','app'], color:'linear-gradient(90deg,#FF6B6B,#FF9A9A)'},
+  {n:6, week:'Tuần 22–23', title:'Thanh toán, Đánh giá & Thông báo', desc:'Báo giá, thanh toán online/tiền mặt, hoá đơn, đánh giá sao dịch vụ, push notification, nhắc lịch.', tags:['app','web'], color:'linear-gradient(90deg,#0FBCF9,#6FE0FF)'},
+  {n:7, week:'Tuần 24–25', title:'Báo cáo thống kê & Danh mục hệ thống', desc:'Báo cáo doanh thu, hiệu suất thợ, tồn kho; quản lý danh mục thiết bị/khu vực; tối ưu & tích hợp toàn hệ thống.', tags:['web'], color:'linear-gradient(90deg,#10AC84,#4FD8AE)'},
+  {n:8, week:'Tuần 26–27', title:'UAT Support & Hoàn thiện', desc:'Hỗ trợ UAT, sửa lỗi theo phản hồi, regression test, tối ưu hiệu năng & trải nghiệm trước go-live.', tags:['both'], color:'linear-gradient(90deg,#576574,#8A97AC)'},
+];
+const tagLabel = {app:'App Khách hàng', web:'Web Quản trị', both:'App + Web'};
+const grid = document.getElementById('sprintGrid');
+sprints.forEach(s=>{
+  const card = document.createElement('div');
+  card.className='sprint-card';
+  card.style.setProperty('--bar', s.color);
+  const tagsHtml = s.tags.map(t=>`<span class="ptag ${t==='both'?'both':t}">${tagLabel[t]}</span>`).join('');
+  card.innerHTML = `
+    <div class="sprint-top">
+      <span class="sprint-tag">SPRINT ${s.n}</span>
+      <span class="sprint-week">${s.week}</span>
+    </div>
+    <h4>${s.title}</h4>
+    <p>${s.desc}</p>
+    <div class="platform-tags">${tagsHtml}</div>`;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100">
+  <rect width="1800" height="1100" fill="#f7f9fc"/>
+  <rect x="40" y="40" width="1720" height="1020" rx="24" fill="#ffffff" stroke="#dce4ee" stroke-width="2"/>
+
+  <text x="900" y="95" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#12304a">SƠ ĐỒ NGHIỆP VỤ TỔNG THỂ TOÀN HỆ THỐNG</text>
+  <text x="900" y="128" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#5a6b7a">Từ khi khách hàng đăng ký lịch hẹn đến khi công việc hoàn tất, được theo dõi và báo cáo quản lý</text>
+
+  <rect x="70" y="170" width="1660" height="90" rx="16" fill="#eaf4ff" stroke="#b7d7f2" stroke-width="1.5"/>
+  <text x="110" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f4c81">Khách hàng</text>
+  <text x="320" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f4c81">Trung tâm</text>
+  <text x="580" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f4c81">Điều phối</text>
+  <text x="860" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f4c81">Kho linh kiện</text>
+  <text x="1140" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f4c81">Thợ sửa</text>
+  <text x="1420" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f4c81">Quản lý</text>
+
+  <rect x="90" y="310" width="220" height="120" rx="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="200" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#92400e">1. Đặt lịch</text>
+  <text x="200" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#7c2d12">Khách hàng mở App, chọn dịch vụ, hẹn thời gian</text>
+
+  <rect x="330" y="310" width="220" height="120" rx="14" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="440" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#1d4ed8">2. Tiếp nhận đơn</text>
+  <text x="440" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#1e3a8a">Tạo work order, kiểm tra thông tin và ưu tiên</text>
+
+  <rect x="570" y="310" width="220" height="120" rx="14" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="680" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#6d28d9">3. Phân công</text>
+  <text x="680" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#5b21b6">Chọn thợ phù hợp, gửi công việc tới đội ngũ</text>
+
+  <rect x="810" y="310" width="220" height="120" rx="14" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="920" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#15803d">4. Kiểm kho</text>
+  <text x="920" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#166534">Đánh giá tồn kho, cấp phát linh kiện nếu đủ</text>
+
+  <rect x="1050" y="310" width="220" height="120" rx="14" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="1160" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#b91c1c">5. Sửa chữa</text>
+  <text x="1160" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#991b1b">Thợ thực hiện sửa chữa, cập nhật tiến độ liên tục</text>
+
+  <rect x="1290" y="310" width="220" height="120" rx="14" fill="#fce7f3" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="1400" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#be185d">6. Hoàn tất</text>
+  <text x="1400" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#9d174d">Xác nhận kết quả, thông báo cho khách hàng</text>
+
+  <rect x="1530" y="310" width="180" height="120" rx="14" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="1620" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#0369a1">7. Báo cáo</text>
+  <text x="1620" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#075985">Dashboard và thống kê hiệu quả vận hành</text>
+
+  <path d="M 310 370 L 330 370" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 550 370 L 570 370" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 790 370 L 810 370" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1030 370 L 1050 370" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1270 370 L 1290 370" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1510 370 L 1530 370" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="300" y="500" width="540" height="150" rx="18" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="315" y="525" width="120" height="44" rx="10" fill="#3b82f6"/>
+  <text x="375" y="553" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Điều kiện</text>
+  <text x="455" y="535" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Có đủ linh kiện?</text>
+  <text x="455" y="562" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#475569">Nếu không đủ, hệ thống yêu cầu nhập bổ sung và tiếp tục xử lý</text>
+  <path d="M 690 525 L 760 525 L 760 370 L 810 370" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 600 650 L 600 700 L 930 700 L 930 430" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text x="590" y="690" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#475569">Không đủ linh kiện</text>
+
+  <rect x="760" y="760" width="760" height="220" rx="18" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="1140" y="805" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Kết quả kỳ vọng</text>
+  <text x="1140" y="847" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#334155">- Khách hàng có thể đặt lịch và theo dõi tiến độ trực tuyến</text>
+  <text x="1140" y="878" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#334155">- Trung tâm kiểm soát đơn hàng, điều phối thợ và linh kiện hiệu quả</text>
+  <text x="1140" y="909" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#334155">- Quản lý có báo cáo, dashboard và dữ liệu phục vụ quyết định</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>
