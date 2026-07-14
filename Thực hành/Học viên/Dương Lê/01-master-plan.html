@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Plan — LG Service Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lg-red: #A50034;
+            --lg-red-dark: #8A002C;
+            --lg-red-light: #FDE8EC;
+            --lg-dark: #1B1B1B;
+            --lg-gray: #6B7280;
+            --lg-gray-light: #F3F4F6;
+            --lg-white: #FFFFFF;
+            --phase-survey: #1E40AF;
+            --phase-design: #7C3AED;
+            --phase-docs: #0891B2;
+            --phase-review: #059669;
+            --phase-kickoff: #D97706;
+            --phase-dev: #A50034;
+            --phase-test: #DC2626;
+            --phase-deploy: #2563EB;
+            --phase-accept: #16A34A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--lg-gray-light);
+            color: var(--lg-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--lg-red) 0%, var(--lg-red-dark) 100%);
+            color: white;
+            padding: 40px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -60%;
+            right: 15%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+        .header-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .logo-area { display: flex; align-items: center; gap: 16px; }
+        .logo-box {
+            width: 56px; height: 56px;
+            background: white;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 20px; color: var(--lg-red);
+        }
+        .logo-text { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.9; }
+        .doc-badge {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .header p { font-size: 16px; opacity: 0.85; max-width: 700px; }
+
+        /* CONTAINER */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        /* SUMMARY CARDS */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border-top: 3px solid var(--lg-red);
+        }
+        .summary-card .value { font-size: 32px; font-weight: 800; color: var(--lg-red); }
+        .summary-card .label { font-size: 13px; color: var(--lg-gray); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* SECTION */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--lg-dark);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--lg-red);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .icon {
+            width: 36px; height: 36px;
+            background: var(--lg-red-light);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+
+        /* GANTT CHART */
+        .gantt-container { overflow-x: auto; margin-top: 16px; }
+        .gantt-table { width: 100%; min-width: 1000px; border-collapse: collapse; }
+        .gantt-table th {
+            background: var(--lg-dark);
+            color: white;
+            padding: 8px 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid #333;
+            min-width: 28px;
+        }
+        .gantt-table th.phase-col {
+            min-width: 260px;
+            text-align: left;
+            padding-left: 16px;
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background: var(--lg-dark);
+        }
+        .gantt-table td {
+            padding: 0;
+            border: 1px solid #E5E7EB;
+            height: 44px;
+            position: relative;
+        }
+        .gantt-table td.phase-name {
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 13px;
+            position: sticky;
+            left: 0;
+            background: white;
+            z-index: 1;
+            white-space: nowrap;
+        }
+        .gantt-bar {
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.3px;
+            z-index: 1;
+        }
+        .gantt-bar.full { left: 2px; right: 2px; }
+        .milestone {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            z-index: 2;
+            color: var(--lg-red);
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+        }
+
+        /* PHASE DETAIL TABLE */
+        .phase-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .phase-table th {
+            background: var(--lg-red);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .phase-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 13px;
+            vertical-align: top;
+        }
+        .phase-table tr:nth-child(even) { background: #FAFAFA; }
+        .phase-table tr:hover { background: var(--lg-red-light); }
+        .phase-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+        }
+        .deliverable-list { list-style: none; padding: 0; }
+        .deliverable-list li {
+            padding: 3px 0;
+            padding-left: 18px;
+            position: relative;
+            font-size: 13px;
+        }
+        .deliverable-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--lg-red);
+            font-weight: 700;
+        }
+
+        /* SPRINT TABLE */
+        .sprint-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .sprint-card {
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sprint-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .sprint-card-header {
+            padding: 14px 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sprint-card-body { padding: 16px 20px; }
+        .sprint-card-body h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--lg-dark); }
+        .sprint-card-body ul { list-style: none; padding: 0; }
+        .sprint-card-body li {
+            padding: 4px 0 4px 20px;
+            position: relative;
+            font-size: 13px;
+            color: #374151;
+        }
+        .sprint-card-body li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--lg-red);
+            font-weight: 700;
+        }
+        .sprint-tag {
+            background: rgba(255,255,255,0.25);
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+        }
+
+        /* TEAM TABLE */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .team-card {
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .team-avatar {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .team-info h4 { font-size: 14px; font-weight: 600; }
+        .team-info p { font-size: 12px; color: var(--lg-gray); margin-top: 2px; }
+        .team-info .count { font-size: 12px; color: var(--lg-red); font-weight: 600; }
+
+        /* RACI */
+        .raci-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px; }
+        .raci-table th {
+            background: var(--lg-dark);
+            color: white;
+            padding: 10px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        .raci-table th:first-child { text-align: left; min-width: 220px; }
+        .raci-table td {
+            padding: 10px 12px;
+            border: 1px solid #E5E7EB;
+            text-align: center;
+        }
+        .raci-table td:first-child { text-align: left; font-weight: 500; }
+        .raci-table tr:nth-child(even) { background: #FAFAFA; }
+        .raci-r { color: var(--lg-red); font-weight: 800; }
+        .raci-a { color: #D97706; font-weight: 800; }
+        .raci-c { color: #2563EB; font-weight: 700; }
+        .raci-i { color: #6B7280; font-weight: 600; }
+
+        /* MILESTONES */
+        .milestone-timeline { position: relative; padding-left: 40px; margin-top: 16px; }
+        .milestone-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--lg-red), var(--phase-accept));
+        }
+        .milestone-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            border-left: 3px solid var(--lg-red);
+        }
+        .milestone-item::before {
+            content: '◆';
+            position: absolute;
+            left: -33px;
+            top: 18px;
+            color: var(--lg-red);
+            font-size: 14px;
+            background: var(--lg-gray-light);
+            padding: 2px;
+        }
+        .milestone-item .week {
+            display: inline-block;
+            background: var(--lg-red);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .milestone-item .title { font-weight: 700; font-size: 14px; }
+        .milestone-item .desc { font-size: 13px; color: var(--lg-gray); margin-top: 4px; }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--lg-gray);
+            font-size: 13px;
+        }
+        .footer .brand { color: var(--lg-red); font-weight: 700; }
+
+        /* PRINT */
+        @media print {
+            body { background: white; }
+            .header { padding: 24px 30px; }
+            .section { box-shadow: none; border: 1px solid #E5E7EB; page-break-inside: avoid; }
+            .gantt-container { overflow: visible; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header { padding: 24px 20px; }
+            .header h1 { font-size: 24px; }
+            .header-top { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .section { padding: 24px 16px; }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-content">
+            <div class="header-top">
+                <div class="logo-area">
+                    <div class="logo-box">LG</div>
+                    <div class="logo-text">Service Hub</div>
+                </div>
+                <div class="doc-badge">MASTER PLAN v1.0</div>
+            </div>
+            <h1>Kế Hoạch Tổng Thể Dự Án</h1>
+            <p>Hệ thống số hoá quy trình bảo hành — bảo dưỡng toàn bộ dòng sản phẩm điện tử điện lạnh LG cho chuỗi trung tâm bảo hành đa chi nhánh</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- SUMMARY -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="value">32</div>
+                <div class="label">Tuần thực hiện</div>
+            </div>
+            <div class="summary-card">
+                <div class="value">9</div>
+                <div class="label">Giai đoạn</div>
+            </div>
+            <div class="summary-card">
+                <div class="value">8</div>
+                <div class="label">Sprint phát triển</div>
+            </div>
+            <div class="summary-card">
+                <div class="value">49</div>
+                <div class="label">Chức năng v1</div>
+            </div>
+            <div class="summary-card">
+                <div class="value">7</div>
+                <div class="label">Mốc quan trọng</div>
+            </div>
+        </div>
+
+        <!-- GANTT CHART -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📊</span>
+                Biểu Đồ Tiến Độ Tổng Thể (Gantt Chart)
+            </div>
+            <div class="gantt-container">
+                <table class="gantt-table">
+                    <thead>
+                        <tr>
+                            <th class="phase-col">Giai đoạn</th>
+                            <th colspan="2">T1-2</th>
+                            <th colspan="2">T3-4</th>
+                            <th colspan="1">T5</th>
+                            <th colspan="2">T6-7</th>
+                            <th colspan="1">T8</th>
+                            <th colspan="1">T9</th>
+                            <th colspan="2">T10-11</th>
+                            <th colspan="2">T12-13</th>
+                            <th colspan="2">T14-15</th>
+                            <th colspan="2">T16-17</th>
+                            <th colspan="2">T18-19</th>
+                            <th colspan="2">T20-21</th>
+                            <th colspan="2">T22-23</th>
+                            <th colspan="2">T24-25</th>
+                            <th colspan="3">T26-28</th>
+                            <th colspan="2">T29-30</th>
+                            <th colspan="2">T31-32</th>
+                        </tr>
+                        <tr>
+                            <th class="phase-col"></th>
+                            <th>1</th><th>2</th>
+                            <th>3</th><th>4</th>
+                            <th>5</th>
+                            <th>6</th><th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>10</th><th>11</th>
+                            <th>12</th><th>13</th>
+                            <th>14</th><th>15</th>
+                            <th>16</th><th>17</th>
+                            <th>18</th><th>19</th>
+                            <th>20</th><th>21</th>
+                            <th>22</th><th>23</th>
+                            <th>24</th><th>25</th>
+                            <th>26</th><th>27</th><th>28</th>
+                            <th>29</th><th>30</th>
+                            <th>31</th><th>32</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- GĐ1: Khảo sát (W1-2) -->
+                        <tr>
+                            <td class="phase-name">1. Khảo sát & Phân tích</td>
+                            <td colspan="2" style="position:relative"><div class="gantt-bar full" style="background:var(--phase-survey)">Khảo sát</div></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- GĐ2: Thiết kế (W3-5) -->
+                        <tr>
+                            <td class="phase-name">2. Thiết kế hệ thống</td>
+                            <td></td><td></td>
+                            <td colspan="3" style="position:relative"><div class="gantt-bar full" style="background:var(--phase-design)">Thiết kế</div></td>
+                            <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- GĐ3: Tài liệu (W6-7) -->
+                        <tr>
+                            <td class="phase-name">3. Lập tài liệu</td>
+                            <td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="2" style="position:relative"><div class="gantt-bar full" style="background:var(--phase-docs)">Tài liệu</div></td>
+                            <td></td><td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- GĐ4: Review (W8) -->
+                        <tr>
+                            <td class="phase-name">4. Review & Phê duyệt</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="1" style="position:relative"><div class="gantt-bar full" style="background:var(--phase-review)">Review</div></td>
+                            <td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- GĐ5: Kickoff (W9) -->
+                        <tr>
+                            <td class="phase-name">5. Kickoff & Chuẩn bị</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="1" style="position:relative"><div class="gantt-bar full" style="background:var(--phase-kickoff)">Kickoff</div></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- GĐ6: Dev Sprints (W10-25) -->
+                        <tr>
+                            <td class="phase-name" style="color:var(--lg-red); font-size:14px;">6. PHÁT TRIỂN (8 Sprints)</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="16" style="position:relative">
+                                <div class="gantt-bar full" style="background: linear-gradient(90deg, #C2185B, #A50034, #880E4F, #A50034, #C2185B, #A50034, #880E4F, #A50034); opacity:0.9;">
+                                    S1 &nbsp;│&nbsp; S2 &nbsp;│&nbsp; S3 &nbsp;│&nbsp; S4 &nbsp;│&nbsp; S5 &nbsp;│&nbsp; S6 &nbsp;│&nbsp; S7 &nbsp;│&nbsp; S8
+                                </div>
+                            </td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- Sprint detail rows -->
+                        <tr style="background:#FFF5F7">
+                            <td class="phase-name" style="padding-left:32px; font-weight:400; font-size:12px; color:var(--lg-gray);">├ Sprint 1-2: Foundation & Auth</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="4" style="position:relative"><div class="gantt-bar full" style="background:#E91E63; opacity:0.7; font-size:9px;">Foundation & Auth</div></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr style="background:#FFF5F7">
+                            <td class="phase-name" style="padding-left:32px; font-weight:400; font-size:12px; color:var(--lg-gray);">├ Sprint 3-4: Service Order Core</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td>
+                            <td colspan="4" style="position:relative"><div class="gantt-bar full" style="background:#C62828; opacity:0.7; font-size:9px;">Service Order Core</div></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr style="background:#FFF5F7">
+                            <td class="phase-name" style="padding-left:32px; font-weight:400; font-size:12px; color:var(--lg-gray);">├ Sprint 5-6: Technician & Inventory</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="4" style="position:relative"><div class="gantt-bar full" style="background:#AD1457; opacity:0.7; font-size:9px;">Tech & Inventory</div></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr style="background:#FFF5F7">
+                            <td class="phase-name" style="padding-left:32px; font-weight:400; font-size:12px; color:var(--lg-gray);">└ Sprint 7-8: Payment & Reporting</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="4" style="position:relative"><div class="gantt-bar full" style="background:#880E4F; opacity:0.7; font-size:9px;">Payment & Report</div></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- GĐ7: Testing (W26-28) -->
+                        <tr>
+                            <td class="phase-name">7. Kiểm thử tổng thể</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="3" style="position:relative"><div class="gantt-bar full" style="background:var(--phase-test)">SIT + UAT</div></td>
+                            <td></td><td></td><td></td><td></td>
+                        </tr>
+                        <!-- GĐ8: Deploy (W29-30) -->
+                        <tr>
+                            <td class="phase-name">8. Triển khai & Chuyển giao</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="2" style="position:relative"><div class="gantt-bar full" style="background:var(--phase-deploy)">Deploy</div></td>
+                            <td></td><td></td>
+                        </tr>
+                        <!-- GĐ9: Acceptance (W31-32) -->
+                        <tr>
+                            <td class="phase-name">9. Nghiệm thu & Bảo hành</td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td colspan="2" style="position:relative"><div class="gantt-bar full" style="background:var(--phase-accept)">Nghiệm thu</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:12px; font-size:12px;">
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-survey);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Khảo sát</span>
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-design);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Thiết kế</span>
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-docs);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Tài liệu</span>
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-review);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Review</span>
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-kickoff);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Kickoff</span>
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-dev);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Phát triển</span>
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-test);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Kiểm thử</span>
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-deploy);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Triển khai</span>
+                <span><span style="display:inline-block;width:14px;height:14px;background:var(--phase-accept);border-radius:3px;vertical-align:middle;margin-right:4px;"></span>Nghiệm thu</span>
+            </div>
+        </div>
+
+        <!-- MILESTONES -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">◆</span>
+                Các Mốc Quan Trọng (Milestones)
+            </div>
+            <div class="milestone-timeline">
+                <div class="milestone-item">
+                    <span class="week">Tuần 2</span>
+                    <span class="title">Hoàn thành khảo sát</span>
+                    <div class="desc">Báo cáo khảo sát hiện trạng hoàn tất, đã thu thập đầy đủ yêu cầu từ các bên liên quan</div>
+                </div>
+                <div class="milestone-item" style="border-left-color:var(--phase-design)">
+                    <span class="week" style="background:var(--phase-design)">Tuần 5</span>
+                    <span class="title">Phê duyệt thiết kế</span>
+                    <div class="desc">Kiến trúc hệ thống, thiết kế DB, UI/UX mockup được khách hàng chấp thuận</div>
+                </div>
+                <div class="milestone-item" style="border-left-color:var(--phase-review)">
+                    <span class="week" style="background:var(--phase-review)">Tuần 8</span>
+                    <span class="title">Phê duyệt tài liệu</span>
+                    <div class="desc">SRS, SDD, Test Plan được ký phê duyệt chính thức. Baseline tài liệu được thiết lập.</div>
+                </div>
+                <div class="milestone-item" style="border-left-color:var(--phase-kickoff)">
+                    <span class="week" style="background:var(--phase-kickoff)">Tuần 9</span>
+                    <span class="title">Kickoff dự án</span>
+                    <div class="desc">Họp kickoff, môi trường Dev/Staging/CI sẵn sàng, team onboarding hoàn tất</div>
+                </div>
+                <div class="milestone-item" style="border-left-color:var(--phase-dev)">
+                    <span class="week" style="background:var(--phase-dev)">Tuần 25</span>
+                    <span class="title">Code Complete</span>
+                    <div class="desc">Hoàn thành toàn bộ 8 sprint phát triển, 49 chức năng v1 đã implement xong</div>
+                </div>
+                <div class="milestone-item" style="border-left-color:var(--phase-test)">
+                    <span class="week" style="background:var(--phase-test)">Tuần 28</span>
+                    <span class="title">UAT Sign-off</span>
+                    <div class="desc">Khách hàng kiểm thử chấp nhận (UAT) hoàn tất, các bug critical đã fix, sẵn sàng Go-live</div>
+                </div>
+                <div class="milestone-item" style="border-left-color:var(--phase-deploy)">
+                    <span class="week" style="background:var(--phase-deploy)">Tuần 30</span>
+                    <span class="title">Go-live</span>
+                    <div class="desc">Hệ thống triển khai production, data migration hoàn tất, đào tạo user xong</div>
+                </div>
+                <div class="milestone-item" style="border-left-color:var(--phase-accept)">
+                    <span class="week" style="background:var(--phase-accept)">Tuần 32</span>
+                    <span class="title">Nghiệm thu chính thức</span>
+                    <div class="desc">Ký biên bản nghiệm thu, bắt đầu giai đoạn bảo hành 6 tháng</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE DETAILS -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📋</span>
+                Chi Tiết Từng Giai Đoạn
+            </div>
+            <table class="phase-table">
+                <thead>
+                    <tr>
+                        <th style="width:50px">GĐ</th>
+                        <th style="width:220px">Giai đoạn</th>
+                        <th style="width:80px">Thời gian</th>
+                        <th>Hoạt động chính</th>
+                        <th style="width:280px">Sản phẩm bàn giao</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="phase-badge" style="background:var(--phase-survey)">1</span></td>
+                        <td><strong>Khảo sát & Phân tích</strong></td>
+                        <td>2 tuần</td>
+                        <td>
+                            Khảo sát hiện trạng hệ thống cũ &bull; Phỏng vấn stakeholders (QL trung tâm, NV tiếp nhận, KTV, thủ kho) &bull; Phân tích quy trình AS-IS &bull; Đánh giá hạ tầng CNTT &bull; Xác định pain points và kỳ vọng
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Báo cáo khảo sát hiện trạng</li>
+                                <li>Tài liệu phân tích quy trình AS-IS</li>
+                                <li>Danh sách yêu cầu nghiệp vụ (BRD)</li>
+                                <li>Biên bản phỏng vấn stakeholders</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="phase-badge" style="background:var(--phase-design)">2</span></td>
+                        <td><strong>Thiết kế hệ thống</strong></td>
+                        <td>3 tuần</td>
+                        <td>
+                            Thiết kế kiến trúc tổng thể (system architecture) &bull; Thiết kế cơ sở dữ liệu (ERD) &bull; Thiết kế UI/UX wireframe + high-fidelity mockup &bull; Thiết kế API specification &bull; Thiết kế quy trình nghiệp vụ TO-BE &bull; Thiết kế bảo mật & phân quyền
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Bản thiết kế kiến trúc hệ thống</li>
+                                <li>ERD & Database Schema</li>
+                                <li>UI/UX Wireframe (Figma)</li>
+                                <li>High-fidelity Mockup (Figma)</li>
+                                <li>API Specification (OpenAPI/Swagger)</li>
+                                <li>Quy trình nghiệp vụ TO-BE</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="phase-badge" style="background:var(--phase-docs)">3</span></td>
+                        <td><strong>Lập tài liệu</strong></td>
+                        <td>2 tuần</td>
+                        <td>
+                            Biên soạn SRS (Software Requirements Specification) &bull; Biên soạn SDD (Software Design Document) &bull; Biên soạn tài liệu UI/UX &bull; Biên soạn API Documentation &bull; Lập Test Plan &bull; Lập kế hoạch triển khai
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Tài liệu SRS</li>
+                                <li>Tài liệu SDD</li>
+                                <li>Tài liệu hướng dẫn UI/UX</li>
+                                <li>Test Plan & Test Cases</li>
+                                <li>Kế hoạch triển khai</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="phase-badge" style="background:var(--phase-review)">4</span></td>
+                        <td><strong>Review & Phê duyệt</strong></td>
+                        <td>1 tuần</td>
+                        <td>
+                            Trình bày tài liệu cho khách hàng &bull; Thu thập phản hồi &bull; Chỉnh sửa theo feedback &bull; Phê duyệt chính thức &bull; Ký biên bản xác nhận baseline
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Tài liệu đã phê duyệt (final)</li>
+                                <li>Biên bản xác nhận tài liệu</li>
+                                <li>Change request log (nếu có)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="phase-badge" style="background:var(--phase-kickoff)">5</span></td>
+                        <td><strong>Kickoff & Chuẩn bị</strong></td>
+                        <td>1 tuần</td>
+                        <td>
+                            Họp kickoff dự án &bull; Setup môi trường Dev/Staging/Production &bull; Setup CI/CD pipeline (GitHub Actions) &bull; Setup project management (Jira/Linear) &bull; Phân công nhân sự &bull; Setup monitoring (Sentry)
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Biên bản họp kickoff</li>
+                                <li>Môi trường Dev/Staging sẵn sàng</li>
+                                <li>CI/CD pipeline hoạt động</li>
+                                <li>Backlog sprint 1 đã tạo</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr style="background:var(--lg-red-light)">
+                        <td><span class="phase-badge" style="background:var(--phase-dev)">6</span></td>
+                        <td><strong>Phát triển phần mềm</strong><br><small style="color:var(--lg-gray)">8 Sprints — Agile Scrum</small></td>
+                        <td><strong>16 tuần</strong></td>
+                        <td>
+                            8 Sprint × 2 tuần &bull; Mỗi sprint: Planning → Dev → Code Review → Test → Sprint Review → Retro &bull; Demo cho khách hàng mỗi 2 sprint &bull; Continuous Integration & Deployment
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Source code (Git repository)</li>
+                                <li>Mobile App (iOS + Android)</li>
+                                <li>Web Admin application</li>
+                                <li>Backend API server</li>
+                                <li>Sprint review recordings</li>
+                                <li>Release notes mỗi sprint</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="phase-badge" style="background:var(--phase-test)">7</span></td>
+                        <td><strong>Kiểm thử tổng thể</strong></td>
+                        <td>3 tuần</td>
+                        <td>
+                            System Integration Testing (SIT) &bull; User Acceptance Testing (UAT) &bull; Performance Testing &bull; Security Testing &bull; Regression testing &bull; Bug fixing
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Báo cáo kiểm thử SIT</li>
+                                <li>Báo cáo UAT + Sign-off</li>
+                                <li>Báo cáo Performance Test</li>
+                                <li>Báo cáo Security Audit</li>
+                                <li>Bug tracking report</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="phase-badge" style="background:var(--phase-deploy)">8</span></td>
+                        <td><strong>Triển khai & Chuyển giao</strong></td>
+                        <td>2 tuần</td>
+                        <td>
+                            Triển khai Production (AWS) &bull; Data migration từ hệ thống cũ &bull; Đào tạo người dùng (Admin, NV, KTV, Thủ kho) &bull; Biên soạn tài liệu hướng dẫn sử dụng &bull; Publish app lên App Store / Google Play
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Hệ thống production hoạt động</li>
+                                <li>App trên App Store + Google Play</li>
+                                <li>Dữ liệu migration hoàn tất</li>
+                                <li>Tài liệu hướng dẫn sử dụng</li>
+                                <li>Video đào tạo</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="phase-badge" style="background:var(--phase-accept)">9</span></td>
+                        <td><strong>Nghiệm thu & Bảo hành</strong></td>
+                        <td>2 tuần<br><small>+ 6 tháng BH</small></td>
+                        <td>
+                            Vận hành song song (parallel run) &bull; Nghiệm thu chính thức &bull; Ký biên bản nghiệm thu &bull; Bàn giao toàn bộ tài liệu + source code &bull; Bắt đầu bảo hành 6 tháng
+                        </td>
+                        <td>
+                            <ul class="deliverable-list">
+                                <li>Biên bản nghiệm thu</li>
+                                <li>Bàn giao source code + tài liệu</li>
+                                <li>Hợp đồng bảo hành</li>
+                                <li>SLA hỗ trợ kỹ thuật</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SPRINT DETAILS -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">🏃</span>
+                Chi Tiết Sprint Phát Triển (Agile Scrum)
+            </div>
+            <p style="color:var(--lg-gray); margin-bottom:20px; font-size:14px;">Mỗi Sprint kéo dài <strong>2 tuần</strong>, bao gồm: Sprint Planning (2h) → Daily Standup (15min/ngày) → Development → Code Review → Testing → Sprint Review (1h) → Retrospective (1h)</p>
+            <div class="sprint-grid">
+                <!-- Sprint 1 -->
+                <div class="sprint-card">
+                    <div class="sprint-card-header" style="background:linear-gradient(135deg,#E91E63,#C2185B)">
+                        Sprint 1 <span class="sprint-tag">Tuần 10-11</span>
+                    </div>
+                    <div class="sprint-card-body">
+                        <h4>Foundation — Nền tảng dự án</h4>
+                        <ul>
+                            <li>Scaffold monorepo (Turborepo + 3 apps)</li>
+                            <li>Setup PostgreSQL + Prisma ORM schema</li>
+                            <li>LG Design System tokens (colors, typography)</li>
+                            <li>Shared component library cơ bản</li>
+                            <li>Setup Redis + BullMQ</li>
+                            <li>NestJS project structure + modules</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sprint 2 -->
+                <div class="sprint-card">
+                    <div class="sprint-card-header" style="background:linear-gradient(135deg,#C2185B,#AD1457)">
+                        Sprint 2 <span class="sprint-tag">Tuần 12-13</span>
+                    </div>
+                    <div class="sprint-card-body">
+                        <h4>Authentication — Xác thực & Phân quyền</h4>
+                        <ul>
+                            <li>Customer OTP registration + login</li>
+                            <li>Admin email/password login</li>
+                            <li>JWT access + refresh token</li>
+                            <li>RBAC 4 vai trò (Guard + Decorator)</li>
+                            <li>Branch isolation middleware</li>
+                            <li>Mobile + Web login screens</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sprint 3 -->
+                <div class="sprint-card">
+                    <div class="sprint-card-header" style="background:linear-gradient(135deg,#D32F2F,#C62828)">
+                        Sprint 3 <span class="sprint-tag">Tuần 14-15</span>
+                    </div>
+                    <div class="sprint-card-body">
+                        <h4>Customer Booking — Đặt lịch khách hàng</h4>
+                        <ul>
+                            <li>Đăng ký thiết bị LG (serial, model)</li>
+                            <li>Kiểm tra bảo hành theo serial</li>
+                            <li>Tạo đơn đặt lịch (full form flow)</li>
+                            <li>Xem báo giá ước tính</li>
+                            <li>Order state machine (backend)</li>
+                            <li>Push notifications (FCM)</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sprint 4 -->
+                <div class="sprint-card">
+                    <div class="sprint-card-header" style="background:linear-gradient(135deg,#C62828,#B71C1C)">
+                        Sprint 4 <span class="sprint-tag">Tuần 16-17</span>
+                    </div>
+                    <div class="sprint-card-body">
+                        <h4>Web Admin — Quản lý đơn & Điều phối</h4>
+                        <ul>
+                            <li>Dashboard đơn hàng (list + filter + search)</li>
+                            <li>Chi tiết đơn + timeline</li>
+                            <li>Tạo đơn walk-in</li>
+                            <li>Điều phối KTV (assign)</li>
+                            <li>Quản lý khách hàng (CRUD)</li>
+                            <li>Quản lý tài khoản nhân viên</li>
+                            <li>Audit log</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sprint 5 -->
+                <div class="sprint-card">
+                    <div class="sprint-card-header" style="background:linear-gradient(135deg,#AD1457,#880E4F)">
+                        Sprint 5 <span class="sprint-tag">Tuần 18-19</span>
+                    </div>
+                    <div class="sprint-card-body">
+                        <h4>Technician App — Quy trình KTV</h4>
+                        <ul>
+                            <li>Job list + job detail (KTV screen)</li>
+                            <li>Accept/Reject đơn + reason code</li>
+                            <li>Status updates (en route → completed)</li>
+                            <li>Completion form + checklist</li>
+                            <li>Chữ ký điện tử khách hàng</li>
+                            <li>Chụp ảnh trước/sau</li>
+                            <li>Offline mode (cache + sync)</li>
+                            <li>Google Maps navigation</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sprint 6 -->
+                <div class="sprint-card">
+                    <div class="sprint-card-header" style="background:linear-gradient(135deg,#880E4F,#6A1B4D)">
+                        Sprint 6 <span class="sprint-tag">Tuần 20-21</span>
+                    </div>
+                    <div class="sprint-card-body">
+                        <h4>Inventory — Quản lý kho linh kiện</h4>
+                        <ul>
+                            <li>Master parts catalog (CRUD)</li>
+                            <li>Per-branch stock levels</li>
+                            <li>Goods receipt (nhập kho batch)</li>
+                            <li>Stock issue to job (atomic deduction)</li>
+                            <li>Low-stock alerts</li>
+                            <li>Inter-branch transfer workflow</li>
+                            <li>Inventory reports</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sprint 7 -->
+                <div class="sprint-card">
+                    <div class="sprint-card-header" style="background:linear-gradient(135deg,#4A148C,#311B92)">
+                        Sprint 7 <span class="sprint-tag">Tuần 22-23</span>
+                    </div>
+                    <div class="sprint-card-body">
+                        <h4>Payment — Thanh toán & Hoá đơn</h4>
+                        <ul>
+                            <li>VNPay integration (full webhook flow)</li>
+                            <li>MoMo integration</li>
+                            <li>Cash payment recording</li>
+                            <li>Invoice generation (PDF)</li>
+                            <li>Nightly reconciliation job</li>
+                            <li>Refund flow</li>
+                            <li>Customer rating & review</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sprint 8 -->
+                <div class="sprint-card">
+                    <div class="sprint-card-header" style="background:linear-gradient(135deg,#1A237E,#0D47A1)">
+                        Sprint 8 <span class="sprint-tag">Tuần 24-25</span>
+                    </div>
+                    <div class="sprint-card-body">
+                        <h4>Reporting & Polish — Báo cáo & Hoàn thiện</h4>
+                        <ul>
+                            <li>Branch KPI dashboard</li>
+                            <li>Daily summary report</li>
+                            <li>Technician performance report</li>
+                            <li>Inventory & revenue reports</li>
+                            <li>Export Excel</li>
+                            <li>UI polish + responsive fix</li>
+                            <li>Performance optimization</li>
+                            <li>E2E bug fixing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEAM STRUCTURE -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">👥</span>
+                Cơ Cấu Nhân Sự Dự Án
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar" style="background:#EDE9FE;color:#7C3AED;">👤</div>
+                    <div class="team-info">
+                        <h4>Project Manager</h4>
+                        <p>Quản lý tiến độ, rủi ro, stakeholder</p>
+                        <span class="count">1 người — Full-time</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar" style="background:#DBEAFE;color:#2563EB;">📊</div>
+                    <div class="team-info">
+                        <h4>Business Analyst</h4>
+                        <p>Phân tích nghiệp vụ, viết tài liệu SRS</p>
+                        <span class="count">1 người — Full-time</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar" style="background:#FCE7F3;color:#DB2777;">🎨</div>
+                    <div class="team-info">
+                        <h4>UI/UX Designer</h4>
+                        <p>Wireframe, Mockup, Design System</p>
+                        <span class="count">1 người — GĐ 2-6</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar" style="background:#D1FAE5;color:#059669;">📱</div>
+                    <div class="team-info">
+                        <h4>Mobile Developer</h4>
+                        <p>React Native (Expo) — iOS & Android</p>
+                        <span class="count">2 người — GĐ 5-8</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar" style="background:#CFFAFE;color:#0891B2;">🖥️</div>
+                    <div class="team-info">
+                        <h4>Frontend Developer</h4>
+                        <p>Next.js Web Admin</p>
+                        <span class="count">2 người — GĐ 5-8</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar" style="background:#FEF3C7;color:#D97706;">⚙️</div>
+                    <div class="team-info">
+                        <h4>Backend Developer</h4>
+                        <p>NestJS API, PostgreSQL, Redis</p>
+                        <span class="count">2 người — GĐ 5-8</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar" style="background:#FEE2E2;color:#DC2626;">🧪</div>
+                    <div class="team-info">
+                        <h4>QA/Tester</h4>
+                        <p>Test cases, SIT, UAT, automation</p>
+                        <span class="count">2 người — GĐ 6-7</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar" style="background:#E0E7FF;color:#4F46E5;">🔧</div>
+                    <div class="team-info">
+                        <h4>DevOps Engineer</h4>
+                        <p>CI/CD, AWS, Docker, Monitoring</p>
+                        <span class="count">1 người — Part-time</span>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:20px; padding:16px 20px; background:var(--lg-gray-light); border-radius:10px; font-size:14px;">
+                <strong>Tổng nhân sự:</strong> 12 người &nbsp;|&nbsp; <strong>Peak team size (GĐ phát triển):</strong> 10 người &nbsp;|&nbsp; <strong>Effort ước tính:</strong> ~180 man-days
+            </div>
+        </div>
+
+        <!-- RACI MATRIX -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📌</span>
+                Ma Trận RACI (Phân Công Trách Nhiệm)
+            </div>
+            <p style="color:var(--lg-gray); margin-bottom:16px; font-size:13px;">
+                <span class="raci-r">R</span> = Responsible (Thực hiện) &nbsp;&bull;&nbsp;
+                <span class="raci-a">A</span> = Accountable (Chịu trách nhiệm) &nbsp;&bull;&nbsp;
+                <span class="raci-c">C</span> = Consulted (Tham vấn) &nbsp;&bull;&nbsp;
+                <span class="raci-i">I</span> = Informed (Được thông báo)
+            </p>
+            <div style="overflow-x:auto;">
+                <table class="raci-table">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm / Hoạt động</th>
+                            <th>PM</th>
+                            <th>BA</th>
+                            <th>Designer</th>
+                            <th>Mobile Dev</th>
+                            <th>FE Dev</th>
+                            <th>BE Dev</th>
+                            <th>QA</th>
+                            <th>DevOps</th>
+                            <th>Khách hàng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Báo cáo khảo sát</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-i">I</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                        </tr>
+                        <tr>
+                            <td>Thiết kế kiến trúc hệ thống</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-r">R</td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-i">I</td>
+                        </tr>
+                        <tr>
+                            <td>Thiết kế UI/UX (Wireframe + Mockup)</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                        </tr>
+                        <tr>
+                            <td>Tài liệu SRS</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                        </tr>
+                        <tr>
+                            <td>Phê duyệt tài liệu</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="raci-a">A</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile App Development</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-r">R</td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td class="raci-i">I</td>
+                        </tr>
+                        <tr>
+                            <td>Web Admin Development</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td class="raci-i">I</td>
+                        </tr>
+                        <tr>
+                            <td>Backend API Development</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-i">I</td>
+                        </tr>
+                        <tr>
+                            <td>Kiểm thử SIT</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-i">I</td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-i">I</td>
+                        </tr>
+                        <tr>
+                            <td>Kiểm thử UAT</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-r">R</td>
+                            <td></td>
+                            <td class="raci-r">R</td>
+                        </tr>
+                        <tr>
+                            <td>Triển khai Production</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-i">I</td>
+                            <td></td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-i">I</td>
+                        </tr>
+                        <tr>
+                            <td>Data Migration</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-c">C</td>
+                        </tr>
+                        <tr>
+                            <td>Đào tạo người dùng</td>
+                            <td class="raci-a">A</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="raci-r">R</td>
+                        </tr>
+                        <tr>
+                            <td>Nghiệm thu</td>
+                            <td class="raci-r">R</td>
+                            <td class="raci-c">C</td>
+                            <td></td>
+                            <td class="raci-i">I</td>
+                            <td class="raci-i">I</td>
+                            <td class="raci-i">I</td>
+                            <td class="raci-c">C</td>
+                            <td class="raci-i">I</td>
+                            <td class="raci-a">A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- RISK MANAGEMENT -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">⚠️</span>
+                Quản Lý Rủi Ro
+            </div>
+            <table class="phase-table">
+                <thead>
+                    <tr>
+                        <th style="width:40px">#</th>
+                        <th style="width:250px">Rủi ro</th>
+                        <th style="width:80px">Mức độ</th>
+                        <th style="width:90px">Xác suất</th>
+                        <th>Biện pháp phòng ngừa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Yêu cầu thay đổi liên tục (scope creep)</td>
+                        <td><span class="phase-badge" style="background:#DC2626">Cao</span></td>
+                        <td><span class="phase-badge" style="background:#D97706">Trung bình</span></td>
+                        <td>Freeze requirements sau GĐ4. Mọi thay đổi qua Change Request process. Demo mỗi 2 sprint để confirm sớm.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Tích hợp VNPay/MoMo phức tạp hơn dự kiến</td>
+                        <td><span class="phase-badge" style="background:#D97706">TB</span></td>
+                        <td><span class="phase-badge" style="background:#D97706">Trung bình</span></td>
+                        <td>Nghiên cứu sandbox sớm từ Sprint 5. Buffer 1 tuần trong Sprint 7. Liên hệ support gateway trước khi code.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Data migration từ hệ thống cũ gặp lỗi</td>
+                        <td><span class="phase-badge" style="background:#DC2626">Cao</span></td>
+                        <td><span class="phase-badge" style="background:#D97706">Trung bình</span></td>
+                        <td>Profile data quality từ GĐ1. Chạy dry-run migration 2 lần trước go-live. Script rollback sẵn sàng.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Thiếu nhân sự chuyên môn React Native</td>
+                        <td><span class="phase-badge" style="background:#D97706">TB</span></td>
+                        <td><span class="phase-badge" style="background:#059669">Thấp</span></td>
+                        <td>Tuyển dụng sớm. Sử dụng Expo để giảm yêu cầu native experience. Pair programming giữa senior và junior.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Performance chậm khi nhiều chi nhánh dùng đồng thời</td>
+                        <td><span class="phase-badge" style="background:#D97706">TB</span></td>
+                        <td><span class="phase-badge" style="background:#059669">Thấp</span></td>
+                        <td>Load testing từ Sprint 6. Database indexing + query optimization. Redis cache cho hot data. Read replica nếu cần.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>App bị reject trên App Store / Google Play</td>
+                        <td><span class="phase-badge" style="background:#DC2626">Cao</span></td>
+                        <td><span class="phase-badge" style="background:#059669">Thấp</span></td>
+                        <td>Tuân thủ guidelines từ đầu. Submit review sớm (TestFlight/Internal Testing). Chuẩn bị tài liệu privacy policy.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TECHNOLOGY STACK SUMMARY -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">🛠️</span>
+                Công Nghệ Sử Dụng
+            </div>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
+                <div style="padding:20px; background:var(--lg-gray-light); border-radius:10px;">
+                    <h4 style="color:var(--lg-red); margin-bottom:8px;">📱 Mobile App</h4>
+                    <p style="font-size:13px; color:#374151;">React Native (Expo SDK 51+) &bull; React Navigation &bull; React Query &bull; Zustand &bull; React Native Paper</p>
+                </div>
+                <div style="padding:20px; background:var(--lg-gray-light); border-radius:10px;">
+                    <h4 style="color:var(--lg-red); margin-bottom:8px;">🖥️ Web Admin</h4>
+                    <p style="font-size:13px; color:#374151;">Next.js 14 (App Router) &bull; TypeScript &bull; Tailwind CSS &bull; Shadcn/ui &bull; TanStack Table &bull; Recharts</p>
+                </div>
+                <div style="padding:20px; background:var(--lg-gray-light); border-radius:10px;">
+                    <h4 style="color:var(--lg-red); margin-bottom:8px;">⚙️ Backend</h4>
+                    <p style="font-size:13px; color:#374151;">NestJS 10 &bull; PostgreSQL 16 &bull; Prisma ORM &bull; Redis 7 &bull; BullMQ &bull; JWT + Passport.js</p>
+                </div>
+                <div style="padding:20px; background:var(--lg-gray-light); border-radius:10px;">
+                    <h4 style="color:var(--lg-red); margin-bottom:8px;">☁️ Infrastructure</h4>
+                    <p style="font-size:13px; color:#374151;">Docker &bull; AWS (ECS, RDS, S3) &bull; GitHub Actions &bull; Cloudflare &bull; Sentry &bull; Firebase Cloud Messaging</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p><span class="brand">LG Service Hub</span> — Master Plan v1.0</p>
+        <p style="margin-top:4px;">Ngày lập: 13/07/2026 &nbsp;|&nbsp; Phiên bản tài liệu: 1.0 &nbsp;|&nbsp; Trạng thái: Draft</p>
+        <p style="margin-top:4px; color:#9CA3AF;">© 2026 — Tài liệu nội bộ dự án</p>
+    </div>
+</body>
+</html>

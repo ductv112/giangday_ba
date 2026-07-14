@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>ABC Service Hub — Kế hoạch tổng thể dự án</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ink:#122023;
+    --ink-soft:#4B5D5E;
+    --paper:#F3F5F1;
+    --paper-card:#FFFFFF;
+    --line:#DDE3DD;
+    --teal-900:#0B3538;
+    --teal-800:#0F4448;
+    --teal-600:#146B67;
+    --teal-500:#1C8B84;
+    --brass:#C08A2E;
+    --brass-soft:#F4E6C8;
+    --app:#7B2D9E;
+    --app-soft:#F1E2F8;
+    --web:#0C7B6F;
+    --web-soft:#DCF2ED;
+    --kho:#B3266E;
+    --kho-soft:#FBE3EE;
+    --infra:#5B6B72;
+    --infra-soft:#E7ECEC;
+    --warn:#C4771B;
+    --ok:#2F8F5B;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--brass);
+  }
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg, var(--teal-900) 0%, var(--teal-800) 55%, var(--teal-600) 100%);
+    color:#F3F7F6;
+    padding:56px 48px 76px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(255,255,255,.045) 0 2px, transparent 2px 34px),
+      repeating-linear-gradient(25deg, rgba(255,255,255,.035) 0 2px, transparent 2px 34px);
+    pointer-events:none;
+  }
+  .hero-top{
+    position:relative;
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:44px;
+  }
+  .brand{ display:flex; align-items:center; gap:14px; }
+  .brand-mark{
+    width:46px; height:46px; border-radius:12px;
+    background:var(--brass);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:16px; color:var(--teal-900); letter-spacing:.02em;
+  }
+  .brand-name{ font-size:14px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#E9F1EF;}
+  .brand-name span{ display:block; font-size:11px; font-weight:500; letter-spacing:.1em; color:rgba(233,241,239,.6); margin-top:2px;}
+  .version-badge{
+    border:1px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.08);
+    padding:8px 16px; border-radius:999px;
+    font-size:12px; font-weight:700; letter-spacing:.08em;
+  }
+  .hero h1{
+    position:relative;
+    font-size:46px; line-height:1.08; font-weight:800; letter-spacing:-.01em;
+    margin:0 0 16px; max-width:700px;
+  }
+  .hero p.lead{
+    position:relative;
+    font-size:16.5px; line-height:1.6; color:rgba(233,241,239,.82);
+    max-width:620px; margin:0;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats-wrap{ padding:0 48px; margin-top:-40px; position:relative; z-index:2;}
+  .stats{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:16px;
+  }
+  .stat-card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-top:3px solid var(--teal-600);
+    border-radius:10px;
+    padding:20px 18px;
+    box-shadow:0 8px 24px rgba(18,32,35,.06);
+  }
+  .stat-card .num{ font-size:32px; font-weight:800; color:var(--teal-900); letter-spacing:-.01em; font-variant-numeric:tabular-nums;}
+  .stat-card .lbl{ margin-top:4px; font-size:12.5px; color:var(--ink-soft); font-weight:600; letter-spacing:.02em;}
+
+  /* ---------- SECTIONS ---------- */
+  .section{ padding:52px 48px 8px; max-width:1500px; margin:0 auto;}
+  .section-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:22px; }
+  .section-head h2{ font-size:22px; font-weight:800; margin:0; color:var(--ink);}
+  .section-head .sub{ font-size:13.5px; color:var(--ink-soft);}
+
+  /* ---------- GANTT ---------- */
+  .gantt-card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 24px rgba(18,32,35,.05);
+  }
+  .gantt-scroll{ overflow-x:auto; }
+  table.gantt{ border-collapse:separate; border-spacing:0; width:max-content; min-width:100%; }
+  .col-label{
+    position:sticky; left:0; z-index:3;
+    background:var(--paper-card);
+    width:270px; min-width:270px; max-width:270px;
+    padding:9px 16px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    font-size:13px;
+  }
+  .col-week{
+    width:22px; min-width:22px; max-width:22px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+    font-size:10px; color:var(--ink-soft); font-variant-numeric:tabular-nums;
+    padding:4px 0;
+  }
+  thead .grp-row th{
+    background:var(--teal-900); color:#fff;
+    font-size:10.5px; font-weight:700; letter-spacing:.03em;
+    padding:7px 0; border-right:1px solid rgba(255,255,255,.15);
+    position:sticky; top:0; z-index:2;
+  }
+  thead .wk-row th{
+    background:#EEF2F0; position:sticky; top:29px; z-index:2;
+  }
+  thead .col-label.grp-corner{ background:var(--teal-900); color:#fff; position:sticky; top:0; left:0; z-index:4; border-right:1px solid rgba(255,255,255,.15); font-size:11px;}
+  thead .col-label.wk-corner{ background:#EEF2F0; position:sticky; top:29px; left:0; z-index:4; }
+
+  tr.phase-row td.col-label{
+    font-weight:700; cursor:default;
+  }
+  tr.phase-row td.col-label .idx{ color:var(--brass); font-weight:800; margin-right:6px;}
+  tr.phase-row td.col-label .dur{ display:block; font-weight:500; font-size:11px; color:var(--ink-soft); margin-top:2px;}
+  tr.phase-row .cell{ border-bottom:1px solid var(--line); position:relative; height:40px;}
+
+  tr.sprint-row td.col-label{
+    padding-left:34px; font-size:12px; color:var(--ink-soft); font-weight:600;
+    position:relative;
+  }
+  tr.sprint-row td.col-label::before{
+    content:""; position:absolute; left:18px; top:0; bottom:0; width:1px; background:var(--line);
+  }
+  tr.sprint-row td.col-label::after{
+    content:""; position:absolute; left:18px; top:50%; width:10px; height:1px; background:var(--line);
+  }
+  tr.sprint-row .cell{ border-bottom:1px solid #EDEFEC; height:30px; position:relative;}
+  tr.sprint-row:last-child td.col-label::before{ height:50%; }
+
+  .bar{
+    position:absolute; top:6px; bottom:6px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:10.5px; font-weight:700; color:#fff; white-space:nowrap; overflow:hidden;
+    box-shadow:0 1px 2px rgba(0,0,0,.15);
+  }
+  tr.sprint-row .bar{ top:4px; bottom:4px; font-size:9.5px; font-weight:600; border-radius:5px;}
+  .bar.dashed{ background:repeating-linear-gradient(135deg, var(--infra) 0 8px, #79878D 8px 16px); opacity:.85; }
+  .bar.c-init{ background:var(--infra);}
+  .bar.c-survey{ background:#3D4E9E;}
+  .bar.c-design{ background:var(--app);}
+  .bar.c-doc{ background:var(--web);}
+  .bar.c-kickoff{ background:var(--brass); color:var(--teal-900);}
+  .bar.c-dev{ background:linear-gradient(90deg, var(--teal-800), var(--teal-600)); }
+  .bar.c-test{ background:var(--warn);}
+  .bar.c-uat{ background:var(--ok);}
+  .bar.c-warranty{ background:var(--infra); }
+  .bar.s-app{ background:var(--app); }
+  .bar.s-web{ background:var(--web); }
+  .bar.s-kho{ background:var(--kho); }
+  .bar.s-infra{ background:var(--infra); }
+
+  .milestone{
+    position:absolute; top:50%; width:14px; height:14px;
+    transform:translate(-50%,-50%) rotate(45deg);
+    background:var(--brass); border:2px solid #fff; box-shadow:0 0 0 1px var(--brass);
+    z-index:2;
+  }
+  tr.milestone-row .cell{ height:26px; border-bottom:1px solid var(--line);}
+  tr.milestone-row td.col-label{ font-size:11px; font-weight:700; color:var(--brass); text-transform:uppercase; letter-spacing:.04em;}
+
+  .legend{ display:flex; flex-wrap:wrap; gap:18px; padding:16px 20px; border-top:1px solid var(--line); background:#FAFAF8;}
+  .legend-item{ display:flex; align-items:center; gap:7px; font-size:12px; color:var(--ink-soft); font-weight:600;}
+  .swatch{ width:13px; height:13px; border-radius:4px; display:inline-block;}
+
+  /* ---------- PHASE CARDS ---------- */
+  .phase-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:8px;}
+  .phase-card{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:12px;
+    padding:20px; position:relative; overflow:hidden;
+  }
+  .phase-card::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--bar-color, var(--teal-600));
+  }
+  .phase-card .ph-idx{ font-size:11px; font-weight:800; color:var(--ink-soft); letter-spacing:.06em;}
+  .phase-card h3{ margin:6px 0 8px; font-size:15.5px; font-weight:800;}
+  .phase-card .ph-time{ font-size:11.5px; color:var(--brass); font-weight:700; margin-bottom:10px; display:inline-block;}
+  .phase-card ul{ margin:0; padding-left:18px; }
+  .phase-card li{ font-size:12.5px; color:var(--ink-soft); line-height:1.55; margin-bottom:3px;}
+
+  /* ---------- MILESTONES TIMELINE ---------- */
+  .mstones{ display:flex; overflow-x:auto; gap:0; padding:12px 4px 28px; }
+  .mstone{ flex:0 0 190px; position:relative; padding:0 14px 0 0; }
+  .mstone .dot{ width:16px; height:16px; border-radius:50%; background:var(--brass); border:3px solid var(--paper-card); box-shadow:0 0 0 2px var(--brass); margin-bottom:12px;}
+  .mstone .line{ position:absolute; top:7px; left:16px; right:-14px; height:2px; background:var(--line);}
+  .mstone:last-child .line{ display:none;}
+  .mstone .wk{ font-size:10.5px; color:var(--brass); font-weight:800; letter-spacing:.03em;}
+  .mstone h4{ font-size:13px; margin:4px 0 0; font-weight:700; line-height:1.35;}
+
+  footer{ text-align:center; padding:36px 20px 48px; font-size:12px; color:var(--ink-soft);}
+
+  @media (max-width:1100px){
+    .stats{ grid-template-columns:repeat(2,1fr);}
+    .phase-grid{ grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-top">
+    <div class="brand">
+      <div class="brand-mark">ABC</div>
+      <div class="brand-name">Service Hub<span>Trung tâm Bảo hành – Bảo dưỡng Điện tử Điện lạnh</span></div>
+    </div>
+    <div class="version-badge">MASTER PLAN v1.0</div>
+  </div>
+  <h1>Kế hoạch tổng thể dự án</h1>
+  <p class="lead">Số hoá toàn bộ quy trình vận hành của Trung tâm ABC — từ đặt lịch, tiếp nhận, điều phối thợ kỹ thuật, quản lý kho linh kiện đến thanh toán — triển khai qua App Mobile Khách hàng và Web Hệ thống quản trị.</p>
+</div>
+
+<div class="stats-wrap">
+  <div class="stats">
+    <div class="stat-card"><div class="num">32</div><div class="lbl">TUẦN THỰC HIỆN (CORE)</div></div>
+    <div class="stat-card"><div class="num">9</div><div class="lbl">GIAI ĐOẠN</div></div>
+    <div class="stat-card"><div class="num">10</div><div class="lbl">SPRINT PHÁT TRIỂN</div></div>
+    <div class="stat-card"><div class="num">76</div><div class="lbl">CHỨC NĂNG (FUNCTION LIST)</div></div>
+    <div class="stat-card"><div class="num">8</div><div class="lbl">MỐC QUAN TRỌNG</div></div>
+  </div>
+</div>
+
+<!-- ================= GANTT ================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>📊 Biểu đồ tiến độ tổng thể (Gantt Chart)</h2>
+    <span class="sub">Tuần 1 – 44 · kéo ngang để xem toàn bộ · ◆ = mốc quan trọng</span>
+  </div>
+  <div class="gantt-card">
+    <div class="gantt-scroll">
+      <table class="gantt" id="ganttTable"></table>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><span class="swatch" style="background:var(--infra)"></span>Khởi tạo / Hạ tầng</div>
+      <div class="legend-item"><span class="swatch" style="background:#3D4E9E"></span>Khảo sát &amp; Phân tích</div>
+      <div class="legend-item"><span class="swatch" style="background:var(--app)"></span>Thiết kế / App Mobile</div>
+      <div class="legend-item"><span class="swatch" style="background:var(--web)"></span>Tài liệu / Web Hệ thống</div>
+      <div class="legend-item"><span class="swatch" style="background:var(--kho)"></span>Kho linh kiện</div>
+      <div class="legend-item"><span class="swatch" style="background:var(--brass)"></span>Kickoff / Mốc quan trọng</div>
+      <div class="legend-item"><span class="swatch" style="background:var(--warn)"></span>Kiểm thử</div>
+      <div class="legend-item"><span class="swatch" style="background:var(--ok)"></span>Nghiệm thu</div>
+      <div class="legend-item"><span class="swatch" style="background:repeating-linear-gradient(135deg,var(--infra) 0 4px,#79878D 4px 8px)"></span>Bảo hành (mở rộng)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PHASE DETAILS ================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>🗂️ Chi tiết 9 giai đoạn</h2>
+    <span class="sub">Đầu ra chính (deliverables) của từng giai đoạn</span>
+  </div>
+  <div class="phase-grid" id="phaseGrid"></div>
+</div>
+
+<!-- ================= MILESTONES ================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>◆ 8 Mốc quan trọng</h2>
+    <span class="sub">Các cột mốc quyết định tiến độ dự án</span>
+  </div>
+  <div class="mstones" id="mstones"></div>
+</div>
+
+<footer>Trung tâm Bảo hành – Bảo dưỡng Điện tử Điện lạnh ABC · Master Plan v1.0 · Cập nhật 13/07/2026</footer>
+
+<script>
+const TOTAL_WEEKS = 44;
+
+// week groups for the top header (label + start + span)
+const groups = [
+  {label:"T1", start:1, span:1},
+  {label:"T2-3", start:2, span:2},
+  {label:"T4-6", start:4, span:3},
+  {label:"T6-7", start:6, span:2},
+  {label:"T8", start:8, span:1},
+  {label:"T9-28 · PHÁT TRIỂN", start:9, span:20},
+  {label:"T29-30", start:29, span:2},
+  {label:"T31-32", start:31, span:2},
+  {label:"T33-44 · BẢO HÀNH", start:33, span:12},
+];
+
+const phases = [
+  {idx:1, name:"Khởi tạo dự án", dur:"Tuần 1", start:1, span:1, cls:"c-init", barLabel:"",
+    deliv:["Điều lệ dự án (Project Charter)","Thống nhất phạm vi & ngân sách","Thành lập đội dự án"]},
+  {idx:2, name:"Khảo sát & Phân tích yêu cầu", dur:"Tuần 2–3", start:2, span:2, cls:"c-survey", barLabel:"Khảo sát",
+    deliv:["Biên bản khảo sát nghiệp vụ","Business Requirement Document (BRD)","Phỏng vấn CSKH, Thợ, Kho, Kế toán"]},
+  {idx:3, name:"Thiết kế hệ thống", dur:"Tuần 4–6", start:4, span:3, cls:"c-design", barLabel:"Thiết kế",
+    deliv:["Kiến trúc hệ thống & ERD","Wireframe → Mockup → Prototype","Đặc tả API (API Spec)"]},
+  {idx:4, name:"Tài liệu & Confirm", dur:"Tuần 6–7", start:6, span:2, cls:"c-doc", barLabel:"Tài liệu",
+    deliv:["SRS chi tiết","Function List 2 cấp (Excel)","Biên bản Sign-off với ABC"]},
+  {idx:5, name:"Kickoff dự án", dur:"Tuần 8", start:8, span:1, cls:"c-kickoff", barLabel:"",
+    deliv:["Biên bản Kickoff chính thức","Môi trường Dev/Staging/Production","Thiết lập Git & CI/CD"]},
+  {idx:6, name:"Phát triển (10 Sprint – Agile Scrum)", dur:"Tuần 9–28", start:9, span:20, cls:"c-dev", barLabel:"S1 · S2 · S3 · S4 · S5 · S6 · S7 · S8 · S9 · S10",
+    deliv:["10 Sprint × 2 tuần, review & demo cuối mỗi Sprint","Tăng trưởng sản phẩm liên tục (Increment)","Chi tiết 10 sprint bên dưới"]},
+  {idx:7, name:"Kiểm thử (Testing & UAT)", dur:"Tuần 29–30", start:29, span:2, cls:"c-test", barLabel:"Test",
+    deliv:["System Test toàn hệ thống","User Acceptance Test cùng ABC","Test Report & UAT Sign-off"]},
+  {idx:8, name:"Bàn giao & Nghiệm thu", dur:"Tuần 31–32", start:31, span:2, cls:"c-uat", barLabel:"Go-live",
+    deliv:["Go-live lên Production","Đào tạo người dùng toàn Trung tâm","Biên bản nghiệm thu chính thức"]},
+  {idx:9, name:"Bảo hành & Bảo trì", dur:"Tuần 33–44 (3 tháng)", start:33, span:12, cls:"c-warranty", barLabel:"Bảo hành 3 tháng",
+    deliv:["Bảo hành lỗi phát sinh miễn phí","Hỗ trợ vận hành theo SLA","Báo cáo vận hành định kỳ"]},
+];
+
+const sprints = [
+  {n:1, name:"Setup & Nền tảng", start:9, span:2, cls:"s-infra"},
+  {n:2, name:"Xác thực & Phân quyền", start:11, span:2, cls:"s-web"},
+  {n:3, name:"Đặt lịch dịch vụ (App)", start:13, span:2, cls:"s-app"},
+  {n:4, name:"Tiếp nhận & Điều phối (Web)", start:15, span:2, cls:"s-web"},
+  {n:5, name:"Theo dõi tiến độ & Chẩn đoán", start:17, span:2, cls:"s-app"},
+  {n:6, name:"Quản lý kho linh kiện", start:19, span:2, cls:"s-kho"},
+  {n:7, name:"Cấp phát linh kiện", start:21, span:2, cls:"s-kho"},
+  {n:8, name:"Thanh toán & Hoá đơn", start:23, span:2, cls:"s-web"},
+  {n:9, name:"Báo cáo & Thông báo", start:25, span:2, cls:"s-app"},
+  {n:10, name:"Tích hợp & Tối ưu", start:27, span:2, cls:"s-infra"},
+];
+
+const milestones = [
+  {week:3, label:"BRD hoàn tất"},
+  {week:6, label:"Thiết kế UI/UX duyệt"},
+  {week:7, label:"SRS & Function List Sign-off"},
+  {week:8, label:"Kickoff dự án"},
+  {week:20, label:"Hoàn thành Module Kho"},
+  {week:28, label:"Kết thúc Sprint 10"},
+  {week:30, label:"UAT Pass"},
+  {week:32, label:"Go-live / Nghiệm thu"},
+];
+
+function buildGantt(){
+  const table = document.getElementById("ganttTable");
+  let html = "<thead>";
+  // group header row
+  html += `<tr class="grp-row"><th class="col-label grp-corner">GIAI ĐOẠN</th>`;
+  groups.forEach(g => html += `<th colspan="${g.span}">${g.label}</th>`);
+  html += `</tr>`;
+  // week number row
+  html += `<tr class="wk-row"><th class="col-label wk-corner">Tuần</th>`;
+  for(let w=1; w<=TOTAL_WEEKS; w++) html += `<th class="col-week">${w}</th>`;
+  html += `</tr></thead><tbody>`;
+
+  // milestone marker row
+  html += `<tr class="milestone-row"><td class="col-label">◆ Mốc quan trọng</td>`;
+  for(let w=1; w<=TOTAL_WEEKS; w++){
+    const m = milestones.find(x=>x.week===w);
+    html += `<td class="cell">${m ? `<div class="milestone" style="left:50%" title="Tuần ${w}: ${m.label}"></div>` : ""}</td>`;
+  }
+  html += `</tr>`;
+
+  phases.forEach(p=>{
+    html += `<tr class="phase-row"><td class="col-label"><span class="idx">${String(p.idx).padStart(2,"0")}</span>${p.name}<span class="dur">${p.dur}</span></td>`;
+    for(let w=1; w<=TOTAL_WEEKS; w++){
+      let cellContent = "";
+      if(w === p.start){
+        const dashed = p.cls === "c-warranty" ? " dashed" : "";
+        cellContent = `<div class="bar ${p.cls}${dashed}" style="left:2px; width:${p.span*22 - 4}px;" title="${p.name} — ${p.dur}">${p.barLabel || ""}</div>`;
+      }
+      html += `<td class="cell">${cellContent}</td>`;
+    }
+    html += `</tr>`;
+
+    if(p.idx === 6){
+      sprints.forEach(s=>{
+        html += `<tr class="sprint-row"><td class="col-label">S${s.n} · ${s.name}</td>`;
+        for(let w=1; w<=TOTAL_WEEKS; w++){
+          let c = "";
+          if(w === s.start){
+            c = `<div class="bar ${s.cls}" style="left:2px; width:${s.span*22-4}px;" title="Sprint ${s.n}: ${s.name} — Tuần ${s.start}-${s.start+s.span-1}">S${s.n}</div>`;
+          }
+          html += `<td class="cell">${c}</td>`;
+        }
+        html += `</tr>`;
+      });
+    }
+  });
+
+  html += "</tbody>";
+  table.innerHTML = html;
+}
+
+function buildPhaseCards(){
+  const colorMap = {"c-init":"var(--infra)","c-survey":"#3D4E9E","c-design":"var(--app)","c-doc":"var(--web)",
+    "c-kickoff":"var(--brass)","c-dev":"var(--teal-600)","c-test":"var(--warn)","c-uat":"var(--ok)","c-warranty":"var(--infra)"};
+  const grid = document.getElementById("phaseGrid");
+  grid.innerHTML = phases.map(p => `
+    <div class="phase-card" style="--bar-color:${colorMap[p.cls]}">
+      <div class="ph-idx">GIAI ĐOẠN ${String(p.idx).padStart(2,"0")}</div>
+      <h3>${p.name}</h3>
+      <span class="ph-time">${p.dur}</span>
+      <ul>${p.deliv.map(d=>`<li>${d}</li>`).join("")}</ul>
+    </div>
+  `).join("");
+}
+
+function buildMilestones(){
+  const wrap = document.getElementById("mstones");
+  wrap.innerHTML = milestones.map(m => `
+    <div class="mstone">
+      <div class="line"></div>
+      <div class="dot"></div>
+      <div class="wk">TUẦN ${m.week}</div>
+      <h4>${m.label}</h4>
+    </div>
+  `).join("");
+}
+
+buildGantt();
+buildPhaseCards();
+buildMilestones();
+</script>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowcharts — LG Service Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --lg-red: #A50034;
+            --lg-red-dark: #8A002C;
+            --lg-red-light: #FDE8EC;
+            --lg-dark: #1B1B1B;
+            --lg-gray: #6B7280;
+            --lg-gray-light: #F3F4F6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--lg-gray-light);
+            color: var(--lg-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--lg-red) 0%, var(--lg-red-dark) 100%);
+            color: white;
+            padding: 40px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        .header-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .logo-area { display: flex; align-items: center; gap: 16px; }
+        .logo-box {
+            width: 56px; height: 56px;
+            background: white;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 20px; color: var(--lg-red);
+        }
+        .logo-text { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.9; }
+        .doc-badge {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header p { font-size: 16px; opacity: 0.85; max-width: 700px; }
+
+        /* NAV */
+        .nav {
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+        .nav-item {
+            padding: 14px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--lg-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .nav-item:hover, .nav-item.active {
+            color: var(--lg-red);
+            border-bottom-color: var(--lg-red);
+            background: var(--lg-red-light);
+        }
+        .nav-item .num {
+            display: inline-flex;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--lg-gray-light);
+            color: var(--lg-gray);
+            font-size: 11px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 6px;
+        }
+        .nav-item:hover .num, .nav-item.active .num {
+            background: var(--lg-red);
+            color: white;
+        }
+
+        /* CONTAINER */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        /* FLOW SECTION */
+        .flow-section {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            overflow: hidden;
+            scroll-margin-top: 60px;
+        }
+        .flow-header {
+            padding: 32px 40px 20px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        .flow-number {
+            display: inline-flex;
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: var(--lg-red);
+            color: white;
+            font-size: 18px;
+            font-weight: 800;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+        .flow-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--lg-dark);
+            display: inline;
+            vertical-align: middle;
+        }
+        .flow-desc {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--lg-gray);
+            max-width: 800px;
+        }
+        .platform-badges {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-mobile { background: #D1FAE5; color: #059669; }
+        .badge-web { background: #DBEAFE; color: #2563EB; }
+        .badge-backend { background: #FEF3C7; color: #D97706; }
+
+        /* DIAGRAM */
+        .diagram-container {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+        .mermaid {
+            min-width: 300px;
+        }
+
+        /* LEGEND */
+        .flow-legend {
+            padding: 16px 40px 24px;
+            border-top: 1px solid #F3F4F6;
+            font-size: 13px;
+            color: var(--lg-gray);
+        }
+        .flow-legend strong { color: var(--lg-dark); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--lg-gray);
+            font-size: 13px;
+        }
+        .footer .brand { color: var(--lg-red); font-weight: 700; }
+
+        /* PRINT */
+        @media print {
+            .nav { display: none; }
+            body { background: white; }
+            .flow-section { box-shadow: none; border: 1px solid #E5E7EB; page-break-inside: avoid; }
+        }
+        @media (max-width: 768px) {
+            .header { padding: 24px 20px; }
+            .header h1 { font-size: 24px; }
+            .flow-header { padding: 20px; }
+            .diagram-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-content">
+            <div class="header-top">
+                <div class="logo-area">
+                    <div class="logo-box">LG</div>
+                    <div class="logo-text">Service Hub</div>
+                </div>
+                <div class="doc-badge">FLOWCHARTS v1.0</div>
+            </div>
+            <h1>5 Luồng Chức Năng Chính</h1>
+            <p>Sơ đồ quy trình nghiệp vụ của hệ thống LG Service Hub — bao gồm App Mobile và Web Quản trị</p>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="nav">
+        <div class="nav-inner">
+            <a class="nav-item active" href="#flow1"><span class="num">1</span>Đặt Lịch Bảo Hành</a>
+            <a class="nav-item" href="#flow2"><span class="num">2</span>Vòng Đời Đơn Sửa Chữa</a>
+            <a class="nav-item" href="#flow3"><span class="num">3</span>Quy Trình KTV</a>
+            <a class="nav-item" href="#flow4"><span class="num">4</span>Quản Lý Kho</a>
+            <a class="nav-item" href="#flow5"><span class="num">5</span>Thanh Toán & Hoá Đơn</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- FLOW 1 -->
+        <div class="flow-section" id="flow1">
+            <div class="flow-header">
+                <span class="flow-number">1</span>
+                <h2 class="flow-title">Luồng Đặt Lịch Bảo Hành</h2>
+                <p class="flow-desc">Quy trình từ khi khách hàng mở app đặt lịch bảo hành/sửa chữa, hệ thống tạo đơn, đến khi NV tiếp nhận gán KTV xử lý. Đây là luồng khởi đầu cho mọi đơn sửa chữa trong hệ thống.</p>
+                <div class="platform-badges">
+                    <span class="badge badge-mobile">📱 Mobile App — Khách hàng</span>
+                    <span class="badge badge-backend">⚙️ Backend API</span>
+                    <span class="badge badge-web">🖥️ Web Admin — NV Tiếp nhận</span>
+                </div>
+            </div>
+            <div class="diagram-container">
+                <pre class="mermaid">
+flowchart TD
+    A["🔓 Khách hàng mở App"] --> B["Đăng nhập / Đăng ký OTP"]
+    B --> C{"Đã đăng ký\nthiết bị?"}
+    C -->|"Chưa"| D["📋 Đăng ký thiết bị LG\nSerial, Model, Ngày mua"]
+    C -->|"Rồi"| E["Chọn thiết bị cần sửa"]
+    D --> E
+    E --> F["Chọn loại dịch vụ\n🔧 Bảo hành | 🛠️ Bảo dưỡng | 💰 Sửa chữa"]
+    F --> G["Mô tả triệu chứng / lỗi\n📷 Đính kèm ảnh"]
+    G --> H["📍 Chọn chi nhánh gần nhất"]
+    H --> I["📅 Chọn ngày giờ mong muốn"]
+    I --> J["💲 Xem báo giá ước tính"]
+    J --> K{"Xác nhận\nđặt lịch?"}
+    K -->|"Huỷ"| L["⬅️ Quay lại chỉnh sửa"]
+    L --> F
+    K -->|"✅ Xác nhận"| M["Hệ thống tạo đơn\n🔢 Sinh mã: LG-YYMMDD-XXX"]
+    M --> N["📲 Push Notification\nXác nhận đặt lịch thành công"]
+    M --> O["📋 Đơn xuất hiện trên\nWeb Admin — Danh sách đơn mới"]
+    O --> P["👩‍💼 NV Tiếp nhận xem đơn"]
+    P --> Q["🔀 Gán KTV phù hợp\nXem lịch + chuyên môn + workload"]
+    Q --> R["📲 Thông báo KTV\nqua App Mobile"]
+    N --> S["📊 Khách hàng theo dõi\ntiến độ real-time trên App"]
+
+    style A fill:#E8F5E9,stroke:#4CAF50,color:#1B5E20
+    style M fill:#E3F2FD,stroke:#2196F3,color:#0D47A1
+    style N fill:#FFF3E0,stroke:#FF9800,color:#E65100
+    style O fill:#E8EAF6,stroke:#3F51B5,color:#1A237E
+    style S fill:#F3E5F5,stroke:#9C27B0,color:#4A148C
+                </pre>
+            </div>
+            <div class="flow-legend">
+                <strong>Ghi chú:</strong> Mã đơn hàng có format LG-YYMMDD-XXX (VD: LG-260713-001). Nếu thiết bị còn bảo hành, báo giá hiển thị "Miễn phí". Cutoff huỷ/đổi lịch: 2 giờ trước giờ hẹn.
+            </div>
+        </div>
+
+        <!-- FLOW 2 -->
+        <div class="flow-section" id="flow2">
+            <div class="flow-header">
+                <span class="flow-number">2</span>
+                <h2 class="flow-title">Vòng Đời Đơn Sửa Chữa (Order Lifecycle)</h2>
+                <p class="flow-desc">State machine quản lý toàn bộ vòng đời của một đơn sửa chữa — từ khi tạo đơn đến khi đóng hoàn tất. Mọi chuyển trạng thái đều đi qua hàm transitionOrder() duy nhất để đảm bảo tính nhất quán.</p>
+                <div class="platform-badges">
+                    <span class="badge badge-mobile">📱 Mobile App — Khách hàng</span>
+                    <span class="badge badge-mobile">📱 Mobile App — KTV</span>
+                    <span class="badge badge-web">🖥️ Web Admin — NV Tiếp nhận</span>
+                </div>
+            </div>
+            <div class="diagram-container">
+                <pre class="mermaid">
+flowchart TD
+    START(["🆕 Đơn mới tạo\n(từ App hoặc Walk-in)"])
+    START --> RECEIVED["📥 ĐÃ TIẾP NHẬN\nNV xác nhận đơn hợp lệ"]
+    RECEIVED --> ASSIGNED["👨‍🔧 ĐÃ GÁN KTV\nNV chọn KTV phù hợp\nKTV nhận thông báo"]
+    ASSIGNED --> DECISION{"KTV\nphản hồi?"}
+    DECISION -->|"❌ Từ chối\n(chọn lý do)"| RECEIVED
+    DECISION -->|"✅ Chấp nhận"| ENROUTE["🚗 KTV ĐANG ĐẾN\nKTV bấm 'Bắt đầu di chuyển'\nKH nhận push notification"]
+    ENROUTE --> ARRIVED["📍 KTV ĐÃ ĐẾN\nCheck-in tại địa chỉ KH"]
+    ARRIVED --> INPROGRESS["🔧 ĐANG SỬA CHỮA\nKTV chẩn đoán & sửa\nChụp ảnh trước"]
+    INPROGRESS --> NEEDPARTS{"Cần thay\nlinh kiện?"}
+    NEEDPARTS -->|"Có"| AWAITING["⏳ CHỜ LINH KIỆN\nKTV yêu cầu LK\nThủ kho chuẩn bị"]
+    AWAITING --> INPROGRESS
+    NEEDPARTS -->|"Không / Đã có"| COMPLETING["✍️ KTV HOÀN THÀNH\nĐiền checklist\nGhi linh kiện đã dùng\nChụp ảnh sau\nLấy chữ ký KH"]
+    COMPLETING --> COMPLETED["✅ HOÀN THÀNH SỬA CHỮA\nKH nhận thông báo\nHoá đơn được tạo tự động"]
+    COMPLETED --> PAYMENT{"💰 Thanh toán?"}
+    PAYMENT -->|"📱 Online\nVNPay / MoMo"| PAID_ONLINE["💳 ĐÃ THANH TOÁN ONLINE\nWebhook xác nhận"]
+    PAYMENT -->|"💵 Tiền mặt"| PAID_CASH["💵 NV GHI NHẬN\nThanh toán tiền mặt"]
+    PAYMENT -->|"🎁 Bảo hành\nmiễn phí"| FREE["🆓 MIỄN PHÍ BẢO HÀNH"]
+    PAID_ONLINE --> CLOSED
+    PAID_CASH --> CLOSED
+    FREE --> CLOSED
+    CLOSED(["🔒 ĐƠN ĐÓNG\n⭐ KH đánh giá dịch vụ\n📝 Audit log hoàn tất"])
+
+    style START fill:#E8F5E9,stroke:#4CAF50,color:#1B5E20
+    style RECEIVED fill:#E3F2FD,stroke:#2196F3,color:#0D47A1
+    style ASSIGNED fill:#E8EAF6,stroke:#3F51B5,color:#1A237E
+    style ENROUTE fill:#FFF3E0,stroke:#FF9800,color:#E65100
+    style ARRIVED fill:#FFF3E0,stroke:#FF9800,color:#E65100
+    style INPROGRESS fill:#E3F2FD,stroke:#2196F3,color:#0D47A1
+    style AWAITING fill:#FFF8E1,stroke:#FFC107,color:#F57F17
+    style COMPLETING fill:#F3E5F5,stroke:#9C27B0,color:#4A148C
+    style COMPLETED fill:#E8F5E9,stroke:#4CAF50,color:#1B5E20
+    style PAID_ONLINE fill:#E0F2F1,stroke:#009688,color:#004D40
+    style PAID_CASH fill:#E0F2F1,stroke:#009688,color:#004D40
+    style FREE fill:#E0F2F1,stroke:#009688,color:#004D40
+    style CLOSED fill:#FFEBEE,stroke:#F44336,color:#B71C1C
+                </pre>
+            </div>
+            <div class="flow-legend">
+                <strong>Quy tắc chuyển trạng thái:</strong> Mọi transition đều đi qua hàm <code>transitionOrder(orderId, newStatus, actorRole)</code> duy nhất. Không cho phép nhảy trạng thái (VD: không thể từ "Đã tiếp nhận" → "Hoàn thành"). Mỗi transition tạo 1 audit log entry.
+            </div>
+        </div>
+
+        <!-- FLOW 3 -->
+        <div class="flow-section" id="flow3">
+            <div class="flow-header">
+                <span class="flow-number">3</span>
+                <h2 class="flow-title">Quy Trình Kỹ Thuật Viên (Technician Daily Workflow)</h2>
+                <p class="flow-desc">Luồng làm việc hàng ngày của KTV — từ khi mở app xem danh sách việc, nhận đơn, di chuyển đến địa chỉ khách, sửa chữa, đến khi hoàn thành biểu mẫu và lấy chữ ký. Hỗ trợ offline mode khi mất mạng.</p>
+                <div class="platform-badges">
+                    <span class="badge badge-mobile">📱 Mobile App — Kỹ thuật viên</span>
+                    <span class="badge badge-backend">⚙️ Backend API</span>
+                </div>
+            </div>
+            <div class="diagram-container">
+                <pre class="mermaid">
+flowchart TD
+    A["🌅 KTV mở App đầu ngày"] --> B["📋 Xem danh sách việc được giao\nSắp xếp theo giờ hẹn"]
+    B --> C["Chọn đơn cần xử lý"]
+    C --> D{"Nhận đơn?"}
+    D -->|"❌ Từ chối"| E["Chọn lý do:\n• Trùng lịch\n• Khoảng cách xa\n• Sai chuyên môn"]
+    E --> F["📲 Thông báo NV Tiếp nhận\nĐể gán KTV khác"]
+    F --> B
+    D -->|"✅ Nhận"| G["🚗 Bấm 'Bắt đầu di chuyển'\nTrạng thái → KTV đang đến"]
+    G --> H["🗺️ Mở Google Maps\nĐiều hướng đến KH"]
+    H --> I["📍 Đến nơi — Bấm 'Đã đến'\nTrạng thái → Đã đến"]
+    I --> J["📷 Chụp ảnh TRƯỚC sửa\nGhi nhận tình trạng thiết bị"]
+    J --> K["🔧 Chẩn đoán & Sửa chữa\nTrạng thái → Đang sửa"]
+    K --> L{"Cần thay\nlinh kiện?"}
+    L -->|"Có"| M["🔍 Tìm linh kiện trong catalog\nNhập số lượng sử dụng"]
+    M --> N["📦 Hệ thống trừ kho\ntự động (atomic)"]
+    N --> O["Tiếp tục sửa chữa"]
+    L -->|"Không"| O
+    O --> P["📷 Chụp ảnh SAU sửa\nGhi nhận kết quả"]
+    P --> Q["📝 Điền checklist hoàn thành\n• Triệu chứng xác nhận\n• Hành động đã thực hiện\n• Linh kiện thay thế"]
+    Q --> R["✍️ Thu chữ ký điện tử\ncủa khách hàng"]
+    R --> S["✅ Bấm 'Hoàn thành'\nĐơn chuyển trạng thái"]
+    S --> T["📲 KH nhận thông báo\nĐơn hoàn thành"]
+    S --> U{"Còn đơn khác\ntrong ngày?"}
+    U -->|"Có"| B
+    U -->|"Không"| V["🏠 Kết thúc ngày làm việc"]
+
+    style A fill:#E3F2FD,stroke:#2196F3,color:#0D47A1
+    style G fill:#FFF3E0,stroke:#FF9800,color:#E65100
+    style I fill:#FFF3E0,stroke:#FF9800,color:#E65100
+    style K fill:#E3F2FD,stroke:#2196F3,color:#0D47A1
+    style S fill:#E8F5E9,stroke:#4CAF50,color:#1B5E20
+    style T fill:#F3E5F5,stroke:#9C27B0,color:#4A148C
+    style V fill:#E8F5E9,stroke:#4CAF50,color:#1B5E20
+                </pre>
+            </div>
+            <div class="flow-legend">
+                <strong>Offline mode:</strong> Khi mất kết nối, KTV vẫn xem được thông tin đơn đã cache (WatermelonDB/SQLite). Các cập nhật trạng thái được lưu local và tự động đồng bộ khi có mạng lại. Queue sync đảm bảo thứ tự đúng.
+            </div>
+        </div>
+
+        <!-- FLOW 4 -->
+        <div class="flow-section" id="flow4">
+            <div class="flow-header">
+                <span class="flow-number">4</span>
+                <h2 class="flow-title">Quản Lý Kho Linh Kiện (Inventory Management)</h2>
+                <p class="flow-desc">3 luồng chính của quy trình kho: Nhập kho từ nhà cung cấp, Xuất kho cho đơn sửa chữa (liên kết với KTV trên app), và Chuyển kho giữa các chi nhánh. Kèm theo hệ thống cảnh báo tồn kho thấp.</p>
+                <div class="platform-badges">
+                    <span class="badge badge-web">🖥️ Web Admin — Thủ kho</span>
+                    <span class="badge badge-mobile">📱 Mobile App — KTV</span>
+                    <span class="badge badge-backend">⚙️ Backend API</span>
+                </div>
+            </div>
+            <div class="diagram-container">
+                <pre class="mermaid">
+flowchart TD
+    subgraph NHAP ["📥 NHẬP KHO TỪ NHÀ CUNG CẤP"]
+        direction TB
+        A1["📦 Nhận hàng từ NCC"] --> A2["👩‍💼 Thủ kho tạo phiếu nhập\n• Chọn linh kiện + SL\n• Mã NCC + Số phiếu"]
+        A2 --> A3["✅ Hệ thống cập nhật tồn kho\nSố lượng tăng ngay lập tức"]
+        A3 --> A4["📝 Ghi lịch sử nhập kho\n(audit trail)"]
+    end
+
+    subgraph XUAT ["📤 XUẤT KHO CHO ĐƠN SỬA CHỮA"]
+        direction TB
+        B1["📱 KTV ghi nhận LK sử dụng\ntrên App Mobile"] --> B2["🔍 Hệ thống kiểm tra tồn kho\nchi nhánh KTV"]
+        B2 --> B3{"Đủ tồn kho?"}
+        B3 -->|"✅ Có"| B4["🔒 Atomic deduction\nSELECT FOR UPDATE\nTrừ kho chi nhánh"]
+        B3 -->|"❌ Không đủ"| B5["⚠️ Thông báo KTV\nLiên hệ Thủ kho"]
+        B4 --> B6["👩‍💼 Thủ kho xác nhận xuất\nLiên kết mã đơn sửa"]
+        B6 --> B7["💰 Cập nhật chi phí đơn\nTính tiền linh kiện vào hoá đơn"]
+    end
+
+    subgraph CHUYEN ["🔄 CHUYỂN KHO GIỮA CHI NHÁNH"]
+        direction TB
+        C1["👩‍💼 Thủ kho CN A\ntạo yêu cầu chuyển"] --> C2["👨‍💼 QL Chi nhánh A\nduyệt yêu cầu"]
+        C2 --> C3["📦 Trừ kho CN A\nTrạng thái: Đang chuyển"]
+        C3 --> C4["🚚 Vận chuyển\nlinh kiện"]
+        C4 --> C5["👩‍💼 Thủ kho CN B\nnhận hàng & kiểm đếm"]
+        C5 --> C6["✅ Xác nhận nhận hàng\nCộng kho CN B"]
+    end
+
+    subgraph CANHBAO ["🔔 CẢNH BÁO & BÁO CÁO"]
+        direction TB
+        D1["📊 Tồn kho dưới ngưỡng\nmin_threshold"] --> D2["🔔 Hệ thống gửi cảnh báo\nNotification + Badge đỏ"]
+        D2 --> D3["👩‍💼 Thủ kho xem báo cáo\nTồn kho + Lịch sử XNK"]
+        D3 --> D4["📊 Xuất Excel báo cáo"]
+    end
+
+    style A1 fill:#E3F2FD,stroke:#2196F3
+    style A3 fill:#E8F5E9,stroke:#4CAF50
+    style B1 fill:#FFF3E0,stroke:#FF9800
+    style B4 fill:#FFEBEE,stroke:#F44336
+    style B5 fill:#FFEBEE,stroke:#F44336
+    style C1 fill:#E8EAF6,stroke:#3F51B5
+    style C6 fill:#E8F5E9,stroke:#4CAF50
+    style D1 fill:#FFEBEE,stroke:#F44336
+    style D2 fill:#FFF3E0,stroke:#FF9800
+                </pre>
+            </div>
+            <div class="flow-legend">
+                <strong>Race condition prevention:</strong> Khi 2 KTV cùng yêu cầu linh kiện cuối cùng trong kho, hệ thống sử dụng <code>SELECT FOR UPDATE</code> để lock row, đảm bảo chỉ 1 request thành công. Request còn lại nhận thông báo hết hàng.
+            </div>
+        </div>
+
+        <!-- FLOW 5 -->
+        <div class="flow-section" id="flow5">
+            <div class="flow-header">
+                <span class="flow-number">5</span>
+                <h2 class="flow-title">Thanh Toán & Hoá Đơn (Payment & Billing)</h2>
+                <p class="flow-desc">Luồng thanh toán đầy đủ: hỗ trợ VNPay, MoMo (online), tiền mặt, và bảo hành miễn phí. Bao gồm quy trình đối soát tự động hàng đêm và luồng hoàn tiền (refund) qua gateway.</p>
+                <div class="platform-badges">
+                    <span class="badge badge-mobile">📱 Mobile App — Khách hàng</span>
+                    <span class="badge badge-web">🖥️ Web Admin — NV Tiếp nhận</span>
+                    <span class="badge badge-backend">⚙️ Backend — Payment Gateway</span>
+                </div>
+            </div>
+            <div class="diagram-container">
+                <pre class="mermaid">
+flowchart TD
+    A["✅ Đơn sửa chữa HOÀN THÀNH"] --> B["🧾 Hệ thống tạo hoá đơn\nNhân công + Linh kiện + Thuế VAT"]
+    B --> C{"💰 Phương thức\nthanh toán?"}
+
+    C -->|"📱 VNPay"| D1["KH chọn VNPay trong App"]
+    D1 --> D2["⚙️ Backend tạo payment URL\nHMAC signature + orderId"]
+    D2 --> D3["🏦 Redirect → VNPay Gateway\nKH chọn ngân hàng / QR"]
+    D3 --> D4["💳 KH thanh toán"]
+    D4 --> D5["📨 VNPay gửi Webhook\nIPN callback → Backend"]
+    D5 --> D6["🔐 Backend xác minh\nHMAC checksum + Idempotency"]
+
+    C -->|"📱 MoMo"| E1["KH chọn MoMo trong App"]
+    E1 --> E2["⚙️ Backend tạo MoMo request\nSignature + amount"]
+    E2 --> E3["📲 Redirect → MoMo App\nKH xác nhận trong MoMo"]
+    E3 --> E4["📨 MoMo webhook callback"]
+    E4 --> D6
+
+    D6 --> D7{"Thanh toán\nthành công?"}
+    D7 -->|"✅ Thành công"| D8["💚 Cập nhật trạng thái\nĐÃ THANH TOÁN"]
+    D7 -->|"❌ Thất bại"| D9["📲 Thông báo KH\nThanh toán thất bại → Thử lại"]
+    D9 --> C
+
+    C -->|"💵 Tiền mặt"| F1["💵 KH trả tiền mặt\ntại quầy trung tâm"]
+    F1 --> F2["👩‍💼 NV Tiếp nhận ghi nhận\nSố tiền + PM: Tiền mặt"]
+    F2 --> D8
+
+    C -->|"🎁 Bảo hành"| G1["🆓 NV xác nhận BH\nKhông tính phí"]
+    G1 --> D8
+
+    D8 --> H["📱 KH xem hoá đơn\nchi tiết trong App"]
+    D8 --> I["🖨️ NV xuất PDF hoá đơn\nIn A4 / A5 thermal"]
+    D8 --> J["⭐ KH đánh giá dịch vụ\n1-5 sao + nhận xét"]
+
+    subgraph DOISO ["🔄 ĐỐI SOÁT TỰ ĐỘNG (Hàng đêm)"]
+        direction TB
+        K1["⏰ Cron job 00:00"] --> K2["🔍 Scan giao dịch pending\nChưa callback > 24h"]
+        K2 --> K3["📡 Query gateway kiểm tra\ntrạng thái thực tế"]
+        K3 --> K4["📊 Cập nhật hoặc\nđánh dấu giao dịch lỗi"]
+        K4 --> K5["📧 Báo cáo Admin\nDanh sách GD cần xử lý"]
+    end
+
+    subgraph REFUND ["💸 HOÀN TIỀN (Refund Flow)"]
+        direction TB
+        L1["👩‍💼 NV tạo yêu cầu hoàn tiền"] --> L2["👨‍💼 Admin duyệt"]
+        L2 --> L3["⚙️ Backend gọi\nRefund API gateway"]
+        L3 --> L4["✅ Cập nhật: ĐÃ HOÀN TIỀN\nGhi audit log"]
+    end
+
+    style A fill:#E8F5E9,stroke:#4CAF50
+    style B fill:#E3F2FD,stroke:#2196F3
+    style D8 fill:#E8F5E9,stroke:#4CAF50,color:#1B5E20
+    style D9 fill:#FFEBEE,stroke:#F44336,color:#B71C1C
+    style J fill:#F3E5F5,stroke:#9C27B0
+    style D6 fill:#FFF3E0,stroke:#FF9800
+                </pre>
+            </div>
+            <div class="flow-legend">
+                <strong>Bảo mật thanh toán:</strong> Backend xử lý 100% payment initiation và webhook verification — không trust client-side. Mỗi giao dịch có idempotency key chống xử lý trùng. HMAC checksum verify mọi IPN callback. Webhook endpoints có rate limiting.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p><span class="brand">LG Service Hub</span> — 5 Luồng Chức Năng Chính v1.0</p>
+        <p style="margin-top:4px;">Ngày lập: 13/07/2026 &nbsp;|&nbsp; Phiên bản: 1.0 &nbsp;|&nbsp; Trạng thái: Draft</p>
+        <p style="margin-top:4px; color:#9CA3AF;">© 2026 — Tài liệu nội bộ dự án</p>
+    </div>
+
+    <script>
+        // Init mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#FDE8EC',
+                primaryTextColor: '#1B1B1B',
+                primaryBorderColor: '#A50034',
+                lineColor: '#6B7280',
+                secondaryColor: '#E3F2FD',
+                tertiaryColor: '#F3F4F6',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '13px',
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 16,
+                nodeSpacing: 30,
+                rankSpacing: 40,
+            }
+        });
+
+        // Nav active state
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.flow-section');
+
+        function updateNav() {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.getBoundingClientRect().top;
+                if (top < 120) current = section.id;
+            });
+            navItems.forEach(item => {
+                item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+            });
+        }
+
+        window.addEventListener('scroll', updateNav);
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(item.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
